@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: dfab4b8f5648a0241a687db0aa7a00fc
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Cards/Cards01_Diamond10.prefab
+  uploadId: 419251

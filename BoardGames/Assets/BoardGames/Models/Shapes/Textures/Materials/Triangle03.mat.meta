@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 480d750f0a787704486635d793154fce
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/Shapes/Textures/Materials/Triangle03.mat
+  uploadId: 419251

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 57bf90c7d0475ed478101b2f81a97ba2
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Solitaire/Solitaire02.prefab
+  uploadId: 419251

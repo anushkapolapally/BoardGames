@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: bdb6eaae6e55ea540825da914dd21b81
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Dices/Dice01_darkblue.prefab
+  uploadId: 419251

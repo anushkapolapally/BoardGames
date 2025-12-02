@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b13ee3e4b51d51d41a22667490b7bbe9
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Checkers/Pawn01_White.prefab
+  uploadId: 419251

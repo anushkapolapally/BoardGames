@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 95df4b4a72116f14c94184565b5a038b
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/CubesLetter/CubeLetterU.prefab
+  uploadId: 419251

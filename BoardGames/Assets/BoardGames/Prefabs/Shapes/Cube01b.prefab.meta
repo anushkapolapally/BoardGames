@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 611bd227fb1725a46b380e883d59cccb
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Shapes/Cube01b.prefab
+  uploadId: 419251

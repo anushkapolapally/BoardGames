@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 921d9292fc2ae5e4a8ae420fe4fc51cd
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/Backgammon/Textures/Materials/Pawn01_black.mat
+  uploadId: 419251

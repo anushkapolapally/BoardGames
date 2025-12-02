@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 43ab721d3c6632445874765ec3bcd37a
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Checkers/ChineseCheckersMarble_yellow.prefab
+  uploadId: 419251

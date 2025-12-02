@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 56c07cf47bb4e2b44af74d02ea352bbf
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Dices/Dice02_blue.prefab
+  uploadId: 419251

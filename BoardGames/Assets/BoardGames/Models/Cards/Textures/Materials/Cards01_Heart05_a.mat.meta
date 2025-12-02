@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 25cc4336b1b1c3d498a5900815509439
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/Cards/Textures/Materials/Cards01_Heart05_a.mat
+  uploadId: 419251

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ec9b9b02c17eeb54e85636e75efade6a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/Ludo/Textures/Materials/Pawn_gold.mat
+  uploadId: 419251

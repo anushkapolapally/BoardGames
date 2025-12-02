@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1b9ead80ffae7e84b9fbaf1eeb02a2a8
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/Cards/Textures/Materials/Cards01_HeartAce_a.mat
+  uploadId: 419251

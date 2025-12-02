@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: fc7cc2a3bf0213246b5b08d4ad54a4ac
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Tower/TowerBlock04.prefab
+  uploadId: 419251

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 667d5295a4548c34f97c1e7cb18ff3f1
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Dices/Dice01_yellow.prefab
+  uploadId: 419251

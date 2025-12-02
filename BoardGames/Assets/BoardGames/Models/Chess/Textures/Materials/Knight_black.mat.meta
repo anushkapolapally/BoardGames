@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 252919e6d1b505b49b3a7dcd98b1a7c7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/Chess/Textures/Materials/Knight_black.mat
+  uploadId: 419251

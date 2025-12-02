@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 88b48bd1b59e65043a3448b8b395056c
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Chess/Bishop_White.prefab
+  uploadId: 419251

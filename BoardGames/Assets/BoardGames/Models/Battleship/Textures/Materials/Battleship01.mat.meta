@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 17c4ceda8892c964c8a3e07ce55c54bf
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/Battleship/Textures/Materials/Battleship01.mat
+  uploadId: 419251

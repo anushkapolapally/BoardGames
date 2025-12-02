@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b448d57678fc87f4bae5c01ad046e28d
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Shapes/Triangle01.prefab
+  uploadId: 419251

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f90059754d7ba714aaec1838954b2521
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/Dices/Textures/Materials/Dice01_blue.mat
+  uploadId: 419251
