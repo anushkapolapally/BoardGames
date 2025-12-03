@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7a5f15467de2dc646bfefa9b451e31d2
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Chess/Knight_White.prefab
+  uploadId: 419251

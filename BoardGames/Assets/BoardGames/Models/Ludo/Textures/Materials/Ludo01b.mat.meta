@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 83828dd036989354dbd09cb5c1e6afe6
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/Ludo/Textures/Materials/Ludo01b.mat
+  uploadId: 419251

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c3dd57eb177681b4da25b7a6ebb0a215
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/Cards/Textures/Materials/Cards01_Diamond07_a.mat
+  uploadId: 419251

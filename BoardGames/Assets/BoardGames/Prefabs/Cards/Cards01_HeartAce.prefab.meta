@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f150c9519b2602444a2df82ff29c8bdd
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Cards/Cards01_HeartAce.prefab
+  uploadId: 419251

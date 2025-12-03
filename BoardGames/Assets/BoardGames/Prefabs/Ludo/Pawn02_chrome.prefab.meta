@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ad126df0386f33b4f973f07fd6f6c256
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Ludo/Pawn02_chrome.prefab
+  uploadId: 419251

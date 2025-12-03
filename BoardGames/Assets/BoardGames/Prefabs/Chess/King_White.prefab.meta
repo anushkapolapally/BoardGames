@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c0d865df1dd3c914b8ad91e86d125da0
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Chess/King_White.prefab
+  uploadId: 419251

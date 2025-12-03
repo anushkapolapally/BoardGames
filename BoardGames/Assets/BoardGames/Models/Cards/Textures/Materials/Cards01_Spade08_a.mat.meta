@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ea71d2f7890432f4eb08db99d1c4e21c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/Cards/Textures/Materials/Cards01_Spade08_a.mat
+  uploadId: 419251

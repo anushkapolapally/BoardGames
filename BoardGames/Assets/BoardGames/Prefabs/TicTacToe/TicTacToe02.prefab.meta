@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ce68500f7bfee6845bfffd5fd6884802
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/TicTacToe/TicTacToe02.prefab
+  uploadId: 419251

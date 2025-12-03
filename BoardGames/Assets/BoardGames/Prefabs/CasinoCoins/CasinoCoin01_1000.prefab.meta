@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 9a42bb80178c99c4d84fe1df8986f7af
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/CasinoCoins/CasinoCoin01_1000.prefab
+  uploadId: 419251

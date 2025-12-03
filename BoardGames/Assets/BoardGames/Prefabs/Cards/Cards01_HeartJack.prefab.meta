@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b9bc8ae82c454da4eb33286dc68fbbb3
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Cards/Cards01_HeartJack.prefab
+  uploadId: 419251

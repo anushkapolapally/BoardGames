@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2a94b7290bc54f346bccb149867e70b0
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/Chess/Textures/Materials/Queen_black.mat
+  uploadId: 419251

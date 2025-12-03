@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 70b8ce9fc615cc344a58b5fa488116ab
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Cards/Cards01_SpadeAce.prefab
+  uploadId: 419251

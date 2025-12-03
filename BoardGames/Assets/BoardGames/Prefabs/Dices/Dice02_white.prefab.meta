@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: aa4e86616af5e564cb3f3ab8e0f63187
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Dices/Dice02_white.prefab
+  uploadId: 419251

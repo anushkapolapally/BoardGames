@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 79fe2945b54e3694b92ac27a0b478048
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/RubiksCubes/RubiksCube01.prefab
+  uploadId: 419251

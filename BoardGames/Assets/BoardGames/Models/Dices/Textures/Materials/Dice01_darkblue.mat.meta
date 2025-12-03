@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ace70750d9960354ea0e1d38b323128f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/Dices/Textures/Materials/Dice01_darkblue.mat
+  uploadId: 419251

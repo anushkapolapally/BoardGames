@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d77937bcec7f08144b9fd5ebd83b6d1b
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/Chess/Textures/Materials/Pawn_black.mat
+  uploadId: 419251

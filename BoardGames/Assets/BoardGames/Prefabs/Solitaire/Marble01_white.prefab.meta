@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f91f0df4f3f8d3c4199084f1c5e77377
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Solitaire/Marble01_white.prefab
+  uploadId: 419251

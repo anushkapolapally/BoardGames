@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 346f1281a3695324398b7c5f67b9f859
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Chess/Chessboard02.prefab
+  uploadId: 419251

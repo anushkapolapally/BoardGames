@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e46f44070c81d6644a7522ce9539de54
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/ConnectFour/Pawn01_yellow.prefab
+  uploadId: 419251

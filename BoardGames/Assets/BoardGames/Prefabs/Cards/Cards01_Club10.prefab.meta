@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0cfa45d1b2acfb441a072f5c2cc01580
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Cards/Cards01_Club10.prefab
+  uploadId: 419251

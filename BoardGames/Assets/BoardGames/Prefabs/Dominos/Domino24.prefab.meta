@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c5c6ea7468f5fd5419f496849f1925ec
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Dominos/Domino24.prefab
+  uploadId: 419251

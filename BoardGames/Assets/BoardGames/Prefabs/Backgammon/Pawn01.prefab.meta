@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7aa5d8bc19185024e8193841be88f88e
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Backgammon/Pawn01.prefab
+  uploadId: 419251

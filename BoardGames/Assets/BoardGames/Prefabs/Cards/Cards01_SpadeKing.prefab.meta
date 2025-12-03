@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 410f92743b03822418f01595f5f1cd11
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Cards/Cards01_SpadeKing.prefab
+  uploadId: 419251

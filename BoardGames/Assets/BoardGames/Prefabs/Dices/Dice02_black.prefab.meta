@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 6c0c98e01ea40844e9bb8703c198bca8
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Dices/Dice02_black.prefab
+  uploadId: 419251

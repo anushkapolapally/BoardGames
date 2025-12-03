@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 5049350853f081b42bb79eb5311c122b
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Battleship/Battleship01.prefab
+  uploadId: 419251

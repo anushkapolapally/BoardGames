@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5f9bd121c792de149a8024983bfdb925
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/Checkers/Materials/ChineseCheckersMarble_white.mat
+  uploadId: 419251

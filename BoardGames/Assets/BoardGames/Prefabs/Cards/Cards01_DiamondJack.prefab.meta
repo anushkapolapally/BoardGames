@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 50ba15b665f5ca444b187a383dd129d8
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Cards/Cards01_DiamondJack.prefab
+  uploadId: 419251

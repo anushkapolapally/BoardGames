@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1f04e2bb6197c234aa21ab3295227989
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/Dices/Textures/Materials/Dice01_pink.mat
+  uploadId: 419251

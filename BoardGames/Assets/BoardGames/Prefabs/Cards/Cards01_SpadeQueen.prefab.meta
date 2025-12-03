@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 9c09f159ac2aa29409d67323dafffe8d
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Cards/Cards01_SpadeQueen.prefab
+  uploadId: 419251

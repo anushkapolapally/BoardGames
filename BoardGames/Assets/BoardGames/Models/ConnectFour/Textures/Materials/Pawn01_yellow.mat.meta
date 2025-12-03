@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 00a3811adff2ffe439ee6ce9ccb1ad7d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/ConnectFour/Textures/Materials/Pawn01_yellow.mat
+  uploadId: 419251

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0af0eeed3cb445b40ac96ef01fc96b90
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Ludo/Pawn02_red.prefab
+  uploadId: 419251
