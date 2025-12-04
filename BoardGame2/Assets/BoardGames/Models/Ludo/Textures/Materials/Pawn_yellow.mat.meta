@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9d83b46c5f6d53441965c77662f2c293
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/Ludo/Textures/Materials/Pawn_yellow.mat
+  uploadId: 419251

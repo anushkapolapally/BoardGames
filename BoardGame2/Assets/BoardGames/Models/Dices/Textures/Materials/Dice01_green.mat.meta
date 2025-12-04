@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3df374857e0332a4a808e2ef4fa001de
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/Dices/Textures/Materials/Dice01_green.mat
+  uploadId: 419251

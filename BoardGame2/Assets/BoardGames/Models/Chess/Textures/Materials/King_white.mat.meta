@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f607e5ccaf9e6184490e59b72a8aac32
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/Chess/Textures/Materials/King_white.mat
+  uploadId: 419251

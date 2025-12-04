@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2e703f8d605d5534192bc506e1a4e860
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Dices/Dice01_orange.prefab
+  uploadId: 419251

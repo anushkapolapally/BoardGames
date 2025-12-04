@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e6d1e7d7a075ae645aee21a08e165acc
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Cards/Cards01_DiamondAce.prefab
+  uploadId: 419251

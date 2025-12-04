@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7974f5e317a2c814880850093a59e3f4
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Ludo/Pawn02_yellow.prefab
+  uploadId: 419251

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 24e59adf280953a4baa3c24919617ab7
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Cards/Cards01_HeartKing.prefab
+  uploadId: 419251

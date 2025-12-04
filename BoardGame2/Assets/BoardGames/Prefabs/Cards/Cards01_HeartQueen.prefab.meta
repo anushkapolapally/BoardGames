@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f2ef63033320e7d408749c56cd3f5518
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Cards/Cards01_HeartQueen.prefab
+  uploadId: 419251

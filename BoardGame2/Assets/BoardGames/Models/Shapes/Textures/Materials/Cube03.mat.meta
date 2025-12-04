@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7dbd7e234401cf2488683b79ae31e676
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/Shapes/Textures/Materials/Cube03.mat
+  uploadId: 419251

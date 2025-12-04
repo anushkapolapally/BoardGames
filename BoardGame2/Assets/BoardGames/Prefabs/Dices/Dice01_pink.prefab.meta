@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0589bcd0ae80cc647bfee8eda4d84caa
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Dices/Dice01_pink.prefab
+  uploadId: 419251

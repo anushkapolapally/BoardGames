@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ac1be397c13827e41920ac69679f0f1c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/ConnectFour/Textures/Materials/Pawn02_red.mat
+  uploadId: 419251

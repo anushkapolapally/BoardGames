@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 47295aa6aa15907419028fa5552e608a
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Chess/Bishop_Black.prefab
+  uploadId: 419251

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 5ad4d4e81e20e7b49ad2b6442d53201c
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Ludo/Pawn02_green.prefab
+  uploadId: 419251

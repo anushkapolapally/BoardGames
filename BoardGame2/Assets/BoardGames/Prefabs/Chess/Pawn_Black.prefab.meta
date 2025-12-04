@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 04c7320eef7917242afe7b164b7629ff
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Chess/Pawn_Black.prefab
+  uploadId: 419251

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: bba3374486e1ac3458bdd68fa955e4d7
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Cards/Cards01_Spade10.prefab
+  uploadId: 419251

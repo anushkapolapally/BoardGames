@@ -47,7 +47,10 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
     public int[,] boneyard = new int[28,3];
     public List<int[]> player1 = new List<int[]>();
     public List<int[]> player2 = new List<int[]>();
+
+    public List<GameObject> gameObjects = new List<GameObject>();
     
+   
     
 
     void Start()
@@ -81,6 +84,13 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                 
             }
 
+        for (int j = 0; j < boneyard.Length; j++)
+        {
+            Debug.Log(boneyard[j, 0]);
+            Debug.Log(boneyard[j, 1]);
+
+        }
+
         drawingDominos();
         
     }
@@ -97,7 +107,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
             {
                 int[] domino = new int[2];
                 domino[0] = boneyard[randIndex, 0];
-                domino[0] = boneyard[randIndex, 1];
+                domino[1] = boneyard[randIndex, 1];
 
                 player1.Add(domino);
                 boneyard[randIndex, 2] = 0;
@@ -106,10 +116,35 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
             }
         }
 
-        for (int i = 0; i < player1.Count; i++)
+
+        int count2 = 0;
+
+        while (count2 < 7)
         {
-            Debug.Log(player1[i].ToString());
+
+            int randIndex = Random.Range(0, 28);
+            if (boneyard[randIndex, 2] == 1)
+            {
+                int[] domino = new int[2];
+                domino[0] = boneyard[randIndex, 0];
+                domino[1] = boneyard[randIndex, 1];
+
+                player2.Add(domino);
+                boneyard[randIndex, 2] = 0;
+                count2++;
+
+            }
         }
+
+        for (int i = 0; i < player2.Count; i++)
+        {
+            Debug.Log(player2[i][0].ToString());
+            Debug.Log(player2[i][1].ToString());
+        }
+
+
+
+
 
     }
 }

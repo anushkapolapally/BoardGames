@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 15f6f5ef36de8c94bae6fc150040f4b6
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Backgammon/Backgammon01.prefab
+  uploadId: 419251

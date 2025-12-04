@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9018c1e881757034bb444cbf294db987
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/CubesLetters/Textures/Materials/CubeS.mat
+  uploadId: 419251

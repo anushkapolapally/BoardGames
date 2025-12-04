@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a5a5719a4c7e1e14c8640edc5dc6be1c
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Cards/Cards01_Heart10.prefab
+  uploadId: 419251

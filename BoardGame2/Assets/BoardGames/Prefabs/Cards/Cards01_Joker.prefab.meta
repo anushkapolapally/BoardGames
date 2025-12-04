@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: dc6eae35203fb924f8d991ea8d9cf9b5
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/Cards/Cards01_Joker.prefab
+  uploadId: 419251

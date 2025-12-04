@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8c32ee615e2bb3045bc45957c556a595
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/Backgammon/Textures/Materials/Backgammon01b.mat
+  uploadId: 419251

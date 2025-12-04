@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ca7d4d8c74289d24cb9d4004447729e3
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/Ludo/Textures/Materials/Pawn_green.mat
+  uploadId: 419251

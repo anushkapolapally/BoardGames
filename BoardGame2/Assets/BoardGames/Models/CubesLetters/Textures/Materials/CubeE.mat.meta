@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: eb3dff24337830d46a0a8264d6b25d4d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Models/CubesLetters/Textures/Materials/CubeE.mat
+  uploadId: 419251

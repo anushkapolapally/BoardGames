@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e76cef47318e38b40a83355d6e490d68
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177189
+  packageName: Board Games Pack
+  packageVersion: 1.1
+  assetPath: Assets/BoardGames/Prefabs/ConnectFour/ConnectFour01.prefab
+  uploadId: 419251
