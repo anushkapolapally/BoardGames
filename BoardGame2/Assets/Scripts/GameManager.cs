@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -49,6 +50,10 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
     public List<int[]> player2 = new List<int[]>();
 
     public List<GameObject> gameObjects = new List<GameObject>();
+
+    [SerializeField] int turn = 0;
+
+    public Camera targetCamera;
     
    
     
@@ -63,7 +68,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
     // Update is called once per frame
     void Update()
     {
-        
+        cameraPosition();
     }
 
     private void startGame()
@@ -141,10 +146,21 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
             Debug.Log(player2[i][0].ToString());
             Debug.Log(player2[i][1].ToString());
         }
+    }
 
-
-
-
-
+    private void cameraPosition()
+    {
+        if (turn == 0)
+        {
+            Vector3 originalRotation = new Vector3(42, 0, 0);
+            targetCamera.transform.position = new Vector3(0, 41, -51);
+            targetCamera.transform.eulerAngles = originalRotation;
+        }
+        else if (turn == 1)
+        {
+            Vector3 originalRotation = new Vector3(120, 0, 180);
+            targetCamera.transform.position = new Vector3(0, 41, 30);
+            targetCamera.transform.eulerAngles = originalRotation;
+        }
     }
 }
