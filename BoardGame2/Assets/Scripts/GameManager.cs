@@ -4,6 +4,7 @@ using System.Threading;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
@@ -45,30 +46,50 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 */
 
 
-    public int[,] boneyard = new int[28,3];
+    public int[,] boneyard = new int[28, 3];
     public List<int[]> player1 = new List<int[]>();
     public List<int[]> player2 = new List<int[]>();
 
     public List<GameObject> gameObjects = new List<GameObject>();
 
+    public List<GameObject> placeholder1 = new List<GameObject>();
+
     [SerializeField] int turn = 0;
 
     public Camera targetCamera;
-    
+
+    public bool startPressed = false;
+
+    [SerializeField] Button startButton;
    
-    
 
     void Start()
     {
-        
+
         Debug.Log("Start Game");
         startGame();
-    }
 
+        Button button = startButton.GetComponent<Button>();
+        button.onClick.AddListener(changeStartPressed);
+    }
+    void changeStartPressed()
+    {
+        startPressed = true;
+        startButton.transform.position = new Vector3(-100, -100, 0);
+        Debug.Log("changed start Pressed");
+    }
     // Update is called once per frame
     void Update()
     {
         cameraPosition();
+
+       
+
+        if (startPressed)
+        {
+            drawingInitalDominos();
+            startButton.enabled = false;
+        }
     }
 
     private void startGame()
@@ -91,16 +112,16 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 
         for (int j = 0; j < boneyard.Length; j++)
         {
-            Debug.Log(boneyard[j, 0]);
-            Debug.Log(boneyard[j, 1]);
+           // Debug.Log(boneyard[j, 0]);
+            //Debug.Log(boneyard[j, 1]);
 
         }
 
-        drawingDominos();
+        
         
     }
 
-    private void drawingDominos()
+    private void drawingInitalDominos()
     {
         int count = 0;
 
@@ -116,7 +137,15 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 
                 player1.Add(domino);
                 boneyard[randIndex, 2] = 0;
+
+                Debug.Log(randIndex);
+
+                gameObjects[randIndex].transform.position = placeholder1[count].transform.position;
+                gameObjects[randIndex].transform.rotation = new Quaternion(0, 180, 90,0);
+
                 count++;
+
+
 
             }
         }
@@ -143,9 +172,11 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 
         for (int i = 0; i < player2.Count; i++)
         {
-            Debug.Log(player2[i][0].ToString());
-            Debug.Log(player2[i][1].ToString());
+           // Debug.Log(player2[i][0].ToString());
+           // Debug.Log(player2[i][1].ToString());
         }
+
+        startPressed = false;
     }
 
     private void cameraPosition()
@@ -153,7 +184,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
         if (turn == 0)
         {
             Vector3 originalRotation = new Vector3(42, 0, 0);
-            targetCamera.transform.position = new Vector3(0, 41, -51);
+            targetCamera.transform.position = new Vector3(0, 28, -43);
             targetCamera.transform.eulerAngles = originalRotation;
         }
         else if (turn == 1)
