@@ -53,6 +53,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
     public List<GameObject> gameObjects = new List<GameObject>();
 
     public List<GameObject> placeholder1 = new List<GameObject>();
+    public List<GameObject> placeholder2 = new List<GameObject>();
 
     [SerializeField] int turn = 0;
 
@@ -165,6 +166,9 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 
                 player2.Add(domino);
                 boneyard[randIndex, 2] = 0;
+
+                gameObjects[randIndex].transform.position = placeholder2[count2].transform.position;
+                gameObjects[randIndex].transform.rotation = new Quaternion(0, 180, 90, 0);
                 count2++;
 
             }
@@ -190,7 +194,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
         else if (turn == 1)
         {
             Vector3 originalRotation = new Vector3(120, 0, 180);
-            targetCamera.transform.position = new Vector3(0, 41, 30);
+            targetCamera.transform.position = new Vector3(0, 28, 27);
             targetCamera.transform.eulerAngles = originalRotation;
         }
     }
