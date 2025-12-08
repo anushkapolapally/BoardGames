@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -62,7 +63,10 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
     public bool startPressed = false;
 
     [SerializeField] Button startButton;
-   
+
+    public bool domClicked = false;
+
+    
 
     void Start()
     {
@@ -110,13 +114,6 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                 }
                 
             }
-
-        for (int j = 0; j < boneyard.Length; j++)
-        {
-           // Debug.Log(boneyard[j, 0]);
-            //Debug.Log(boneyard[j, 1]);
-
-        }
 
         
         
@@ -174,12 +171,6 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
             }
         }
 
-        for (int i = 0; i < player2.Count; i++)
-        {
-           // Debug.Log(player2[i][0].ToString());
-           // Debug.Log(player2[i][1].ToString());
-        }
-
         startPressed = false;
     }
 
@@ -197,5 +188,30 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
             targetCamera.transform.position = new Vector3(0, 28, 27);
             targetCamera.transform.eulerAngles = originalRotation;
         }
+    }
+
+    private void changeTurn()
+    {
+        if (domClicked == true)
+        {
+            if(turn == 0)
+            {
+                turn = 2;
+            }
+            else if(turn == 1)
+            {
+                turn = 3;
+            }
+        }
+    }
+
+    private void getDomClicked()
+    {
+        domClicked = gameObjects[0].GetComponent<Domino>().getIsPressed();
+        Debug.Log(domClicked);
+
+        changeTurn();
+
+
     }
 }
