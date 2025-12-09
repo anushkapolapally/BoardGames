@@ -3,8 +3,8 @@ using UnityEngine;
 public class Domino : MonoBehaviour
 {
 
-    public bool isPressed = false;
-    public int currturn;
+    [SerializeField] GameManager gameManager;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,13 +19,17 @@ public class Domino : MonoBehaviour
 
     void OnMouseDown()
     {
-        isPressed = true;
-        Debug.Log(isPressed);
+        if (gameManager.GetComponent<GameManager>().getTurn() == 0 || gameManager.GetComponent<GameManager>().getTurn() == 1)
+        {
+            gameManager.GetComponent<GameManager>().setIsPressed();
+            Debug.Log("isPressed");
+        }
+        
+        
+
+
     }
-    public bool getIsPressed()
-    {
-        return isPressed;
-    }
+    
 
     
 }

@@ -95,6 +95,10 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
             drawingInitalDominos();
             startButton.enabled = false;
         }
+
+        changeTurn();
+        selectingDomino();
+        
     }
 
     private void startGame()
@@ -188,30 +192,79 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
             targetCamera.transform.position = new Vector3(0, 28, 27);
             targetCamera.transform.eulerAngles = originalRotation;
         }
+        else if (turn == 2)
+        {
+            targetCamera.transform.position = new Vector3(0, 55, -4);
+            Vector3 originalRotation = new Vector3(90, 0, 0);
+            targetCamera.transform.eulerAngles = originalRotation;
+        }
+        else if(turn == 3)
+        {
+            targetCamera.transform.position = new Vector3(0, 55, -4);
+            Vector3 originalRotation = new Vector3(90, 180, 0);
+            targetCamera.transform.eulerAngles = originalRotation;
+        }
     }
 
     private void changeTurn()
     {
-        if (domClicked == true)
+       if(domClicked == true)
         {
             if(turn == 0)
             {
                 turn = 2;
+                domClicked = false;
+                //selectingDomino();
             }
             else if(turn == 1)
             {
                 turn = 3;
+                domClicked = false;
+                //selectingDomino();
             }
         }
     }
 
-    private void getDomClicked()
+    private void selectingDomino()
     {
-        domClicked = gameObjects[0].GetComponent<Domino>().getIsPressed();
-        Debug.Log(domClicked);
 
-        changeTurn();
+        
+           if (Input.GetKey(KeyCode.A) && (turn ==2 || turn == 3))
+            {
+                Debug.Log("correct key press");
+
+
+            if (turn == 2)
+            {
+                turn = 1;
+            }
+            else if (turn == 3)
+            {
+                turn = 0;
+            }
+        }
+        
+
+        
 
 
     }
+
+    private void checkValid()
+    {
+        Debug.Log("checking if a valid move");
+    }
+
+    public void setIsPressed()
+    {
+        domClicked = true;
+        Debug.Log("changed through setter");
+    }
+
+    public int getTurn()
+    {
+        return turn;
+    }
+
+    
 }
