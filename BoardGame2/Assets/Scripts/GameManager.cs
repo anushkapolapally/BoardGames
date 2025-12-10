@@ -261,9 +261,50 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                 turn = 0;
             }
         }
-        
 
-        
+        if (Input.GetKey(KeyCode.Alpha1) && (turn == 2 || turn == 3))
+        {
+            Debug.Log("correct key press");
+            if (turn == 2)
+            {
+                player1obj[1].transform.position = new Vector3(-3, 0, -11);
+                player1obj[1].transform.rotation = new Quaternion(-90, 0, 3, 0);
+
+
+            }
+
+            if (turn == 2)
+            {
+                turn = 1;
+            }
+            else if (turn == 3)
+            {
+                turn = 0;
+            }
+        }
+        if (Input.GetKey(KeyCode.Alpha0) && (turn == 2 || turn == 3))
+        {
+            Debug.Log("correct key press");
+            if (turn == 2)
+            {
+                player1obj[0].transform.position = new Vector3(-3, 0, -11);
+                player1obj[0].transform.rotation = new Quaternion(-90, 0, 3, 0);
+
+
+            }
+
+            if (turn == 2)
+            {
+                turn = 1;
+            }
+            else if (turn == 3)
+            {
+                turn = 0;
+            }
+        }
+
+
+
 
 
     }
