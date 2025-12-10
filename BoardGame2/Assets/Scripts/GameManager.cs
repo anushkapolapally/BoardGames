@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 
 public class GameManager : MonoBehaviour
@@ -49,7 +50,9 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 
     public int[,] boneyard = new int[28, 3];
     public List<int[]> player1 = new List<int[]>();
+    public List<GameObject> player1obj = new List<GameObject>();    
     public List<int[]> player2 = new List<int[]>();
+    public List<GameObject> player2obj = new List<GameObject>();
 
     public List<GameObject> gameObjects = new List<GameObject>();
 
@@ -138,6 +141,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                 domino[1] = boneyard[randIndex, 1];
 
                 player1.Add(domino);
+                player1obj.Add(gameObjects[randIndex]);
                 boneyard[randIndex, 2] = 0;
 
                 Debug.Log(randIndex);
@@ -166,6 +170,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                 domino[1] = boneyard[randIndex, 1];
 
                 player2.Add(domino);
+                player1obj.Add(gameObjects[randIndex]);
                 boneyard[randIndex, 2] = 0;
 
                 gameObjects[randIndex].transform.position = placeholder2[count2].transform.position;
@@ -227,13 +232,26 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 
     private void selectingDomino()
     {
+           if(turn == 0)
+        {
+            int range = player1.Count;
+        }
+        else if (turn == 1) {
+            int range = player2.Count;
+        }
 
-        
-           if (Input.GetKey(KeyCode.A) && (turn ==2 || turn == 3))
+                                    
+           if (Input.GetKey(KeyCode.Alpha0) && (turn == 2 || turn == 3))
+        {
+            Debug.Log("correct key press");
+            if(turn == 2)
             {
-                Debug.Log("correct key press");
+                player1obj[0].transform.position = new Vector3(-3, 0, -11);
+                player1obj[0].transform.rotation = new Quaternion(-90, 0, 3, 0);
 
 
+            }
+            
             if (turn == 2)
             {
                 turn = 1;
