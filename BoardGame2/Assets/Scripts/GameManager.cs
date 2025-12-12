@@ -98,7 +98,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
     void changeturnClicked()
     {
         turnClicked = true;
-        turnButton.transform.position = new Vector3(-100, -100, 0);
+        
         Debug.Log("change turn button");
     }
     // Update is called once per frame
@@ -279,6 +279,146 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
             }
 
 
+
+        }
+        else if (Input.GetKey(KeyCode.Alpha1) && (turn == 2 || turn == 3) && turnPlayed == false)
+        {
+            if (turn == 2)
+            {
+                //board.Add(player1[0]);
+                //player1.Remove(player1[0]);
+                player1obj[1].transform.position = new Vector3(-3, 0, -11);
+                //fix the rotation
+                player1obj[1].transform.rotation = new Quaternion(0, 180, 90, 0);
+
+                turnPlayed = true;
+
+            }
+            else if (turn == 3)
+            {
+                player2obj[1].transform.position = new Vector3(-3, 0, -11);
+                //fix the rotation
+                player2obj[1].transform.rotation = new Quaternion(0, 180, 90, 0);
+
+                turnPlayed = true;
+            }
+            
+
+
+
+        }
+        else if (Input.GetKey(KeyCode.Alpha2) && (turn == 2 || turn == 3) && turnPlayed == false)
+        {
+            if (turn == 2)
+            {
+                //board.Add(player1[0]);
+                //player1.Remove(player1[0]);
+                player1obj[2].transform.position = new Vector3(-3, 0, -11);
+                //fix the rotation
+                player1obj[2].transform.rotation = new Quaternion(0, 180, 90, 0);
+
+                turnPlayed = true;
+
+            }
+            else if (turn == 3)
+            {
+                player2obj[2].transform.position = new Vector3(-3, 0, -11);
+                //fix the rotation
+                player2obj[2].transform.rotation = new Quaternion(0, 180, 90, 0);
+
+                turnPlayed = true;
+            }
+        }
+        else if (Input.GetKey(KeyCode.Alpha3) && (turn == 2 || turn == 3) && turnPlayed == false)
+        {
+            if (turn == 2)
+            {
+                //board.Add(player1[0]);
+                //player1.Remove(player1[0]);
+                player1obj[3].transform.position = new Vector3(-3, 0, -11);
+                //fix the rotation
+                player1obj[3].transform.rotation = new Quaternion(0, 180, 90, 0);
+
+                turnPlayed = true;
+
+            }
+            else if (turn == 3)
+            {
+                player2obj[3].transform.position = new Vector3(-3, 0, -11);
+                //fix the rotation
+                player2obj[3].transform.rotation = new Quaternion(0, 180, 90, 0);
+
+                turnPlayed = true;
+            }
+
+        }
+        else if (Input.GetKey(KeyCode.Alpha4) && (turn == 2 || turn == 3) && turnPlayed == false)
+        {
+            if (turn == 2)
+            {
+                //board.Add(player1[0]);
+                //player1.Remove(player1[0]);
+                player1obj[4].transform.position = new Vector3(-3, 0, -11);
+                //fix the rotation
+                player1obj[4].transform.rotation = new Quaternion(0, 180, 90, 0);
+
+                turnPlayed = true;
+
+            }
+            else if (turn == 3)
+            {
+                player2obj[4].transform.position = new Vector3(-3, 0, -11);
+                //fix the rotation
+                player2obj[4].transform.rotation = new Quaternion(0, 180, 90, 0);
+
+                turnPlayed = true;
+            }
+
+        }
+        else if (Input.GetKey(KeyCode.Alpha5) && (turn == 2 || turn == 3) && turnPlayed == false)
+        {
+            if (turn == 2)
+            {
+                //board.Add(player1[0]);
+                //player1.Remove(player1[0]);
+                player1obj[5].transform.position = new Vector3(-3, 0, -11);
+                //fix the rotation
+                player1obj[5].transform.rotation = new Quaternion(0, 180, 90, 0);
+
+                turnPlayed = true;
+
+            }
+            else if (turn == 3)
+            {
+                player2obj[5].transform.position = new Vector3(-3, 0, -11);
+                //fix the rotation
+                player2obj[5].transform.rotation = new Quaternion(0, 180, 90, 0);
+
+                turnPlayed = true;
+            }
+
+        }
+        else if (Input.GetKey(KeyCode.Alpha6) && (turn == 2 || turn == 3) && turnPlayed == false)
+        {
+            if (turn == 2)
+            {
+                //board.Add(player1[0]);
+                //player1.Remove(player1[0]);
+                player1obj[6].transform.position = new Vector3(-3, 0, -11);
+                //fix the rotation
+                player1obj[6].transform.rotation = new Quaternion(0, 180, 90, 0);
+
+                turnPlayed = true;
+
+            }
+            else if (turn == 3)
+            {
+                player2obj[6].transform.position = new Vector3(-3, 0, -11);
+                //fix the rotation
+                player2obj[6].transform.rotation = new Quaternion(0, 180, 90, 0);
+
+                turnPlayed = true;
+            }
 
         }
 
