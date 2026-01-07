@@ -4,11 +4,13 @@ public class Domino : MonoBehaviour
 {
 
     [SerializeField] GameManager gameManager;
+
+    public int horizontal;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        horizontal = 0;
     }
 
     // Update is called once per frame

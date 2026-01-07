@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Security.Cryptography;
 using System.Threading;
 using Unity.VisualScripting;
@@ -55,6 +56,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
     public List<GameObject> player2obj = new List<GameObject>();
 
     public List<int[]> board = new List<int[]>();
+    public List<GameObject> boardobj = new List<GameObject>();
 
     public List<GameObject> gameObjects = new List<GameObject>();
 
@@ -115,6 +117,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
         }
 
         changeTurn();
+        Turn();
         //selectingDomino();
         
     }
@@ -488,21 +491,48 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 
         if(turn == 2 && turnPlayed==false)
         {
-            if( Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Alpha7) || Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Alpha9)){
+            if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Alpha7) || Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Alpha9)){
                 //figure out which one was pressed
+                int pressed;
+                if (Input.GetKeyDown(KeyCode.Alpha1)){ pressed = 1;}
+                else if (Input.GetKeyDown(KeyCode.Alpha2)){ pressed = 2;}
+                else if (Input.GetKeyDown(KeyCode.Alpha3)){ pressed = 3;}
+                else if (Input.GetKeyDown(KeyCode.Alpha4)){ pressed = 4;}
+                else if (Input.GetKeyDown(KeyCode.Alpha5)){ pressed = 5;}
+                else if (Input.GetKeyDown(KeyCode.Alpha6)){ pressed = 6;}
+                else if (Input.GetKeyDown(KeyCode.Alpha7)){ pressed = 7;}
+                else if (Input.GetKeyDown(KeyCode.Alpha8)) { pressed = 8;}
+                else { pressed = 9;}
 
-               
                 //Go through the list of dominos array to find if there is a valid move
                 if (board.Count == 0)
                 {
                     //valid
-                    //place on board
+                    //place on board in code
+                    player1obj[pressed-1].transform.position = new Vector3(-4, 0, 0);
+                    Debug.Log("Place on board");
+                    board.Add(player1[pressed - 1]);
+                    boardobj.Add(player1obj[pressed - 1]);
+                    player1.RemoveAt(pressed - 1);
+                    player1obj.RemoveAt(pressed - 1);
+
+
+                    //rearrange the players hand to have no gaps
+                    RearrangeHand(0);
+
+                    turn = 1;
+                    turnPlayed = false;
+
                 }
                 else
                 {
                     for (int i = 0; i < board.Count; i++)
                     {
-                        if (board[i][0] == );
+                        if (board[i][0] == player1[pressed][0] || board[i][1] == player1[pressed][0] || board[i][0] == player1[pressed][1] || board[i][1] == player1[pressed][1])
+                        {
+                            //place
+                            Debug.Log("Valid Move");
+                        }
                     }
                 }
 
@@ -510,7 +540,82 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 
             }
         }
+        else if (turn == 3 && turnPlayed == false)
+            {
+                if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Alpha7) || Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Alpha9))
+                {
+                    //figure out which one was pressed
+                    int pressed;
+                    if (Input.GetKeyDown(KeyCode.Alpha1)) { pressed = 1; }
+                    else if (Input.GetKeyDown(KeyCode.Alpha2)) { pressed = 2; }
+                    else if (Input.GetKeyDown(KeyCode.Alpha3)) { pressed = 3; }
+                    else if (Input.GetKeyDown(KeyCode.Alpha4)) { pressed = 4; }
+                    else if (Input.GetKeyDown(KeyCode.Alpha5)) { pressed = 5; }
+                    else if (Input.GetKeyDown(KeyCode.Alpha6)) { pressed = 6; }
+                    else if (Input.GetKeyDown(KeyCode.Alpha7)) { pressed = 7; }
+                    else if (Input.GetKeyDown(KeyCode.Alpha8)) { pressed = 8; }
+                    else { pressed = 9; }
+
+                    //Go through the list of dominos array to find if there is a valid move
+                    if (board.Count == 0)
+                    {
+                        //valid
+                        //place on board in code
+                        player2obj[pressed - 1].transform.position = new Vector3(-4, 0, 0);
+                        Debug.Log("Place on board");
+                        board.Add(player2[pressed - 1]);
+                        boardobj.Add(player2obj[pressed - 1]);
+                        player2.RemoveAt(pressed - 1);
+                        player2obj.RemoveAt(pressed - 1);
+
+
+                        //rearrange the players hand to have no gaps
+                        RearrangeHand(1);
+
+                        turn = 1;
+                        turnPlayed = false;
+
+                    }
+                    else
+                    {
+                        bool valid = false;
+                        List<int> validBoardPos = new List<int>();
+                        for (int i = 0; i < board.Count; i++)
+                        {
+                            if (board[i][0] == player2[pressed][0] || board[i][1] == player2[pressed][0] || board[i][0] == player2[pressed][1] || board[i][1] == player2[pressed][1])
+                            {
+                                valid = true;
+                                validBoardPos.Add(i);
+                                //DO TMRW
+                                Debug.Log("Valid Move");
+                                
+                            }
+                        }
+                    }
+
+                    //if there is a valid move then place it adjacent to that domino in the right orientation by labelling each domino either horizontal or vertical and using the dimensions
+
+                }
+            }
         
+    }
+
+    private void RearrangeHand(int player)
+    {
+        if (player == 0)
+        {
+            for (int i = 0; i < player1obj.Count; i++)
+            {
+                player1obj[i].transform.position = placeholder1[i].transform.position;
+            }
+        }
+        else if (player == 1)
+        {
+            for (int i = 0; i < player2obj.Count; i++)
+            {
+                player2obj[i].transform.position = placeholder2[i].transform.position;
+            }
+        }
     }
     
 }
