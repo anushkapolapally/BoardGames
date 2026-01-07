@@ -115,7 +115,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
         }
 
         changeTurn();
-        selectingDomino();
+        //selectingDomino();
         
     }
 
@@ -313,6 +313,8 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 
     }
 
+   
+
     private void checkValid()
     {
         Debug.Log("checking if a valid move");
@@ -329,5 +331,46 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
         return turn;
     }
 
+    private void Turn()
+    {
+        //preview turns
+        if (turn == 0)
+        {
+            int range = player1.Count;
+        }
+        else if (turn == 1)
+        {
+            int range = player2.Count;
+        }
+        //actual turn
+
+        //player 0
+
+        if(turn == 2 && turnPlayed==false)
+        {
+            if( Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Alpha7) || Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Alpha9)){
+                //figure out which one was pressed
+
+               
+                //Go through the list of dominos array to find if there is a valid move
+                if (board.Count == 0)
+                {
+                    //valid
+                    //place on board
+                }
+                else
+                {
+                    for (int i = 0; i < board.Count; i++)
+                    {
+                        if (board[i][0] == );
+                    }
+                }
+
+                //if there is a valid move then place it adjacent to that domino in the right orientation by labelling each domino either horizontal or vertical and using the dimensions
+
+            }
+        }
+        
+    }
     
 }
