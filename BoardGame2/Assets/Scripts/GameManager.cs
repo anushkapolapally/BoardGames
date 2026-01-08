@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Security.Cryptography;
 using System.Threading;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -51,7 +52,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 
     public int[,] boneyard = new int[28, 3];
     public List<int[]> player1 = new List<int[]>();
-    public List<GameObject> player1obj = new List<GameObject>();    
+    public List<GameObject> player1obj = new List<GameObject>();
     public List<int[]> player2 = new List<int[]>();
     public List<GameObject> player2obj = new List<GameObject>();
 
@@ -77,11 +78,13 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 
     private bool turnPlayed = false;
 
+    [SerializeField] Text options;
+
     
 
     void Start()
     {
-
+        options.text = "";
         Debug.Log("Start Game");
         startGame();
 
@@ -127,6 +130,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
         //initalize the boneyard
         //7+6+5+4+3+2+1
 
+        //REMINDER TO FIX THIS INITIALIZATION
         int index = 0;
             for(int j=0; j< 7; j++)
             {
@@ -134,7 +138,8 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                 {
                     boneyard[index, 0] = j;
                     boneyard[index, 1] = k;
-                    boneyard[index, 2] = 1; 
+                    boneyard[index, 2] = 1;
+                    Debug.Log(boneyard[index, 0] + " " + boneyard[index, 1] + " "+ boneyard[index, 2]);
                     index++;
                 }
                 
@@ -199,6 +204,10 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
         }
 
         startPressed = false;
+       /* for (int i = 0; i < player1.Count; i++)
+        {
+            Debug.Log(player1[i][0] + " " + player1[i][1]);
+        }*/
     }
 
     private void cameraPosition()
@@ -494,27 +503,27 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
             if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Alpha7) || Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Alpha9)){
                 //figure out which one was pressed
                 int pressed;
-                if (Input.GetKeyDown(KeyCode.Alpha1)){ pressed = 1;}
-                else if (Input.GetKeyDown(KeyCode.Alpha2)){ pressed = 2;}
-                else if (Input.GetKeyDown(KeyCode.Alpha3)){ pressed = 3;}
-                else if (Input.GetKeyDown(KeyCode.Alpha4)){ pressed = 4;}
-                else if (Input.GetKeyDown(KeyCode.Alpha5)){ pressed = 5;}
-                else if (Input.GetKeyDown(KeyCode.Alpha6)){ pressed = 6;}
-                else if (Input.GetKeyDown(KeyCode.Alpha7)){ pressed = 7;}
-                else if (Input.GetKeyDown(KeyCode.Alpha8)) { pressed = 8;}
-                else { pressed = 9;}
+                if (Input.GetKeyDown(KeyCode.Alpha1)){ pressed = 0;}
+                else if (Input.GetKeyDown(KeyCode.Alpha2)){ pressed = 1;}
+                else if (Input.GetKeyDown(KeyCode.Alpha3)){ pressed = 2;}
+                else if (Input.GetKeyDown(KeyCode.Alpha4)){ pressed = 3;}
+                else if (Input.GetKeyDown(KeyCode.Alpha5)){ pressed = 4;}
+                else if (Input.GetKeyDown(KeyCode.Alpha6)){ pressed = 5;}
+                else if (Input.GetKeyDown(KeyCode.Alpha7)){ pressed = 6;}
+                else if (Input.GetKeyDown(KeyCode.Alpha8)) { pressed = 7;}
+                else { pressed = 8;}
 
                 //Go through the list of dominos array to find if there is a valid move
                 if (board.Count == 0)
                 {
                     //valid
                     //place on board in code
-                    player1obj[pressed-1].transform.position = new Vector3(-4, 0, 0);
+                    player1obj[pressed].transform.position = new Vector3(-4, 0, 0);
                     Debug.Log("Place on board");
-                    board.Add(player1[pressed - 1]);
-                    boardobj.Add(player1obj[pressed - 1]);
-                    player1.RemoveAt(pressed - 1);
-                    player1obj.RemoveAt(pressed - 1);
+                    board.Add(player1[pressed]);
+                    boardobj.Add(player1obj[pressed]);
+                    player1.RemoveAt(pressed);
+                    player1obj.RemoveAt(pressed);
 
 
                     //rearrange the players hand to have no gaps
@@ -546,27 +555,27 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                 {
                     //figure out which one was pressed
                     int pressed;
-                    if (Input.GetKeyDown(KeyCode.Alpha1)) { pressed = 1; }
-                    else if (Input.GetKeyDown(KeyCode.Alpha2)) { pressed = 2; }
-                    else if (Input.GetKeyDown(KeyCode.Alpha3)) { pressed = 3; }
-                    else if (Input.GetKeyDown(KeyCode.Alpha4)) { pressed = 4; }
-                    else if (Input.GetKeyDown(KeyCode.Alpha5)) { pressed = 5; }
-                    else if (Input.GetKeyDown(KeyCode.Alpha6)) { pressed = 6; }
-                    else if (Input.GetKeyDown(KeyCode.Alpha7)) { pressed = 7; }
-                    else if (Input.GetKeyDown(KeyCode.Alpha8)) { pressed = 8; }
-                    else { pressed = 9; }
+                    if (Input.GetKeyDown(KeyCode.Alpha1)) { pressed = 0; }
+                    else if (Input.GetKeyDown(KeyCode.Alpha2)) { pressed = 1; }
+                    else if (Input.GetKeyDown(KeyCode.Alpha3)) { pressed = 2; }
+                    else if (Input.GetKeyDown(KeyCode.Alpha4)) { pressed = 3; }
+                    else if (Input.GetKeyDown(KeyCode.Alpha5)) { pressed = 4; }
+                    else if (Input.GetKeyDown(KeyCode.Alpha6)) { pressed = 5; }
+                    else if (Input.GetKeyDown(KeyCode.Alpha7)) { pressed = 6; }
+                    else if (Input.GetKeyDown(KeyCode.Alpha8)) { pressed = 7; }
+                    else { pressed = 8; }
 
                     //Go through the list of dominos array to find if there is a valid move
                     if (board.Count == 0)
                     {
                         //valid
                         //place on board in code
-                        player2obj[pressed - 1].transform.position = new Vector3(-4, 0, 0);
+                        player2obj[pressed].transform.position = new Vector3(-4, 0, 0);
                         Debug.Log("Place on board");
-                        board.Add(player2[pressed - 1]);
-                        boardobj.Add(player2obj[pressed - 1]);
-                        player2.RemoveAt(pressed - 1);
-                        player2obj.RemoveAt(pressed - 1);
+                        board.Add(player2[pressed]);
+                        boardobj.Add(player2obj[pressed]);
+                        player2.RemoveAt(pressed);
+                        player2obj.RemoveAt(pressed);
 
 
                         //rearrange the players hand to have no gaps
@@ -580,8 +589,10 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                     {
                         bool valid = false;
                         List<int> validBoardPos = new List<int>();
+                        Debug.Log(player2[pressed][0] + " " + player2[pressed][1]);
                         for (int i = 0; i < board.Count; i++)
                         {
+                        Debug.Log("testing in the for loop");
                             if (board[i][0] == player2[pressed][0] || board[i][1] == player2[pressed][0] || board[i][0] == player2[pressed][1] || board[i][1] == player2[pressed][1])
                             {
                                 valid = true;
@@ -591,6 +602,15 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                                 
                             }
                         }
+                        Debug.Log("valid: " + valid);
+                    //if valid, give options to choose which valid move they want
+                        if (valid == true)
+                        {
+                        options.text = "hello";
+                            //activate a text that shows them options and asks them to type the option they want
+                            
+                        }
+                    
                     }
 
                     //if there is a valid move then place it adjacent to that domino in the right orientation by labelling each domino either horizontal or vertical and using the dimensions
