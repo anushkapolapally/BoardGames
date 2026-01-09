@@ -612,7 +612,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                         Debug.Log(validMoves);
                         //activate a text that shows them options and asks them to type the option they want
                         options.text = "Choose which valid domino you would like to place your move next to: " + validMoves;
-
+                        //REMINDER: check why this input isn't moving
                         int optionPressed;
                         if (Input.GetKeyDown(KeyCode.Alpha1)) { optionPressed = 0; }
                         else if (Input.GetKeyDown(KeyCode.Alpha2)) { optionPressed = 1; }
