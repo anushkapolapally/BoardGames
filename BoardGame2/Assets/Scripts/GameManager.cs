@@ -7,6 +7,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
@@ -598,10 +599,10 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                         }
                         Debug.Log("valid: " + valid);
                     //if valid, give options to choose which valid move they want
-                        if (valid == true)
-                        {
+                    if (valid == true)
+                    {
                         string validMoves = "";
-                        for(int i = 0;i < validBoardPos.Count; i++)
+                        for (int i = 0; i < validBoardPos.Count; i++)
                         {
                             validMoves += i + " = (" + board[validBoardPos[i]][0] + ", " + board[validBoardPos[i]][1] + ")";
                             if (i != validBoardPos.Count - 1)
@@ -613,22 +614,28 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                         //activate a text that shows them options and asks them to type the option they want
                         options.text = "Choose which valid domino you would like to place your move next to: " + validMoves;
                         //REMINDER: check why this input isn't moving
-                        int optionPressed;
-                        if (Input.GetKeyDown(KeyCode.Alpha1)) { optionPressed = 0; }
-                        else if (Input.GetKeyDown(KeyCode.Alpha2)) { optionPressed = 1; }
-                        else if (Input.GetKeyDown(KeyCode.Alpha3)) { optionPressed = 2; }
-                        else if (Input.GetKeyDown(KeyCode.Alpha4)) { optionPressed = 3; }
-                        else if (Input.GetKeyDown(KeyCode.Alpha5)) { optionPressed = 4; }
-                        else if (Input.GetKeyDown(KeyCode.Alpha6)) { optionPressed = 5; }
-                        else if (Input.GetKeyDown(KeyCode.Alpha7)) { optionPressed = 6; }
-                        else if (Input.GetKeyDown(KeyCode.Alpha8)) { optionPressed = 7; }
-                        else { optionPressed = 8; }
+
+                    }
+
+                        Debug.Log("checking how many times this gets passed");
+                            int optionPressed;
+                            if (Input.GetKeyDown(KeyCode.Alpha1)) { optionPressed = 0; Debug.Log("pressed"); }
+                            else if (Input.GetKeyDown(KeyCode.Alpha2)) { optionPressed = 1; Debug.Log("pressed"); }
+                            else if (Input.GetKeyDown(KeyCode.Alpha3)) { optionPressed = 2; }
+                            else if (Input.GetKeyDown(KeyCode.Alpha4)) { optionPressed = 3; }
+                            else if (Input.GetKeyDown(KeyCode.Alpha5)) { optionPressed = 4; }
+                            else if (Input.GetKeyDown(KeyCode.Alpha6)) { optionPressed = 5; }
+                            else if (Input.GetKeyDown(KeyCode.Alpha7)) { optionPressed = 6; }
+                            else if (Input.GetKeyDown(KeyCode.Alpha8)) { optionPressed = 7; }
+                            else { optionPressed = 8; }
 
 
-                        if (optionPressed < validBoardPos.Count)
-                        {
-                            Debug.Log("Move domino next to (" + board[validBoardPos[optionPressed]][0] + ", " + board[validBoardPos[optionPressed]][1] + ")");
-                        }
+                            if (optionPressed < validBoardPos.Count)
+                            {
+                                Debug.Log("Move domino next to (" + board[validBoardPos[optionPressed]][0] + ", " + board[validBoardPos[optionPressed]][1] + ")");
+                        moveDominos(validBoardPos[optionPressed], pressed);
+                            }
+                        
 
                     }
                     
@@ -637,8 +644,16 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                     //if there is a valid move then place it adjacent to that domino in the right orientation by labelling each domino either horizontal or vertical and using the dimensions
 
                 }
-            }
+            
         
+    }
+
+    private void moveDominos(int boardPos, int pressed)
+    {
+        Debug.Log("inside move domino function");
+        
+        player2obj[pressed].transform.position = boardobj[boardPos].transform.position;
+        player2obj[pressed].transform.rotation = new Quaternion(0, 180, 90, 0);
     }
 
     private void RearrangeHand(int player)
