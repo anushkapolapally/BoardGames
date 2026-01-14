@@ -65,6 +65,9 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
     public List<GameObject> placeholder1 = new List<GameObject>();
     public List<GameObject> placeholder2 = new List<GameObject>();
 
+    public List<GameObject> vertBoard = new List<GameObject>();
+    public List<GameObject> horizBoard = new List<GameObject>();
+
     [SerializeField] int turn = 0;
 
     public Camera targetCamera;
@@ -516,7 +519,8 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                 {
                     //valid
                     //place on board in code
-                    player1obj[pressed].transform.position = new Vector3(-4, 0, 0);
+                    //player1obj[pressed].transform.position = new Vector3(-4, 0, 0);
+                    player1obj[pressed].transform.position = vertBoard[0].transform.position;
                     Debug.Log("Place on board");
                     board.Add(player1[pressed]);
                     boardobj.Add(player1obj[pressed]);
@@ -568,7 +572,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                     {
                         //valid
                         //place on board in code
-                        player2obj[pressed].transform.position = new Vector3(-4, 0, 0);
+                        player2obj[pressed].transform.position = vertBoard[0].transform.position;
                         Debug.Log("Place on board");
                         board.Add(player2[pressed]);
                         boardobj.Add(player2obj[pressed]);
@@ -651,8 +655,9 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
     private void moveDominos(int boardPos, int pressed)
     {
         Debug.Log("inside move domino function");
-        
+        //REMINDER: use raycast from the last position in position grid to find which other positions are open and highlight the border of that domino.
         player2obj[pressed].transform.position = boardobj[boardPos].transform.position;
+        //create grid for the dominos to go based on if the one being placed in next to vertical or horizontal
         player2obj[pressed].transform.rotation = new Quaternion(0, 180, 90, 0);
     }
 
