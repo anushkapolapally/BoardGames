@@ -68,6 +68,10 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
     public List<GameObject> vertBoard = new List<GameObject>();
     public List<GameObject> horizBoard = new List<GameObject>();
 
+    public List<GameObject> placeholderBoard = new List<GameObject>();
+
+    public int placehold = 0;
+
     [SerializeField] int turn = 0;
 
     public Camera targetCamera;
@@ -520,7 +524,9 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                     //valid
                     //place on board in code
                     //player1obj[pressed].transform.position = new Vector3(-4, 0, 0);
-                    player1obj[pressed].transform.position = vertBoard[0].transform.position;
+                    player1obj[pressed].transform.position = placeholderBoard[0].transform.position;
+                    placehold++;
+                   
                     Debug.Log("Place on board");
                     board.Add(player1[pressed]);
                     boardobj.Add(player1obj[pressed]);
@@ -638,7 +644,13 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                             {
                                 Debug.Log("Move domino next to (" + board[validBoardPos[optionPressed]][0] + ", " + board[validBoardPos[optionPressed]][1] + ")");
                         moveDominos(validBoardPos[optionPressed], pressed);
-                            }
+                        Debug.Log("placeholder: " + placehold);
+                        player2obj[pressed].transform.position = placeholderBoard[placehold].transform.position;
+                        //new Quaternion placeholdrotation = placeholderBoard[placehold].transform.rotation;
+                        player2obj[pressed].transform.rotation = new Quaternion(-90, 90, -90, 0);
+                        placehold++;
+
+                    }
                         
 
                     }
