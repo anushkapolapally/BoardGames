@@ -509,14 +509,14 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
             if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Alpha7) || Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Alpha9)){
                 //figure out which one was pressed
                 int pressed;
-                if (Input.GetKeyDown(KeyCode.Alpha1)){ pressed = 0;}
-                else if (Input.GetKeyDown(KeyCode.Alpha2)){ pressed = 1;}
-                else if (Input.GetKeyDown(KeyCode.Alpha3)){ pressed = 2;}
-                else if (Input.GetKeyDown(KeyCode.Alpha4)){ pressed = 3;}
-                else if (Input.GetKeyDown(KeyCode.Alpha5)){ pressed = 4;}
-                else if (Input.GetKeyDown(KeyCode.Alpha6)){ pressed = 5;}
-                else if (Input.GetKeyDown(KeyCode.Alpha7)){ pressed = 6;}
-                else if (Input.GetKeyDown(KeyCode.Alpha8)) { pressed = 7;}
+                if (Input.GetKeyDown(KeyCode.Alpha1)){ pressed = 0; Debug.Log("player 1 pressed: " + pressed); }
+                else if (Input.GetKeyDown(KeyCode.Alpha2)){ pressed = 1; Debug.Log("player 1 pressed: " + pressed); }
+                else if (Input.GetKeyDown(KeyCode.Alpha3)){ pressed = 2; Debug.Log("player 1 pressed: " + pressed); }
+                else if (Input.GetKeyDown(KeyCode.Alpha4)){ pressed = 3; Debug.Log("player 1 pressed: " + pressed); }
+                else if (Input.GetKeyDown(KeyCode.Alpha5)){ pressed = 4; Debug.Log("player 1 pressed: " + pressed); }
+                else if (Input.GetKeyDown(KeyCode.Alpha6)){ pressed = 5; Debug.Log("player 1 pressed: " + pressed); }
+                else if (Input.GetKeyDown(KeyCode.Alpha7)){ pressed = 6; Debug.Log("player 1 pressed: " + pressed); }
+                else if (Input.GetKeyDown(KeyCode.Alpha8)) { pressed = 7; Debug.Log("player 1 pressed: " + pressed); }
                 else { pressed = 8;}
 
                 //Go through the list of dominos array to find if there is a valid move
@@ -578,6 +578,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                             Quaternion placeholdrotation = new Quaternion(placeholderBoard[placehold].transform.rotation.x, placeholderBoard[placehold].transform.rotation.y, placeholderBoard[placehold].transform.rotation.z, placeholderBoard[placehold].transform.rotation.w);
                             player1obj[pressed].transform.rotation = placeholdrotation;
                             placehold++;
+                            turn = 1;
                         }
 
                        
@@ -624,18 +625,19 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
         }
         else if (turn == 3 && turnPlayed == false)
             {
+            Debug.Log("ENTERED TURN 3");
                 if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Alpha7) || Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Alpha9))
                 {
                     //figure out which one was pressed
                     int pressed;
-                    if (Input.GetKeyDown(KeyCode.Alpha1)) { pressed = 0; }
-                    else if (Input.GetKeyDown(KeyCode.Alpha2)) { pressed = 1; }
-                    else if (Input.GetKeyDown(KeyCode.Alpha3)) { pressed = 2; }
-                    else if (Input.GetKeyDown(KeyCode.Alpha4)) { pressed = 3; }
-                    else if (Input.GetKeyDown(KeyCode.Alpha5)) { pressed = 4; }
-                    else if (Input.GetKeyDown(KeyCode.Alpha6)) { pressed = 5; }
-                    else if (Input.GetKeyDown(KeyCode.Alpha7)) { pressed = 6; }
-                    else if (Input.GetKeyDown(KeyCode.Alpha8)) { pressed = 7; }
+                    if (Input.GetKeyDown(KeyCode.Alpha1)) { pressed = 0; Debug.Log("player 2 pressed: " + pressed); }
+                    else if (Input.GetKeyDown(KeyCode.Alpha2)) { pressed = 1; Debug.Log("player 2 pressed: " + pressed); }
+                    else if (Input.GetKeyDown(KeyCode.Alpha3)) { pressed = 2; Debug.Log("player 2 pressed: " + pressed); }
+                    else if (Input.GetKeyDown(KeyCode.Alpha4)) { pressed = 3; Debug.Log("player 2 pressed: " + pressed); }
+                    else if (Input.GetKeyDown(KeyCode.Alpha5)) { pressed = 4; Debug.Log("player 2 pressed: " + pressed); }
+                    else if (Input.GetKeyDown(KeyCode.Alpha6)) { pressed = 5; Debug.Log("player 2 pressed: " + pressed); }
+                    else if (Input.GetKeyDown(KeyCode.Alpha7)) { pressed = 6; Debug.Log("player 2 pressed: " + pressed); }
+                    else if (Input.GetKeyDown(KeyCode.Alpha8)) { pressed = 7; Debug.Log("player 2 pressed: " + pressed); }
                     else { pressed = 8; }
 
                     //Go through the list of dominos array to find if there is a valid move
@@ -690,36 +692,37 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                         options.text = "Choose which valid domino you would like to place your move next to: " + validMoves;
                         //REMINDER: check why this input isn't moving
 
-                    }
-
                         Debug.Log("checking how many times this gets passed");
-                            int optionPressed;
-                            if (Input.GetKeyDown(KeyCode.Alpha1)) { optionPressed = 0; Debug.Log("pressed"); }
-                            else if (Input.GetKeyDown(KeyCode.Alpha2)) { optionPressed = 1; Debug.Log("pressed"); }
-                            else if (Input.GetKeyDown(KeyCode.Alpha3)) { optionPressed = 2; }
-                            else if (Input.GetKeyDown(KeyCode.Alpha4)) { optionPressed = 3; }
-                            else if (Input.GetKeyDown(KeyCode.Alpha5)) { optionPressed = 4; }
-                            else if (Input.GetKeyDown(KeyCode.Alpha6)) { optionPressed = 5; }
-                            else if (Input.GetKeyDown(KeyCode.Alpha7)) { optionPressed = 6; }
-                            else if (Input.GetKeyDown(KeyCode.Alpha8)) { optionPressed = 7; }
-                            else { optionPressed = 8; }
+                        int optionPressed;
+                        if (Input.GetKeyDown(KeyCode.Alpha1)) { optionPressed = 0; Debug.Log("pressed"); }
+                        else if (Input.GetKeyDown(KeyCode.Alpha2)) { optionPressed = 1; Debug.Log("pressed"); }
+                        else if (Input.GetKeyDown(KeyCode.Alpha3)) { optionPressed = 2; }
+                        else if (Input.GetKeyDown(KeyCode.Alpha4)) { optionPressed = 3; }
+                        else if (Input.GetKeyDown(KeyCode.Alpha5)) { optionPressed = 4; }
+                        else if (Input.GetKeyDown(KeyCode.Alpha6)) { optionPressed = 5; }
+                        else if (Input.GetKeyDown(KeyCode.Alpha7)) { optionPressed = 6; }
+                        else if (Input.GetKeyDown(KeyCode.Alpha8)) { optionPressed = 7; }
+                        else { optionPressed = 8; }
 
 
-                            if (optionPressed < validBoardPos.Count)
-                            {
-                                Debug.Log("Move domino next to (" + board[validBoardPos[optionPressed]][0] + ", " + board[validBoardPos[optionPressed]][1] + ")");
-                        moveDominos(validBoardPos[optionPressed], pressed);
-                        Debug.Log("placeholder: " + placehold);
-                        player2obj[pressed].transform.position = placeholderBoard[placehold].transform.position;
-                        Quaternion placeholdrotation = new Quaternion(placeholderBoard[placehold].transform.rotation.x, placeholderBoard[placehold].transform.rotation.y, placeholderBoard[placehold].transform.rotation.z, placeholderBoard[placehold].transform.rotation.w);
-                        player2obj[pressed].transform.rotation = placeholdrotation;
-                        placehold++;
-                        turnPlayed = false;
-                        //NEW
-                        turn = 0;
-                        optionPressed = -1;
+                        if (optionPressed < validBoardPos.Count)
+                        {
+                            Debug.Log("Move domino next to (" + board[validBoardPos[optionPressed]][0] + ", " + board[validBoardPos[optionPressed]][1] + ")");
+                            moveDominos(validBoardPos[optionPressed], pressed);
+                            Debug.Log("placeholder: " + placehold);
+                            player2obj[pressed].transform.position = placeholderBoard[placehold].transform.position;
+                            Quaternion placeholdrotation = new Quaternion(placeholderBoard[placehold].transform.rotation.x, placeholderBoard[placehold].transform.rotation.y, placeholderBoard[placehold].transform.rotation.z, placeholderBoard[placehold].transform.rotation.w);
+                            player2obj[pressed].transform.rotation = placeholdrotation;
+                            placehold++;
+                            turnPlayed = false;
+                            //NEW
+                            turn = 0;
+                            optionPressed = -1;
+
+                        }
 
                     }
+
                         
 
                     }
