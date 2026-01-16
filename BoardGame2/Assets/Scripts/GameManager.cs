@@ -543,14 +543,66 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                 }
                 else
                 {
+                    bool valid = false;
+                    List<int> validBoardPos = new List<int>();
+                    Debug.Log(player1[pressed][0] + " " + player1[pressed][1]);
                     for (int i = 0; i < board.Count; i++)
                     {
+                        Debug.Log("testing in the for loop");
                         if (board[i][0] == player1[pressed][0] || board[i][1] == player1[pressed][0] || board[i][0] == player1[pressed][1] || board[i][1] == player1[pressed][1])
                         {
-                            //place
-                            Debug.Log("Valid Move");
+                            valid = true;
+                            validBoardPos.Add(i);
                         }
                     }
+                    Debug.Log("valid: " + valid);
+                    //if valid, give options to choose which valid move they want
+                    if (valid == true)
+                    {
+                        string validMoves = "";
+                        for (int i = 0; i < validBoardPos.Count; i++)
+                        {
+                            validMoves += i + " = (" + board[validBoardPos[i]][0] + ", " + board[validBoardPos[i]][1] + ")";
+                            if (i != validBoardPos.Count - 1)
+                            {
+                                validMoves += ", ";
+                            }
+                        }
+                        Debug.Log(validMoves);
+                        //activate a text that shows them options and asks them to type the option they want
+                        options.text = "Choose which valid domino you would like to place your move next to: " + validMoves;
+                        //REMINDER: check why this input isn't moving
+
+                    }
+
+                    Debug.Log("checking how many times this gets passed");
+                    int optionPressed;
+                    if (Input.GetKeyDown(KeyCode.Alpha1)) { optionPressed = 0; Debug.Log("pressed"); }
+                    else if (Input.GetKeyDown(KeyCode.Alpha2)) { optionPressed = 1; Debug.Log("pressed"); }
+                    else if (Input.GetKeyDown(KeyCode.Alpha3)) { optionPressed = 2; }
+                    else if (Input.GetKeyDown(KeyCode.Alpha4)) { optionPressed = 3; }
+                    else if (Input.GetKeyDown(KeyCode.Alpha5)) { optionPressed = 4; }
+                    else if (Input.GetKeyDown(KeyCode.Alpha6)) { optionPressed = 5; }
+                    else if (Input.GetKeyDown(KeyCode.Alpha7)) { optionPressed = 6; }
+                    else if (Input.GetKeyDown(KeyCode.Alpha8)) { optionPressed = 7; }
+                    else { optionPressed = 8; }
+
+
+                    if (optionPressed < validBoardPos.Count)
+                    {
+                        Debug.Log("Move domino next to (" + board[validBoardPos[optionPressed]][0] + ", " + board[validBoardPos[optionPressed]][1] + ")");
+                        moveDominos(validBoardPos[optionPressed], pressed);
+                        Debug.Log("placeholder: " + placehold);
+                        player1obj[pressed].transform.position = placeholderBoard[placehold].transform.position;
+                        Quaternion placeholdrotation = new Quaternion(placeholderBoard[placehold].transform.rotation.x, placeholderBoard[placehold].transform.rotation.y, placeholderBoard[placehold].transform.rotation.z, placeholderBoard[placehold].transform.rotation.w);
+                        player1obj[pressed].transform.rotation = placeholdrotation;
+                        placehold++;
+                        turnPlayed = true;
+                        //NEW
+                        turn = 1;
+
+                    }
+
                 }
 
                 //if there is a valid move then place it adjacent to that domino in the right orientation by labelling each domino either horizontal or vertical and using the dimensions
@@ -646,9 +698,12 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                         moveDominos(validBoardPos[optionPressed], pressed);
                         Debug.Log("placeholder: " + placehold);
                         player2obj[pressed].transform.position = placeholderBoard[placehold].transform.position;
-                        //new Quaternion placeholdrotation = placeholderBoard[placehold].transform.rotation;
-                        player2obj[pressed].transform.rotation = new Quaternion(-90, 90, -90, 0);
+                        Quaternion placeholdrotation = new Quaternion(placeholderBoard[placehold].transform.rotation.x, placeholderBoard[placehold].transform.rotation.y, placeholderBoard[placehold].transform.rotation.z, placeholderBoard[placehold].transform.rotation.w);
+                        player2obj[pressed].transform.rotation = placeholdrotation;
                         placehold++;
+                        turnPlayed = true;
+                        //NEW
+                        turn = 0;
 
                     }
                         
