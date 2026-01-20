@@ -1,16 +1,35 @@
 using UnityEngine;
-
 public class Domino : MonoBehaviour
 {
+
 
     [SerializeField] GameManager gameManager;
 
     public int horizontal;
+    [SerializeField] GameObject gameObject;
+
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
+      
+
         horizontal = 0;
+
+        // Mesh mesh = gameObject.GetComponent<Mesh>();
+
+        Debug.Log("Turn off mesh");
+        MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();
+        
+        Mesh mesh = meshRenderer.GetComponent<Mesh>();
+
+        mesh.vertices = new Vector3[4];
+
+       
+
+        
+        
     }
 
     // Update is called once per frame
