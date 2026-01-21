@@ -88,6 +88,8 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 
     [SerializeField] Text options;
 
+    [SerializeField] GameObject Board;
+
     
 
     void Start()
