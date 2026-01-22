@@ -395,8 +395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1 &175015553 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 41f7bdf4f6260904eb1b102882db0d62, type: 3}
@@ -468,8 +467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1001 &195600314
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1676,6 +1674,8 @@ MonoBehaviour:
   - {fileID: 818032211}
   - {fileID: 1021676244}
   - {fileID: 797837738}
+  width: 4
+  height: 4
 --- !u!4 &345678599
 Transform:
   m_ObjectHideFlags: 0
@@ -2044,8 +2044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1001 &433149682
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2439,8 +2438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1 &517459462
 GameObject:
   m_ObjectHideFlags: 0
@@ -3231,8 +3229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1 &656921296 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ea1c5469ca9fef84e8ffbc69ef88b9d3, type: 3}
@@ -3304,8 +3301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!4 &682658282 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2e5cf4f405be15a45a9dbd08e30477c6, type: 3}
@@ -4324,8 +4320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1 &926148039 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2e5cf4f405be15a45a9dbd08e30477c6, type: 3}
@@ -4568,8 +4563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1 &991029649 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8d8fce7e1c91a204683508fb9ab94aca, type: 3}
@@ -4641,8 +4635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1 &1002035014
 GameObject:
   m_ObjectHideFlags: 0
@@ -4839,6 +4832,7 @@ MonoBehaviour:
   domClicked: 0
   turnClicked: 0
   options: {fileID: 2093161550}
+  Board: {fileID: 0}
 --- !u!1001 &1021676242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4997,8 +4991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1001 &1057864710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5690,8 +5683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1001 &1168693143
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6163,8 +6155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1 &1270263946
 GameObject:
   m_ObjectHideFlags: 0
@@ -6364,8 +6355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1 &1292904029 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0d48573d5d7dd4c4285787777a272b2f, type: 3}
@@ -6437,8 +6427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!4 &1306596290 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2e5cf4f405be15a45a9dbd08e30477c6, type: 3}
@@ -6638,8 +6627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1 &1337897240 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c8e8db28702f0f948ac18833ea66181c, type: 3}
@@ -6711,8 +6699,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1 &1338804520 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2e5cf4f405be15a45a9dbd08e30477c6, type: 3}
@@ -6867,8 +6854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1001 &1357640389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7096,8 +7082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1 &1422085247 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c236fe38424d2024c815b522a331590c, type: 3}
@@ -7169,8 +7154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1001 &1445303653
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7316,8 +7300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1001 &1480731090
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7610,8 +7593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1001 &1520275980
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7985,8 +7967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1001 &1637438291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8763,8 +8744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1001 &1809077402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9393,9 +9373,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f83cc6ecc5f08443b7e8ff86f3d80c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 1955299224}
+  gameManager: {fileID: 0}
+  orientation: 0
 --- !u!1 &1964393970 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e365fce0e6e5ef94fab78e5f61e55dd3, type: 3}
@@ -9467,8 +9446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1 &1969880946 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 31a2b268bea604d41b16d9ddae8b6410, type: 3}
@@ -9540,8 +9518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1 &1988004421 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a5c9fc08859d99c41917606ea3e62f5c, type: 3}
@@ -9613,8 +9590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1001 &2003907606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10283,8 +10259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1 &2086523527 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2e5cf4f405be15a45a9dbd08e30477c6, type: 3}
@@ -10948,8 +10923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1002035016}
-  horizontal: 0
-  gameObject: {fileID: 0}
+  orientation: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
