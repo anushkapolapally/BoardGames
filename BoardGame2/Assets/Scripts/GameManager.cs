@@ -527,7 +527,11 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                     //valid
                     //place on board in code
                     //player1obj[pressed].transform.position = new Vector3(-4, 0, 0);
-                    player1obj[pressed].transform.position = placeholderBoard[0].transform.position;
+
+                    //player1obj[pressed].transform.position = placeholderBoard[0].transform.position;
+
+                    int[] firstMoveAdj = { -1, -1 };
+                    Board.GetComponent<Board>().placeOnBoard(player1obj[pressed], player1[pressed], firstMoveAdj );
                     placehold++;
                    
                     Debug.Log("Place on board");

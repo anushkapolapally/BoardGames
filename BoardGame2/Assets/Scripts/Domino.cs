@@ -3,7 +3,7 @@ public class Domino : MonoBehaviour
 {
 
 
-   // [SerializeField] GameManager gameManager;
+   [SerializeField] GameManager gameManager;
 
     //0 = straight up, 1== 90 deg.clockwise, 2 = 180 clockwise, 3 = 270 clockwise
     public int orientation;
@@ -49,12 +49,12 @@ public class Domino : MonoBehaviour
 
     void OnMouseDown()
     {
-       /*( if (gameManager.GetComponent<GameManager>().getTurn() == 0 || gameManager.GetComponent<GameManager>().getTurn() == 1)
+       if (gameManager.GetComponent<GameManager>().getTurn() == 0 || gameManager.GetComponent<GameManager>().getTurn() == 1)
         {
             gameManager.GetComponent<GameManager>().setIsPressed();
             Debug.Log("isPressed");
         }  
-       */
+       
     }
     
 
