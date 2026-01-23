@@ -4832,7 +4832,7 @@ MonoBehaviour:
   domClicked: 0
   turnClicked: 0
   options: {fileID: 2093161550}
-  Board: {fileID: 0}
+  Board: {fileID: 345678597}
 --- !u!1001 &1021676242
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -85,21 +85,70 @@ public class Board : MonoBehaviour
             vertBoardNums[0] = dominoNum;
 
         }
-        else
+        else //not first one on board, connects to another piece
         {
             //find which orientation the connecting piece is and orient this piece perpendicular if possible
-
-            // if 0 = veritcal 1= horizontal
-            int adjOrientation = -1;
             if(vertBoardNums.Contains(connectionNum)){
-                adjOrientation = 0;
+                int[] possiblePlace = findingPossiblePlacements(true, connectionNum, dominoNum);
+                
             }
             else if (horizBoardNums.Contains(connectionNum))
             {
-                adjOrientation = 1;
+
+                int[] possiblePlace = findingPossiblePlacements(false , connectionNum, dominoNum);
             }
 
 
         }
+    }
+
+    private int[] findingPossiblePlacements(bool vertAdj, int[] connectionNum, int[] dominoNum)
+    {
+        int[] possbilities = {};
+        if (vertAdj)
+        {
+            int adjIndex = vertBoardNums.IndexOf(connectionNum);
+
+            if (adjIndex % width - 2 >= 0 && adjIndex % width + 2 <width)
+            {
+                //CASE WHERE THERE CAN BE TWO DOMINOS PLACED ON EITHER SIDE
+
+                //check upper
+
+
+                //check lower
+            }
+            else if (adjIndex % width - 2 < 0 && adjIndex % width + 2 < width)
+            {
+                //CASE WHERE THE CAN BE A DOMINO PLACED ON THE RIGHT SIDE 
+            }
+            else if (adjIndex % width - 2 >= 0 && adjIndex % width + 2 >= width)
+            {
+                //CASE WHERE THERE CAN ONLY BE A DOMINO ON THE LEFT SIDE
+            }
+        }
+        else
+        {
+            int adjIndex = horizBoardNums.IndexOf(connectionNum);
+
+            if(adjIndex % height -1 >= 0 && adjIndex % height +1 < height)
+            {
+                //CASE WHERE THERE CAN BE TWO DOMINO PLACED ABOVE AND BELOW
+            }
+            else if(adjIndex % height -1 >= 0 && adjIndex % height + 1 >= height)
+            {
+                //CASE WHERE THERE CAN BE ONLY BE A DOMINO PLACED BELOW 
+            }
+            else if(adjIndex % height - 1 < 0 && adjIndex % height + 1 < height)
+            {
+                //CASE WHERE THE CAN ONLY BE A DOMINO PLACED ABOVE
+            }
+
+
+        }
+
+
+            
+        return possbilities;
     }
 }
