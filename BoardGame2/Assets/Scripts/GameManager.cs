@@ -510,6 +510,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
         {
             if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Alpha7) || Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Alpha9)){
                 //figure out which one was pressed
+               
                 int pressed;
                 if (Input.GetKeyDown(KeyCode.Alpha1)){ pressed = 0; Debug.Log("player 1 pressed: " + pressed); }
                 else if (Input.GetKeyDown(KeyCode.Alpha2)){ pressed = 1; Debug.Log("player 1 pressed: " + pressed); }
@@ -550,6 +551,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                 }
                 else
                 {
+                    SetOutline(placeholderBoard[placehold], true);
                     bool valid = false;
                     List<int> validBoardPos = new List<int>();
                     Debug.Log(player1[pressed][0] + " " + player1[pressed][1]);
@@ -613,9 +615,12 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                             player1obj[pressed].transform.position = placeholderBoard[placehold].transform.position;
                             Quaternion placeholdrotation = new Quaternion(placeholderBoard[placehold].transform.rotation.x, placeholderBoard[placehold].transform.rotation.y, placeholderBoard[placehold].transform.rotation.z, placeholderBoard[placehold].transform.rotation.w);
                             player1obj[pressed].transform.rotation = placeholdrotation;
+                            placeholderBoard[placehold].SetActive(false);
+                            SetOutline(placeholderBoard[placehold], false);
                             placehold++;
                             turnPlayed = true;
                             //NEW
+
                             turn = 1;
 
                         }
@@ -632,7 +637,8 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
         else if (turn == 3 && turnPlayed == false)
             {
             Debug.Log("ENTERED TURN 3");
-                if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Alpha7) || Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Alpha9))
+            SetOutline(placeholderBoard[placehold], true);
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Alpha7) || Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Alpha9))
                 {
                     //figure out which one was pressed
                     int pressed;
@@ -669,6 +675,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                     else
                     {
                         bool valid = false;
+
                         List<int> validBoardPos = new List<int>();
                         Debug.Log(player2[pressed][0] + " " + player2[pressed][1]);
                         for (int i = 0; i < board.Count; i++)
@@ -681,9 +688,11 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                             }
                         }
                         Debug.Log("valid: " + valid);
+                    
                     //if valid, give options to choose which valid move they want
                     if (valid == true)
                     {
+                
                         string validMoves = "";
                         for (int i = 0; i < validBoardPos.Count; i++)
                         {
@@ -719,7 +728,9 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                             player2obj[pressed].transform.position = placeholderBoard[placehold].transform.position;
                             Quaternion placeholdrotation = new Quaternion(placeholderBoard[placehold].transform.rotation.x, placeholderBoard[placehold].transform.rotation.y, placeholderBoard[placehold].transform.rotation.z, placeholderBoard[placehold].transform.rotation.w);
                             player2obj[pressed].transform.rotation = placeholdrotation;
+                            placeholderBoard[placehold].SetActive(false);
                             placehold++;
+                            SetOutline(placeholderBoard[placehold-1], false);
                             turnPlayed = false;
                             //NEW
                             turn = 0;
@@ -768,5 +779,15 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
             }
         }
     }
-    
+
+    public void SetOutline(GameObject placeholder, bool on)
+    {
+        MeshRenderer mesh = placeholder.GetComponent<MeshRenderer>();
+        mesh.enabled = on;
+        Transform outline = placeholder.transform.Find("Placeholder_Outline");
+        if (outline != null)
+            outline.gameObject.SetActive(on);
+    }
+
+
 }
