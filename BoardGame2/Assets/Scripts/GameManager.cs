@@ -88,12 +88,21 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 
     [SerializeField] Text options;
 
+    public int pointGoal;
+    private int player1scoreNum = 0;
+    [SerializeField] Text player1Score;
+    private int player2scoreNum = 0;
+    [SerializeField] Text player2Score;
+
+    [SerializeField] Text WinText;
+
     [SerializeField] GameObject Board;
 
     
 
     void Start()
     {
+        WinText.enabled = false;
         options.text = "";
         Debug.Log("Start Game");
         startGame();
@@ -133,6 +142,22 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
         Turn();
         //selectingDomino();
         
+        player1Score.text = "PLayer 1 score: " + player1scoreNum.ToString();
+        player2Score.text = "Player 2 score:" + player2scoreNum.ToString();
+
+        if(player2scoreNum > pointGoal || player1scoreNum > pointGoal)
+        {
+
+            WinText.enabled = true;
+            if (player1scoreNum >= pointGoal)
+            {
+                WinText.text = "Player 1 won";
+            }
+            else if (player2scoreNum >= pointGoal)
+            {
+                WinText.text = "Player 2 won";
+            }
+        }
     }
 
     private void startGame()
@@ -534,7 +559,8 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                     int[] firstMoveAdj = { -1, -1 };
                     Board.GetComponent<Board>().placeOnBoard(player1obj[pressed], player1[pressed], firstMoveAdj );
                     placehold++;
-                   
+
+                    player2scoreNum += player1[pressed][0] + player1[pressed][1];
                     Debug.Log("Place on board");
                     board.Add(player1[pressed]);
                     boardobj.Add(player1obj[pressed]);
@@ -548,6 +574,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                     turn = 1;
                     turnPlayed = false;
 
+             
                 }
                 else
                 {
@@ -580,14 +607,15 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 
                         }
 
-                        if(validBoardPos.Count == 1)
+                        /*if(validBoardPos.Count == 1)
                         {
                             player1obj[pressed].transform.position = placeholderBoard[placehold].transform.position;
                             Quaternion placeholdrotation = new Quaternion(placeholderBoard[placehold].transform.rotation.x, placeholderBoard[placehold].transform.rotation.y, placeholderBoard[placehold].transform.rotation.z, placeholderBoard[placehold].transform.rotation.w);
                             player1obj[pressed].transform.rotation = placeholdrotation;
+                            
                             placehold++;
                             turn = 1;
-                        }
+                        }*/
 
                        
                         Debug.Log(validMoves);
@@ -617,11 +645,18 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                             player1obj[pressed].transform.rotation = placeholdrotation;
                             placeholderBoard[placehold].SetActive(false);
                             SetOutline(placeholderBoard[placehold], false);
+                            
+                            
+                            
+                            player2scoreNum += player1[pressed][1];
+
+
                             placehold++;
                             turnPlayed = true;
                             //NEW
 
                             turn = 1;
+                            optionPressed = -1;
 
                         }
                     }
@@ -655,9 +690,9 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                     //Go through the list of dominos array to find if there is a valid move
                     if (board.Count == 0)
                     {
-                        //valid
-                        //place on board in code
-                        player2obj[pressed].transform.position = vertBoard[0].transform.position;
+                    //valid
+                    //place on board in code
+                    player2obj[pressed].transform.position = vertBoard[0].transform.position;
                         Debug.Log("Place on board");
                         board.Add(player2[pressed]);
                         boardobj.Add(player2obj[pressed]);
@@ -722,6 +757,8 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 
                         if (optionPressed < validBoardPos.Count)
                         {
+                            player1scoreNum += player2[pressed][1];
+
                             Debug.Log("Move domino next to (" + board[validBoardPos[optionPressed]][0] + ", " + board[validBoardPos[optionPressed]][1] + ")");
                             moveDominos(validBoardPos[optionPressed], pressed);
                             Debug.Log("placeholder: " + placehold);
@@ -737,6 +774,11 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                             optionPressed = -1;
 
                         }
+
+                    }
+                    else
+                    {
+                        Debug.Log("Invalid turn");
 
                     }
 
