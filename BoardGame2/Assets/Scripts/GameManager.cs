@@ -98,7 +98,11 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 
     [SerializeField] GameObject Board;
 
-    
+    [SerializeField] Text turnText;
+
+    public List<Button> playerButtons;
+
+
 
     void Start()
     {
@@ -112,6 +116,11 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 
         Button turn = turnButton.GetComponent<Button>();
         turn.onClick.AddListener(changeturnClicked);
+
+        for (int i = 0; i < playerButtons.Count; i++)
+        {
+            playerButtons[i].enabled = false;
+        }
     }
     void changeStartPressed()
     {
@@ -158,6 +167,25 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                 WinText.text = "Player 2 won";
             }
         }
+
+        if (turn == 0 || turn == 2) {
+            turnText.text = "Turn: Player 1";
+            for(int i=0; i< player1obj.Count; i++)
+            {
+                playerButtons[i].enabled = true;
+            }
+        }
+        else if(turn == 1 || turn == 3)
+        {
+            turnText.text = "Turn: Player 2";
+            for (int i = 0; i < player1obj.Count; i++)
+            {
+                playerButtons[i].enabled = true;
+            }
+        }
+
+        
+
     }
 
     private void startGame()
@@ -536,7 +564,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
             if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Alpha7) || Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Alpha9)){
                 //figure out which one was pressed
                
-                int pressed;
+                /*int pressed;
                 if (Input.GetKeyDown(KeyCode.Alpha1)){ pressed = 0; Debug.Log("player 1 pressed: " + pressed); }
                 else if (Input.GetKeyDown(KeyCode.Alpha2)){ pressed = 1; Debug.Log("player 1 pressed: " + pressed); }
                 else if (Input.GetKeyDown(KeyCode.Alpha3)){ pressed = 2; Debug.Log("player 1 pressed: " + pressed); }
@@ -546,6 +574,18 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                 else if (Input.GetKeyDown(KeyCode.Alpha7)){ pressed = 6; Debug.Log("player 1 pressed: " + pressed); }
                 else if (Input.GetKeyDown(KeyCode.Alpha8)) { pressed = 7; Debug.Log("player 1 pressed: " + pressed); }
                 else { pressed = 8;}
+                */
+
+                int pressed;
+                if (Input.GetButtonDown("Button1")) { pressed = 0; Debug.Log("player 1 pressed: " + pressed); }
+                else if (Input.GetButtonDown("Button2")) { pressed = 1; Debug.Log("player 1 pressed: " + pressed); }
+                else if (Input.GetButtonDown("Button3")) { pressed = 2; Debug.Log("player 1 pressed: " + pressed); }
+                else if (Input.GetButtonDown("Button4")) { pressed = 3; Debug.Log("player 1 pressed: " + pressed); }
+                else if (Input.GetButtonDown("Button5")) { pressed = 4; Debug.Log("player 1 pressed: " + pressed); }
+                else if (Input.GetButtonDown("Button6")) { pressed = 5; Debug.Log("player 1 pressed: " + pressed); }
+                else if (Input.GetButtonDown("Button7")) { pressed = 6; Debug.Log("player 1 pressed: " + pressed); }
+                else if (Input.GetButtonDown("Button8")) { pressed = 7; Debug.Log("player 1 pressed: " + pressed); }
+                else { pressed = 8; }
 
                 //Go through the list of dominos array to find if there is a valid move
                 if (board.Count == 0)
