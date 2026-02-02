@@ -102,6 +102,10 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 
     public List<Button> playerButtons;
 
+    public bool buttonPressed = false;
+
+    public int pressedNum = 0;
+
 
 
     void Start()
@@ -184,6 +188,8 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
             }
         }
 
+        numButtonPressed();
+        
         
 
     }
@@ -316,6 +322,135 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
             }
         }
     }
+
+    private void numButtonPressed()
+    {
+        Button button0 = playerButtons[0].GetComponent<Button>();
+        button0.onClick.AddListener(setPressed0);
+
+        Button button1 = playerButtons[1].GetComponent<Button>();
+        button1.onClick.AddListener(setPressed1);
+
+        Button button2 = playerButtons[2].GetComponent<Button>();
+        button2.onClick.AddListener(setPressed2);
+
+        Button button3 = playerButtons[3].GetComponent<Button>();
+        button3.onClick.AddListener(setPressed3);
+
+        Button button4 = playerButtons[4].GetComponent<Button>();
+        button4.onClick.AddListener(setPressed4);
+
+        Button button5 = playerButtons[5].GetComponent<Button>();
+        button5.onClick.AddListener(setPressed5);
+
+        Button button6 = playerButtons[6].GetComponent<Button>();
+        button6.onClick.AddListener(setPressed6);
+
+        Button button7 = playerButtons[7].GetComponent<Button>();
+        button7.onClick.AddListener(setPressed7);
+
+        Button button8 = playerButtons[8].GetComponent<Button>();
+        button8.onClick.AddListener(setPressed8);
+
+        Button button9 = playerButtons[9].GetComponent<Button>();
+        button9.onClick.AddListener(setPressed9);
+
+        Button button10 = playerButtons[10].GetComponent<Button>();
+        button10.onClick.AddListener(setPressed10);
+
+        Debug.Log(pressedNum);
+    }
+    private void setPressed0()
+    {
+        if (buttonPressed == false)
+        {
+            pressedNum = 0;
+            buttonPressed = true;
+        }
+    }
+    private void setPressed1()
+    {
+        if (buttonPressed == false)
+        {
+            pressedNum = 1;
+            buttonPressed = true;
+        }
+    }
+    private void setPressed2()
+    {
+        if (buttonPressed == false)
+        {
+            pressedNum = 2;
+            buttonPressed = true;
+        }
+    }
+    private void setPressed3()
+    {
+        if (buttonPressed == false)
+        {
+            pressedNum = 3;
+            buttonPressed = true;
+        }
+    }
+    private void setPressed4()
+    {
+        if (buttonPressed == false)
+        {
+            pressedNum = 4;
+            buttonPressed = true;
+        }
+    }
+    private void setPressed5()
+    {
+        if (buttonPressed == false)
+        {
+            pressedNum = 5;
+            buttonPressed = true;
+        }
+    }
+    private void setPressed6()
+    {
+        if (buttonPressed == false)
+        {
+            pressedNum = 6;
+            buttonPressed = true;
+        }
+    }
+    private void setPressed7()
+    {
+        if (buttonPressed == false)
+        {
+            pressedNum = 7;
+            buttonPressed = true;
+        }
+    }
+    private void setPressed8()
+    {
+        if (buttonPressed == false)
+        {
+            pressedNum = 8;
+            buttonPressed = true;
+        }
+    }
+    private void setPressed9()
+    {
+        if (buttonPressed == false)
+        {
+            pressedNum = 9;
+            buttonPressed = true;
+        }
+    }
+    private void setPressed10()
+    {
+        if (buttonPressed == false)
+        {
+            pressedNum = 10;
+            buttonPressed = true;
+        }
+    }
+
+
+
 
     private void selectingDomino()
     {
