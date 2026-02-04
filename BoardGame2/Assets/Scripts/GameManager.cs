@@ -842,7 +842,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                     }
                     else
                     {
-                        bool valid = false;
+                        /*bool valid = false;
 
                         List<int> validBoardPos = new List<int>();
                         Debug.Log(player2[pressed][0] + " " + player2[pressed][1]);
@@ -855,24 +855,53 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                                 validBoardPos.Add(i);
                             }
                         }
-                        Debug.Log("valid: " + valid);
-                    
-                    //if valid, give options to choose which valid move they want
-                    if (valid == true)
-                    {
-                
-                        string validMoves = "";
-                        for (int i = 0; i < validBoardPos.Count; i++)
+                        Debug.Log("valid: " + valid);*/
+
+                    //checking which buttons should be valid
+                    bool hasValidMove = false;
+                    List<int> validButtons = new List<int>();
+                    for (int i=0; i<board.Count; i++)
                         {
-                            validMoves += i + " = (" + board[validBoardPos[i]][0] + ", " + board[validBoardPos[i]][1] + ")";
-                            if (i != validBoardPos.Count - 1)
+                            for(int j = 0; j < player2.Count; j++)
                             {
-                                validMoves += ", ";
-                            }
+                            playerButtons[j].enabled = false;
+                        if (board[i][0] == player2[j][0] || board[i][1] == player2[j][0] || board[i][0] == player2[j][1] || board[i][1] == player2[j][1])
+                            {
+                                hasValidMove = true;
+                                validButtons.Add(i);
+                                playerButtons[j].enabled = true;
+
                         }
-                        Debug.Log(validMoves);
+                        }
+                    }
+
+
+                    //activating buttons
+
+                    
+                    //if there is a valid move, give options to choose which valid move they want
+                    if (hasValidMove == true)
+                    {
+                        if (validButtons.Contains(pressed)){
+                            bool valid = false;
+
+                            List<int> validBoardPos = new List<int>();
+                            Debug.Log(player2[pressed][0] + " " + player2[pressed][1]);
+                            for (int i = 0; i < board.Count; i++)
+                            {
+                            Debug.Log("testing in the for loop");
+                            if (board[i][0] == player2[pressed][0] || board[i][1] == player2[pressed][0] || board[i][0] == player2[pressed][1] || board[i][1] == player2[pressed][1])
+                            {
+                                valid = true;
+                                validBoardPos.Add(i);
+                            }
+                            }
+                            Debug.Log("valid: " + valid);
+
+
+                        
                         //activate a text that shows them options and asks them to type the option they want
-                        options.text = "Choose which valid domino you would like to place your move next to: " + validMoves;
+                        options.text = "Choose which valid domino you would like to place your move next to: " + validBoardPos;
                         //REMINDER: check why this input isn't moving
 
                         Debug.Log("checking how many times this gets passed");
@@ -900,13 +929,29 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                             player2obj[pressed].transform.rotation = placeholdrotation;
                             placeholderBoard[placehold].SetActive(false);
                             placehold++;
-                            SetOutline(placeholderBoard[placehold-1], false);
+                            SetOutline(placeholderBoard[placehold - 1], false);
                             turnPlayed = false;
                             //NEW
                             turn = 0;
                             optionPressed = -1;
 
                         }
+
+                        string validMoves = "";
+                        for (int i = 0; i < validBoardPos.Count; i++)
+                        {
+                            validMoves += i + " = (" + board[validBoardPos[i]][0] + ", " + board[validBoardPos[i]][1] + ")";
+                            if (i != validBoardPos.Count - 1)
+                            {
+                                validMoves += ", ";
+                            }
+                        }
+                    }
+                    else
+                        {
+                            pressed = -1;
+                        }
+
 
                     }
                     else
