@@ -6498,6 +6498,8 @@ MonoBehaviour:
   - {fileID: 1076489250}
   - {fileID: 2124785124}
   - {fileID: 687003184}
+  buttonPressed: 0
+  pressedNum: -1
 --- !u!1 &1015454239
 GameObject:
   m_ObjectHideFlags: 0
