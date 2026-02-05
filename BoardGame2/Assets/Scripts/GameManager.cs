@@ -110,6 +110,8 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 
     private bool invalidTurn = false;
 
+    [SerializeField] Button drawButton;
+
 
     void Start()
     {
@@ -124,10 +126,23 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
         Button turn = turnButton.GetComponent<Button>();
         turn.onClick.AddListener(changeturnClicked);
 
+        Button draw = drawButton.GetComponent<Button>();
+        draw.onClick.AddListener(drawDomino);
+
         for (int i = 0; i < playerButtons.Count; i++)
         {
             playerButtons[i].enabled = false;
         }
+
+        drawButton.transform.position = new Vector3(-100, -100, 0);
+        turnButton.transform.position = new Vector3(-100, -100, 0);
+
+
+
+    }
+    private void drawDomino()
+    {
+        Debug.Log("Inside draw function");
     }
     void changeStartPressed()
     {
@@ -197,6 +212,8 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
         
 
     }
+
+
 
     private void startGame()
     {
@@ -1026,6 +1043,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                     }
                     else
                     {
+                    drawButton.transform.position = new Vector3(-665, -214, 0);
                         Debug.Log("Invalid turn");
 
                     }
