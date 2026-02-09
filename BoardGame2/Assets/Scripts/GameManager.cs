@@ -131,7 +131,8 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 
         for (int i = 0; i < playerButtons.Count; i++)
         {
-            playerButtons[i].enabled = false;
+            playerButtons[i].GetComponent<Button>().enabled = false;
+           
         }
 
         drawButton.transform.position = new Vector3(-100, -100, 0);
@@ -894,6 +895,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                 else
                 {
                     Debug.Log("Invalid turn");
+                    drawNewDomino();
 
                 }
 
@@ -1043,8 +1045,9 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                     }
                     else
                     {
-                    drawButton.transform.position = new Vector3(-665, -214, 0);
+                        drawButton.transform.position = new Vector3(-665, -214, 0);
                         Debug.Log("Invalid turn");
+                        drawNewDomino();
 
                     }
 
@@ -1060,6 +1063,63 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
             
         
     }
+
+    private void drawNewDomino()
+    {
+        bool drawn = false;
+        int[] domino = new int[2];
+        Debug.Log("Draw new domino method");
+        int randIndex = -1;
+        while (drawn == false)
+        {
+            randIndex = Random.Range(0, 28);
+            if (boneyard[randIndex, 2] == 1)
+            {
+                drawn = true;
+              
+                domino[0] = boneyard[randIndex, 0];
+                domino[1] = boneyard[randIndex, 1];
+            }
+        }
+
+
+
+        
+            if (turn == 2)
+            {
+            
+                    player1.Add(domino);
+                    player1obj.Add(gameObjects[randIndex]);
+                    boneyard[randIndex, 2] = 0;
+
+                    Debug.Log("Drawing player 1");
+
+                    gameObjects[randIndex].transform.position = placeholder1[player1.Count].transform.position;
+                    gameObjects[randIndex].transform.rotation = new Quaternion(0, 180, 90, 0);
+                    
+
+
+                }
+                else if (turn == 3)
+                {
+                    int randIndex2 = Random.Range(0, 28);
+               
+                        player2.Add(domino);
+                        player2obj.Add(gameObjects[randIndex2]);
+                        boneyard[randIndex2, 2] = 0;
+
+                        Debug.Log("drawing player 2");
+
+                        gameObjects[randIndex2].transform.position = placeholder2[player2.Count].transform.position;
+                        gameObjects[randIndex2].transform.rotation = new Quaternion(0, 180, 90, 0);
+                       
+                    }
+                
+
+            }
+        
+    }
+    
 
     private void moveDominos(int boardPos, int pressed)
     {
