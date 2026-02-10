@@ -112,6 +112,10 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 
     [SerializeField] Button drawButton;
 
+    private bool drewNewDomino = false;
+
+    public bool drawNewDominoTest = false;
+
 
     void Start()
     {
@@ -209,7 +213,12 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
         }
 
         numButtonPressed();
-        
+
+        if (drawNewDominoTest == true)
+        {
+            drawNewDomino();
+            drawNewDominoTest = false;
+        }
         
 
     }
@@ -334,13 +343,35 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
             {
                 turn = 2;
                 domClicked = false;
+                drewNewDomino = false;
+                turnClicked = false;
                 //selectingDomino();
             }
             else if(turn == 1)
             {
                 turn = 3;
                 domClicked = false;
+                drewNewDomino = false;
+                turnClicked = false;
                 //selectingDomino();
+            }
+        }
+
+       if(turnClicked == true)
+        {
+            if(turn == 2)
+            {
+                turn = 1;
+                domClicked = false;
+                drewNewDomino = false;
+                turnClicked = false;
+            }
+            else if(turn == 3)
+            {
+                turn = 0;
+                domClicked = false;
+                drewNewDomino = false;
+                turnClicked = false;
             }
         }
     }
@@ -769,14 +800,14 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
         }
 
 
-        if(turn == 2 && turnPlayed==false && pressedNum != -1)
+        if (turn == 2 && turnPlayed == false && pressedNum != -1)
         {
             int pressed = pressedNum;
-    
+
             if (board.Count == 0)
-                {
+            {
                 int[] firstMoveAdj = { -1, -1 };
-                Board.GetComponent<Board>().placeOnBoard(player1obj[pressed], player1[pressed], firstMoveAdj );
+                Board.GetComponent<Board>().placeOnBoard(player1obj[pressed], player1[pressed], firstMoveAdj);
                 placehold++;
 
                 player2scoreNum += player1[pressed][0] + player1[pressed][1];
@@ -793,11 +824,11 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                 buttonPressed = false;
                 pressedNum = -1;
 
-             
-                }
-                else
-                {
-//FIX PLAYER 1
+
+            }
+            else
+            {
+                //FIX PLAYER 1
                 bool hasValidMove = false;
                 List<int> validButtons = new List<int>();
 
@@ -861,15 +892,15 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                         if (validBoardPos.Contains(boardNum))
                         {
                             //Debug.Log("Move domino next to (" + board[validBoardPos[boardNum]][0] + ", " + board[validBoardPos[boardNum]][1] + ")");
-                           // moveDominos(validBoardPos[boardNum], pressed);
-                           // Debug.Log("placeholder: " + placehold);
-                            
+                            // moveDominos(validBoardPos[boardNum], pressed);
+                            // Debug.Log("placeholder: " + placehold);
+
                             player1obj[pressed].transform.position = placeholderBoard[placehold].transform.position;
                             Quaternion placeholdrotation = new Quaternion(placeholderBoard[placehold].transform.rotation.x, placeholderBoard[placehold].transform.rotation.y, placeholderBoard[placehold].transform.rotation.z, placeholderBoard[placehold].transform.rotation.w);
                             player1obj[pressed].transform.rotation = placeholdrotation;
                             placeholderBoard[placehold].SetActive(false);
                             placehold++;
-                           
+
                             SetOutline(placeholderBoard[placehold - 1], false);
                             turnPlayed = false;
                             //NEW
@@ -894,8 +925,17 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                 }
                 else
                 {
+                    drawButton.transform.position = new Vector3(-665, -214, 0);
                     Debug.Log("Invalid turn");
-                    drawNewDomino();
+                    if (drewNewDomino == false)
+                    {
+                        drawNewDomino();
+                    }
+                    else
+                    {
+                        turnButton.transform.position = new Vector3(-708, -31, 0);
+                        //PUT TURN BUTTON POSITION IN FRAME
+                    }
 
                 }
 
@@ -905,111 +945,113 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
             }
         }
         else if (turn == 3 && turnPlayed == false && pressedNum != -1)
-            {
+        {
             //Debug.Log("Button pressed for player 2: " + pressedNum);
 
             //figure out which one was pressed
             int pressed = pressedNum;
-           
 
-                    //Go through the list of dominos array to find if there is a valid move
-                    if (board.Count == 0)
+
+            //Go through the list of dominos array to find if there is a valid move
+            if (board.Count == 0)
+            {
+                //valid
+                //place on board in code
+                player2obj[pressed].transform.position = vertBoard[0].transform.position;
+                Debug.Log("Place on board");
+                board.Add(player2[pressed]);
+                boardobj.Add(player2obj[pressed]);
+                player2.RemoveAt(pressed);
+                player2obj.RemoveAt(pressed);
+
+
+                //rearrange the players hand to have no gaps
+                RearrangeHand(1);
+
+                turn = 1;
+                turnPlayed = false;
+
+            }
+            else
+            {
+                /*bool valid = false;
+
+                List<int> validBoardPos = new List<int>();
+                Debug.Log(player2[pressed][0] + " " + player2[pressed][1]);
+                for (int i = 0; i < board.Count; i++)
+                {
+                Debug.Log("testing in the for loop");
+                    if (board[i][0] == player2[pressed][0] || board[i][1] == player2[pressed][0] || board[i][0] == player2[pressed][1] || board[i][1] == player2[pressed][1])
                     {
-                    //valid
-                    //place on board in code
-                    player2obj[pressed].transform.position = vertBoard[0].transform.position;
-                        Debug.Log("Place on board");
-                        board.Add(player2[pressed]);
-                        boardobj.Add(player2obj[pressed]);
-                        player2.RemoveAt(pressed);
-                        player2obj.RemoveAt(pressed);
-
-
-                        //rearrange the players hand to have no gaps
-                        RearrangeHand(1);
-
-                        turn = 1;
-                        turnPlayed = false;
-
+                        valid = true;
+                        validBoardPos.Add(i);
                     }
-                    else
+                }
+                Debug.Log("valid: " + valid);*/
+
+                //checking which buttons should be valid
+                bool hasValidMove = false;
+                List<int> validButtons = new List<int>();
+
+                for (int i = 0; i < board.Count; i++)
+                {
+                    for (int j = 0; j < player2.Count; j++)
                     {
-                        /*bool valid = false;
+                        playerButtons[j].enabled = false;
+                        if (board[i][0] == player2[j][0] || board[i][1] == player2[j][0] || board[i][0] == player2[j][1] || board[i][1] == player2[j][1])
+                        {
+                            hasValidMove = true;
+                            validButtons.Add(j);
+                            playerButtons[j].enabled = true;
+
+                        }
+                    }
+                }
+
+
+
+
+                //activating buttons
+
+
+                //if there is a valid move, give options to choose which valid move they want
+                if (hasValidMove == true)
+                {
+                    Debug.Log("ValidButtons contains pressed: " + validButtons.Contains(pressed));
+                    if (validButtons.Contains(pressed))
+                    {
+                        //bool valid = false;
 
                         List<int> validBoardPos = new List<int>();
-                        Debug.Log(player2[pressed][0] + " " + player2[pressed][1]);
+                        Debug.Log("Player 2 pressed: " + player2[pressed][0] + ", " + player2[pressed][1]);
+                        //testing which positions are on the board for the VALID domino
                         for (int i = 0; i < board.Count; i++)
                         {
-                        Debug.Log("testing in the for loop");
+                            Debug.Log("testing in the for loop");
                             if (board[i][0] == player2[pressed][0] || board[i][1] == player2[pressed][0] || board[i][0] == player2[pressed][1] || board[i][1] == player2[pressed][1])
                             {
-                                valid = true;
+                                //valid = true;
                                 validBoardPos.Add(i);
                             }
                         }
-                        Debug.Log("valid: " + valid);*/
+                        //Debug.Log("valid: " + valid);
 
-                    //checking which buttons should be valid
-                    bool hasValidMove = false;
-                    List<int> validButtons = new List<int>();
-                    
-                    for (int i=0; i<board.Count; i++)
+
+
+                        options.text = "Choose which valid domino you would like to place your move next to: ";
+
+                        Debug.Log("boardNum: " + boardNum);
+
+
+
+                        //activate a text that shows them options and asks them to type the option they want
+                        for (int i = 0; i < validBoardPos.Count; i++)
                         {
-                            for(int j = 0; j < player2.Count; j++)
-                            {
-                            playerButtons[j].enabled = false;
-                        if (board[i][0] == player2[j][0] || board[i][1] == player2[j][0] || board[i][0] == player2[j][1] || board[i][1] == player2[j][1])
-                            {
-                                hasValidMove = true;
-                                validButtons.Add(j);
-                                playerButtons[j].enabled = true;
-
+                            options.text += " " + validBoardPos[i] + ", ";
                         }
-                        }
-                    }
 
-
-
-                    
-                    //activating buttons
-
-                    
-                    //if there is a valid move, give options to choose which valid move they want
-                    if (hasValidMove == true)
-                    {
-                        Debug.Log("ValidButtons contains pressed: " + validButtons.Contains(pressed));
-                        if (validButtons.Contains(pressed)){
-                            //bool valid = false;
-
-                            List<int> validBoardPos = new List<int>();
-                            Debug.Log("Player 2 pressed: " + player2[pressed][0] + ", " + player2[pressed][1]);
-                        //testing which positions are on the board for the VALID domino
-                            for (int i = 0; i < board.Count; i++)
-                                {
-                                Debug.Log("testing in the for loop");
-                                if (board[i][0] == player2[pressed][0] || board[i][1] == player2[pressed][0] || board[i][0] == player2[pressed][1] || board[i][1] == player2[pressed][1])
-                                {
-                                    //valid = true;
-                                    validBoardPos.Add(i);
-                                }
-                                }
-                                //Debug.Log("valid: " + valid);
-
-
-
-                            options.text = "Choose which valid domino you would like to place your move next to: ";
-
-                            Debug.Log("boardNum: " + boardNum);
-
-                            
-                            
-                            //activate a text that shows them options and asks them to type the option they want
-                            for (int i = 0; i < validBoardPos.Count; i++)
-                            {
-                                options.text += " "+ validBoardPos[i] + ", ";
-                            }
-
-                        if (validBoardPos.Contains(boardNum)){
+                        if (validBoardPos.Contains(boardNum))
+                        {
                             Debug.Log("Move domino next to (" + board[validBoardPos[boardNum]][0] + ", " + board[validBoardPos[boardNum]][1] + ")");
                             board.Add(player2[pressed]);
                             moveDominos(validBoardPos[boardNum], pressed);
@@ -1022,7 +1064,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                             SetOutline(placeholderBoard[placehold - 1], false);
                             turnPlayed = false;
                             player2.RemoveAt(pressed);
-                            
+
                             //NEW
                             turn = 0;
                             boardNum = -1;
@@ -1035,37 +1077,45 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 
                     }
                     else
-                        {
+                    {
                         Debug.Log("choose another");
-                            buttonPressed = false;
-                            pressed = -1;
-                        }
+                        buttonPressed = false;
+                        pressed = -1;
+                    }
 
 
+                }
+                else
+                {
+                    drawButton.transform.position = new Vector3(-665, -214, 0);
+                    Debug.Log("Invalid turn");
+                    if (drewNewDomino == false)
+                    {
+                        drawNewDomino();
                     }
                     else
                     {
-                        drawButton.transform.position = new Vector3(-665, -214, 0);
-                        Debug.Log("Invalid turn");
-                        drawNewDomino();
-
+                        //PUT TURN BUTTON POSITION IN FRAME                        
+                        turnButton.transform.position = new Vector3(-708, -31, 0);
                     }
 
-                        
 
-                    }
-                    
-                    
-
-                    //if there is a valid move then place it adjacent to that domino in the right orientation by labelling each domino either horizontal or vertical and using the dimensions
 
                 }
-            
-        
+
+
+
+                //if there is a valid move then place it adjacent to that domino in the right orientation by labelling each domino either horizontal or vertical and using the dimensions
+
+            }
+
+
+        }
     }
 
     private void drawNewDomino()
     {
+        Debug.Log("Inside drawing new domino method");
         bool drawn = false;
         int[] domino = new int[2];
         Debug.Log("Draw new domino method");
@@ -1079,6 +1129,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
               
                 domino[0] = boneyard[randIndex, 0];
                 domino[1] = boneyard[randIndex, 1];
+                drewNewDomino = true;
             }
         }
 
@@ -1118,7 +1169,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 
             }
         
-    }
+    
     
 
     private void moveDominos(int boardPos, int pressed)
