@@ -24,11 +24,11 @@ public class BattleGamemanager : MonoBehaviour
     [SerializeField] Button downButton;
     [SerializeField] Button leftButton;
 
-    public List<int> player1rowpositions = new List<int>();
-    public List<int> player1columnpositions = new List<int>();
+    public List<float> player1rowpositions = new List<float>();
+    public List<float> player1columnpositions = new List<float>();
 
-    public List<int> player2rowpositions = new List<int>();
-    public List<int> player2columnpositions = new List<int>();
+    public List<float> player2rowpositions = new List<float>();
+    public List<float> player2columnpositions = new List<float>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -194,6 +194,8 @@ public class BattleGamemanager : MonoBehaviour
             column = 8;
         }
 
+
+        ship.transform.position = new Vector3(player1rowpositions[row], 6.5f, (player1columnpositions[column] + player1columnpositions[column])/2);
         Debug.Log("row: " + row + " column: " + column);
     }
 }
