@@ -139,15 +139,17 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
            
         }
 
-        drawButton.transform.position = new Vector3(-100, -100, 0);
-        turnButton.transform.position = new Vector3(-100, -100, 0);
+        //drawButton.transform.position = new Vector3(-100, -100, 0);
+        //turnButton.transform.position = new Vector3(-100, -100, 0);
 
+        drawButton.enabled = false;
 
 
     }
     private void drawDomino()
     {
         Debug.Log("Inside draw function");
+        drawNewDomino();
     }
     void changeStartPressed()
     {
@@ -179,7 +181,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
         Turn();
         //selectingDomino();
         
-        player1Score.text = "PLayer 1 score: " + player1scoreNum.ToString();
+        player1Score.text = "Player 1 score: " + player1scoreNum.ToString();
         player2Score.text = "Player 2 score:" + player2scoreNum.ToString();
 
         if(player2scoreNum > pointGoal || player1scoreNum > pointGoal)
@@ -201,6 +203,12 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
             for(int i=0; i< player1obj.Count; i++)
             {
                 playerButtons[i].enabled = true;
+                playerButtons[i].GetComponent<Image>().color = UnityEngine.Color.red;
+
+            }
+            for(int i=player1obj.Count; i < 11; i++)
+            {
+                playerButtons[i].GetComponent<Image>().color = UnityEngine.Color.white;
             }
         }
         else if(turn == 1 || turn == 3)
@@ -241,6 +249,8 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                 }
                 
             }
+
+            drawButton.enabled = false;
 
         
         
@@ -358,8 +368,11 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
         }
 
        if(turnClicked == true)
+
         {
-            if(turn == 2)
+            drawButton.enabled = false;
+
+            if (turn == 2)
             {
                 turn = 1;
                 domClicked = false;
@@ -925,7 +938,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                 }
                 else
                 {
-                    drawButton.transform.position = new Vector3(-665, -214, 0);
+                    drawButton.enabled = true; 
                     Debug.Log("Invalid turn");
                     if (drewNewDomino == false)
                     {
@@ -933,7 +946,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                     }
                     else
                     {
-                        turnButton.transform.position = new Vector3(-708, -31, 0);
+                       // turnButton.transform.position = new Vector3(-708, -31, 0);
                         //PUT TURN BUTTON POSITION IN FRAME
                     }
 
@@ -1087,11 +1100,12 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                 }
                 else
                 {
-                    drawButton.transform.position = new Vector3(-665, -214, 0);
+                    drawButton.enabled = true;
                     Debug.Log("Invalid turn");
                     if (drewNewDomino == false)
                     {
-                        drawNewDomino();
+                        //drawNewDomino();
+                        drawButton.enabled = true;
                     }
                     else
                     {
@@ -1135,7 +1149,7 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
 
 
 
-        
+        drawButton.enabled = false;
             if (turn == 2)
             {
             
@@ -1153,16 +1167,16 @@ domSetPos = [xPos in board, yPos in board, isAvailable (1 yes or 0 no)]
                 }
                 else if (turn == 3)
                 {
-                    int randIndex2 = Random.Range(0, 28);
+                    
                
                         player2.Add(domino);
-                        player2obj.Add(gameObjects[randIndex2]);
-                        boneyard[randIndex2, 2] = 0;
+                        player2obj.Add(gameObjects[randIndex]);
+                        boneyard[randIndex, 2] = 0;
 
                         Debug.Log("drawing player 2");
 
-                        gameObjects[randIndex2].transform.position = placeholder2[player2.Count].transform.position;
-                        gameObjects[randIndex2].transform.rotation = new Quaternion(0, 180, 90, 0);
+                        gameObjects[randIndex].transform.position = placeholder2[player2.Count].transform.position;
+                        gameObjects[randIndex].transform.rotation = new Quaternion(0, 180, 90, 0);
                        
                     }
                 

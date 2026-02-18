@@ -36,4 +36,8 @@ public class Ship : MonoBehaviour
     {
         return clicked;
     }
+    public void setClicked(bool v)
+    {
+        clicked = v;
+    }
 }
