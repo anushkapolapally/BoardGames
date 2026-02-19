@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
-
+    public int length;
     public bool clicked = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

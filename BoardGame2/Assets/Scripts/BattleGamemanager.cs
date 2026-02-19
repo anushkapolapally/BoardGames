@@ -18,6 +18,7 @@ public class BattleGamemanager : MonoBehaviour
     [SerializeField] Text initalInstructions;
 
     private string typedText = "";
+    private int placedNum = 0;
 
     [SerializeField] Button upButton;
     [SerializeField] Button rightButton;
@@ -54,6 +55,11 @@ public class BattleGamemanager : MonoBehaviour
     {
         if (turn == 0)
         {
+            if(placedNum == 9)
+            {
+                turn = 1;
+                placedNum = 0;
+            }
             initalInstructions.text = "Place your ships in their starting positions. Click a ship to select it and then type the row and column you would like the bottomest/leftmost part of the ship to be on. Typed: ";
 
             for (int i = 0; i < player1ships.Count; i++)
@@ -74,13 +80,16 @@ public class BattleGamemanager : MonoBehaviour
         else if (turn == 1)
         {
             //player 2 places pieces
-            startedGame = true;
+            if (placedNum == 9)
+            {
+                startedGame = true;
+            }
         }
     }
 
     private void placingPiecesText(GameObject ship)
     {
-        if (typedText.Length < 2)
+        if (typedText.Length < 3)
         {
             foreach (char c in Input.inputString)
             {
@@ -103,11 +112,14 @@ public class BattleGamemanager : MonoBehaviour
         else
         {
             placingPiecesPosition(typedText, ship);
+            ship.GetComponent<Ship>().setClicked(false);
+            placedNum++;
+            typedText = "";
         }
 
         // Shows live typing in Console
         //Debug.Log("Currently typing: " + typedText);
-        initalInstructions.text = "Place your ships in their starting positions. Click a ship to select it and then type the row and column you would like the bottomest/leftmost part of the ship to be on. Typed: " + typedText;
+        initalInstructions.text = "Place your ships in their starting positions. Click a ship to select it and then type the row and column you would like the bottomest/leftmost part of the ship to be on and whether u want to rotate the ship. Typed: " + typedText;
 
     }
 
@@ -116,6 +128,8 @@ public class BattleGamemanager : MonoBehaviour
         Debug.Log("placingpiecesposition");
         int row = -1;
         int column = -1;
+        bool rotate = false;
+        //getting letter
         if (typedText[0]=='A' || typedText[0] == 'a')
         {
             row = 0;
@@ -156,7 +170,7 @@ public class BattleGamemanager : MonoBehaviour
         {
             row = 9;
         }
-
+        //getting column
         if (typedText[1] == '1')
         {
             column = 0;
@@ -193,9 +207,63 @@ public class BattleGamemanager : MonoBehaviour
         {
             column = 8;
         }
+        else if (typedText[1] == 'T')
+        {
+            column = 9;
 
+        }
+        // getting rotation
+        if (typedText[2] == 'r')
+        {
+            rotate = true;
+        }
+        else if (typedText[2] == 'n')
+        {
+            rotate = false;
+        }
 
-        ship.transform.position = new Vector3(player1rowpositions[row], 6.5f, (player1columnpositions[column] + player1columnpositions[column])/2);
+        int shiplength = ship.GetComponent<Ship>().length;
+
+        if (shiplength == 2)
+        {
+            if (rotate == true)
+            {
+                ship.transform.rotation = Quaternion.Euler(-90, 0, 450);
+                ship.transform.position = new Vector3((player1rowpositions[row] + player1rowpositions[row + 1]) / 2, 6.5f, player1columnpositions[column]);
+            }
+            else if (rotate == false)
+            {
+                //fix the rotation here
+                ship.transform.position = new Vector3(player1rowpositions[row], 6.5f, (player1columnpositions[column] + player1columnpositions[column + 1]) / 2);
+            }
+        }
+        else if (shiplength == 3)
+        {
+            if (rotate == true)
+            {
+                ship.transform.rotation = Quaternion.Euler(-90, 0,270);
+                ship.transform.position = new Vector3(player1rowpositions[row - 1], 6.5f, player1columnpositions[column]);
+            }
+            else if (rotate == false)
+            {
+                ship.transform.rotation = Quaternion.Euler(-90, 0, 180);
+                ship.transform.position = new Vector3(player1rowpositions[row], 6.5f,player1columnpositions[column - 1]);
+            }
+        }
+        else if (shiplength == 4)
+        {
+            if (rotate == true)
+            {
+                ship.transform.rotation = Quaternion.Euler(-90, 0, 270);
+                ship.transform.position = new Vector3((player1rowpositions[row - 1] + player1rowpositions[row - 2]) /2, 6.5f, player1columnpositions[column]);
+            }
+            else if (rotate == false)
+            {
+                ship.transform.rotation = Quaternion.Euler(-90, 0, 180);
+                ship.transform.position = new Vector3(player1rowpositions[row], 6.5f, (player1columnpositions[column - 1] + player1columnpositions[column - 2])/2);
+            }
+        }
+
         Debug.Log("row: " + row + " column: " + column);
     }
 }
