@@ -18,7 +18,7 @@ public class BattleGamemanager : MonoBehaviour
     [SerializeField] Text initalInstructions;
 
     private string typedText = "";
-    private int placedNum = 0;
+    public int placedNum = 0;
 
     [SerializeField] Button upButton;
     [SerializeField] Button rightButton;
@@ -30,6 +30,8 @@ public class BattleGamemanager : MonoBehaviour
 
     public List<float> player2rowpositions = new List<float>();
     public List<float> player2columnpositions = new List<float>();
+
+    public Camera targetCamera;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -48,6 +50,7 @@ public class BattleGamemanager : MonoBehaviour
         {
             startGame();
         }
+        cameraPosition(turn);
     }
 
 
@@ -55,7 +58,7 @@ public class BattleGamemanager : MonoBehaviour
     {
         if (turn == 0)
         {
-            if(placedNum == 9)
+            if (placedNum == 9)
             {
                 turn = 1;
                 placedNum = 0;
@@ -66,10 +69,10 @@ public class BattleGamemanager : MonoBehaviour
             {
                 if (player1ships[i].GetComponent<Ship>().getClicked() == true)
                 {
-                   
-                        placingPiecesText(player1ships[i]);
-                        //Debug.Log(typedText);
-                    
+                    Debug.Log("Debug the index: " + i);
+                    placingPiecesText(player1ships[i]);
+                    //Debug.Log(typedText);
+
                 }
             }
 
@@ -84,11 +87,26 @@ public class BattleGamemanager : MonoBehaviour
             {
                 startedGame = true;
             }
+
+            initalInstructions.text = "Place your ships in their starting positions. Click a ship to select it and then type the row and column you would like the bottomest/leftmost part of the ship to be on. Typed: ";
+
+            for (int i = 0; i < player2ships.Count; i++)
+            {
+                if (player2ships[i].GetComponent<Ship>().getClicked() == true)
+                {
+
+                    placingPiecesText(player2ships[i]);
+                    //Debug.Log(typedText);
+
+                }
+
+            }
         }
     }
 
     private void placingPiecesText(GameObject ship)
     {
+        Debug.Log("Enter placesPiecesText");
         if (typedText.Length < 3)
         {
             foreach (char c in Input.inputString)
@@ -125,7 +143,7 @@ public class BattleGamemanager : MonoBehaviour
 
     private void placingPiecesPosition(string typedText, GameObject ship)
     {
-        Debug.Log("placingpiecesposition");
+        Debug.Log("Enter placingpiecesposition");
         int row = -1;
         int column = -1;
         bool rotate = false;
@@ -229,12 +247,26 @@ public class BattleGamemanager : MonoBehaviour
             if (rotate == true)
             {
                 ship.transform.rotation = Quaternion.Euler(-90, 0, 450);
-                ship.transform.position = new Vector3((player1rowpositions[row] + player1rowpositions[row + 1]) / 2, 6.5f, player1columnpositions[column]);
+                if (turn == 0)
+                {
+                    ship.transform.position = new Vector3((player1rowpositions[row] + player1rowpositions[row + 1]) / 2, 6.5f, player1columnpositions[column]);
+                }
+                else if (turn == 1)
+                {
+                    ship.transform.position = new Vector3((player2rowpositions[row] + player2rowpositions[row + 1]) / 2, 6.5f, player2columnpositions[column]);
+                }
             }
             else if (rotate == false)
             {
                 //fix the rotation here
-                ship.transform.position = new Vector3(player1rowpositions[row], 6.5f, (player1columnpositions[column] + player1columnpositions[column + 1]) / 2);
+                if (turn == 0)
+                {
+                    ship.transform.position = new Vector3(player1rowpositions[row], 6.5f, (player1columnpositions[column] + player1columnpositions[column + 1]) / 2);
+                }
+                else if(turn == 1)
+                {
+                    ship.transform.position = new Vector3((player2rowpositions[row] + player2rowpositions[row + 1]) / 2, 6.5f, player2columnpositions[column]);
+                }
             }
         }
         else if (shiplength == 3)
@@ -242,12 +274,28 @@ public class BattleGamemanager : MonoBehaviour
             if (rotate == true)
             {
                 ship.transform.rotation = Quaternion.Euler(-90, 0,270);
-                ship.transform.position = new Vector3(player1rowpositions[row - 1], 6.5f, player1columnpositions[column]);
+                if (turn == 0)
+                {
+                    ship.transform.position = new Vector3(player1rowpositions[row - 1], 6.5f, player1columnpositions[column]);
+                }
+                else if (turn == 1)
+                {
+                    ship.transform.position = new Vector3(player2rowpositions[row - 1], 6.5f, player2columnpositions[column]);
+                }
             }
             else if (rotate == false)
             {
+                
                 ship.transform.rotation = Quaternion.Euler(-90, 0, 180);
-                ship.transform.position = new Vector3(player1rowpositions[row], 6.5f,player1columnpositions[column - 1]);
+                if (turn == 0)
+                {
+                    Debug.Log("entered correct if");
+                    ship.transform.position = new Vector3(player1rowpositions[row], 6.5f, player1columnpositions[column - 1]);
+                }
+                else if (turn == 1)
+                {
+                    ship.transform.position = new Vector3(player2rowpositions[row], 6.5f, player2columnpositions[column - 1]);
+                }
             }
         }
         else if (shiplength == 4)
@@ -255,16 +303,47 @@ public class BattleGamemanager : MonoBehaviour
             if (rotate == true)
             {
                 ship.transform.rotation = Quaternion.Euler(-90, 0, 270);
-                ship.transform.position = new Vector3((player1rowpositions[row - 1] + player1rowpositions[row - 2]) /2, 6.5f, player1columnpositions[column]);
+                if (turn == 0)
+                {
+                    ship.transform.position = new Vector3((player1rowpositions[row - 1] + player1rowpositions[row - 2]) / 2, 6.5f, player1columnpositions[column]);
+                }
+                else if(turn == 1)
+                {
+                    ship.transform.position = new Vector3((player2rowpositions[row - 1] + player2rowpositions[row - 2]) / 2, 6.5f, player2columnpositions[column]);
+                }
             }
             else if (rotate == false)
             {
                 ship.transform.rotation = Quaternion.Euler(-90, 0, 180);
-                ship.transform.position = new Vector3(player1rowpositions[row], 6.5f, (player1columnpositions[column - 1] + player1columnpositions[column - 2])/2);
+                if (turn == 0)
+                {
+                    ship.transform.position = new Vector3(player1rowpositions[row], 6.5f, (player1columnpositions[column - 1] + player1columnpositions[column - 2]) / 2);
+                }
+                else if(turn == 1)
+                {
+                    ship.transform.position = new Vector3(player2rowpositions[row], 6.5f, (player2columnpositions[column - 1] + player2columnpositions[column - 2]) / 2);
+                }
             }
         }
 
         Debug.Log("row: " + row + " column: " + column);
+    }
+
+
+    private void cameraPosition(int turn)
+    {
+        if(turn == 0)
+        {
+            Vector3 originalRotation = new Vector3(37, 0, 0);
+            targetCamera.transform.position = new Vector3(3, 19, -13);
+            targetCamera.transform.eulerAngles = originalRotation;
+        }
+        else if(turn == 1)
+        {
+            Vector3 originalRotation = new Vector3(37, -180, 0);
+            targetCamera.transform.position = new Vector3(3, 22, 25);
+            targetCamera.transform.eulerAngles = originalRotation;
+        }
     }
 }
 
