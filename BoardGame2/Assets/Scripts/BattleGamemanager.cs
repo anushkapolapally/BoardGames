@@ -271,11 +271,29 @@ public class BattleGamemanager : MonoBehaviour
                 ship.transform.rotation = Quaternion.Euler(-90, 0, 450);
                 if (turn == 0)
                 {
-                    ship.transform.position = new Vector3((player1rowpositions[row] + player1rowpositions[row + 1]) / 2, 6.5f, player1columnpositions[column]);
+                    player1board[column, row] = 0;
+                    player1board[column, row-1] = 0;
+
+
+                    ship.transform.position = new Vector3((player1rowpositions[row] + player1rowpositions[row - 1]) / 2, 6.5f, player1columnpositions[column]);
                 }
                 else if (turn == 1)
                 {
-                    ship.transform.position = new Vector3((player2rowpositions[row] + player2rowpositions[row + 1]) / 2, 6.5f, player2columnpositions[column]);
+                    player2board[column, row] = 0;
+                    player2board[column, row - 1] = 0;
+
+
+                    Debug.Log("Printing player 2 board");
+
+                    for (int i = 0; i < 10; i++)
+                    {
+                        for (int j = 0; j < 10; j++)
+                        {
+                            Debug.Log(player2board[i, j]);
+                        }
+                    }
+
+                    ship.transform.position = new Vector3((player2rowpositions[row] + player2rowpositions[row - 1]) / 2, 6.5f, player2columnpositions[column]);
                 }
             }
             else if (rotate == false)
@@ -309,7 +327,7 @@ public class BattleGamemanager : MonoBehaviour
 
 
                     Debug.Log("Testing if it reaches here");
-                    ship.transform.position = new Vector3((player2rowpositions[row] + player2rowpositions[row + 1]) / 2, 6.5f, player2columnpositions[column]);
+                    ship.transform.position = new Vector3(player2rowpositions[row], 6.5f, (player2columnpositions[column] + player2columnpositions[column - 1]) / 2);
                 }
             }
         }
@@ -320,6 +338,7 @@ public class BattleGamemanager : MonoBehaviour
                 ship.transform.rotation = Quaternion.Euler(-90, 0,270);
                 if (turn == 0)
                 {
+
                     ship.transform.position = new Vector3(player1rowpositions[row - 1], 6.5f, player1columnpositions[column]);
                 }
                 else if (turn == 1)
