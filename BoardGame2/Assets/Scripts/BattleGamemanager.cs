@@ -64,6 +64,7 @@ public class BattleGamemanager : MonoBehaviour
 
         if(startedGame == true)
         {
+            initalInstructions.text = "";
             Turn();
         }
     }
@@ -100,6 +101,7 @@ public class BattleGamemanager : MonoBehaviour
             //player 2 places pieces
             if (placedNum == 9)
             {
+                turn = 0;
                 startedGame = true;
                 initalInstructions.text = "";
 
@@ -123,7 +125,40 @@ public class BattleGamemanager : MonoBehaviour
 
     private void Turn()
     {
-        Debug.Log("Game started");
+        Debug.Log("Game started. Turn = "+ turn);
+
+        if(turn == 0)
+        {
+            
+            Debug.Log("Enter placesPiecesText");
+            if (typedText.Length < 2)
+            {
+
+                foreach (char c in Input.inputString)
+                {
+                    if (c == '\b') // Backspace
+                    {
+                        if (typedText.Length > 0)
+                            typedText = typedText.Substring(0, typedText.Length - 1);
+                    }
+                    else if (c == '\n' || c == '\r') // Enter
+                    {
+                        Debug.Log("Final Input: " + typedText);
+                        typedText = ""; // Clear after enter (optional)
+                    }
+                    else
+                    {
+                        typedText += c;
+                    }
+                }
+                initalInstructions.text = "Type the coordinate of the position you would like to hit on the opponents board: " + typedText;
+            }
+            else
+            {
+                initalInstructions.text = typedText + " is the spot you have choose to hit";
+            }
+            
+        }
     }
 
     private void placingPiecesText(GameObject ship)
