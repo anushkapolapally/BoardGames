@@ -156,8 +156,109 @@ public class BattleGamemanager : MonoBehaviour
             else
             {
                 initalInstructions.text = typedText + " is the spot you have choose to hit";
+                int row = -1;
+                int col = -1;
+                translateText(typedText, row, col);
+                Debug.Log("Row: " + row);
+                Debug.Log("Col: " + col);
+                if (player1board[col, row] == 0)
+                {
+                    initalInstructions.text = typedText + " is the spot you have choose to hit. It has a ship";
+                }
+                else if (player1board[col, row] == -1)
+                {
+                    initalInstructions.text = typedText + " is the spot you have choose to hit. It does not has a ship";
+                }
             }
             
+        }
+    }
+
+    private void translateText(string text, int row, int column)
+    {
+        
+        //getting letter
+        if (typedText[0] == 'A' || typedText[0] == 'a')
+        {
+            row = 0;
+        }
+        else if (typedText[0] == 'B' || typedText[0] == 'b')
+        {
+            row = 1;
+        }
+        else if (typedText[0] == 'C' || typedText[0] == 'c')
+        {
+            row = 2;
+        }
+        else if (typedText[0] == 'D' || typedText[0] == 'd')
+        {
+            row = 3;
+        }
+        else if (typedText[0] == 'E' || typedText[0] == 'e')
+        {
+            row = 4;
+        }
+        else if (typedText[0] == 'F' || typedText[0] == 'f')
+        {
+            row = 5;
+        }
+        else if (typedText[0] == 'G' || typedText[0] == 'g')
+        {
+            row = 6;
+        }
+        else if (typedText[0] == 'H' || typedText[0] == 'h')
+        {
+            row = 7;
+        }
+        else if (typedText[0] == 'I' || typedText[0] == 'i')
+        {
+            row = 8;
+        }
+        else if (typedText[0] == 'J' || typedText[0] == 'j')
+        {
+            row = 9;
+        }
+        //getting column
+        if (typedText[1] == '1')
+        {
+            column = 0;
+        }
+        else if (typedText[1] == '2')
+        {
+            column = 1;
+        }
+        else if (typedText[1] == '3')
+        {
+            column = 2;
+        }
+        else if (typedText[1] == '4')
+        {
+            column = 3;
+        }
+        else if (typedText[1] == '5')
+        {
+            column = 4;
+        }
+        else if (typedText[1] == '6')
+        {
+            column = 5;
+        }
+        else if (typedText[1] == '7')
+        {
+            column = 6;
+        }
+        else if (typedText[1] == '8')
+        {
+            column = 7;
+        }
+        else if (typedText[1] == '9')
+        {
+            column = 8;
+        }
+        else if (typedText[1] == 'T')
+        {
+            column = 9;
+
         }
     }
 
@@ -373,11 +474,18 @@ public class BattleGamemanager : MonoBehaviour
                 ship.transform.rotation = Quaternion.Euler(-90, 0,270);
                 if (turn == 0)
                 {
+                    player1board[column, row] = 0;
+                    player1board[column, row - 1] = 0;
+                    player1board[column, row - 2] = 0;
 
                     ship.transform.position = new Vector3(player1rowpositions[row - 1], 6.5f, player1columnpositions[column]);
                 }
                 else if (turn == 1)
                 {
+                    player2board[column, row] = 0;
+                    player2board[column, row - 1] = 0;
+                    player2board[column, row - 2] = 0;
+
                     ship.transform.position = new Vector3(player2rowpositions[row - 1], 6.5f, player2columnpositions[column]);
                 }
             }
@@ -387,11 +495,19 @@ public class BattleGamemanager : MonoBehaviour
                 ship.transform.rotation = Quaternion.Euler(-90, 0, 180);
                 if (turn == 0)
                 {
+                    player1board[column, row] = 0;
+                    player1board[column - 1, row] = 0;
+                    player1board[column - 2, row] = 0;
+
                     Debug.Log("entered correct if");
                     ship.transform.position = new Vector3(player1rowpositions[row], 6.5f, player1columnpositions[column - 1]);
                 }
                 else if (turn == 1)
                 {
+                    player2board[column, row] = 0;
+                    player2board[column - 1, row] = 0;
+                    player2board[column - 2, row] = 0;
+
                     ship.transform.position = new Vector3(player2rowpositions[row], 6.5f, player2columnpositions[column - 1]);
                 }
             }
@@ -403,10 +519,18 @@ public class BattleGamemanager : MonoBehaviour
                 ship.transform.rotation = Quaternion.Euler(-90, 0, 270);
                 if (turn == 0)
                 {
+                    player1board[column, row] = 0;
+                    player1board[column, row - 1] = 0;
+                    player1board[column, row - 2] = 0;
+                    player1board[column, row - 3] = 0;
                     ship.transform.position = new Vector3((player1rowpositions[row - 1] + player1rowpositions[row - 2]) / 2, 6.5f, player1columnpositions[column]);
                 }
                 else if(turn == 1)
                 {
+                    player2board[column, row] = 0;
+                    player2board[column, row - 1] = 0;
+                    player2board[column, row - 2] = 0;
+                    player2board[column, row - 3] = 0;
                     ship.transform.position = new Vector3((player2rowpositions[row - 1] + player2rowpositions[row - 2]) / 2, 6.5f, player2columnpositions[column]);
                 }
             }
@@ -415,10 +539,18 @@ public class BattleGamemanager : MonoBehaviour
                 ship.transform.rotation = Quaternion.Euler(-90, 0, 180);
                 if (turn == 0)
                 {
+                    player1board[column, row] = 0;
+                    player1board[column - 1, row] = 0;
+                    player1board[column - 2, row] = 0;
+                    player1board[column - 3, row] = 0;
                     ship.transform.position = new Vector3(player1rowpositions[row], 6.5f, (player1columnpositions[column - 1] + player1columnpositions[column - 2]) / 2);
                 }
                 else if(turn == 1)
                 {
+                    player2board[column, row] = 0;
+                    player2board[column - 1, row] = 0;
+                    player2board[column - 2, row] = 0;
+                    player2board[column - 3, row] = 0;
                     ship.transform.position = new Vector3(player2rowpositions[row], 6.5f, (player2columnpositions[column - 1] + player2columnpositions[column - 2]) / 2);
                 }
             }
