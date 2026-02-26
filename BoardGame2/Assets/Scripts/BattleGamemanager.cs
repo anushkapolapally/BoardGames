@@ -52,6 +52,12 @@ public class BattleGamemanager : MonoBehaviour
                 player2board[i, j] = -1;
             }
         }
+
+        for(int i=0; i<100; i++)
+        {
+            player1pegs[i].SetActive(false);
+            player2pegs[i].SetActive(false);
+        }
     }
 
 
