@@ -34,6 +34,9 @@ public class BattleGamemanager : MonoBehaviour
     public int[,] player2board = new int[10, 10];
 
     public Camera targetCamera;
+
+    public List<GameObject> player1pegs = new List<GameObject>();
+    public List<GameObject> player2pegs = new List<GameObject>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
