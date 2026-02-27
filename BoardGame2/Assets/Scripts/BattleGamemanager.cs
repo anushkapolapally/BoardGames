@@ -36,7 +36,9 @@ public class BattleGamemanager : MonoBehaviour
     public Camera targetCamera;
 
     public List<GameObject> player1pegs = new List<GameObject>();
+    public List<GameObject> player1pegsRed = new List<GameObject>();
     public List<GameObject> player2pegs = new List<GameObject>();
+    public List<GameObject> player2pegsRed = new List<GameObject>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -56,6 +58,8 @@ public class BattleGamemanager : MonoBehaviour
         for(int i=0; i<100; i++)
         {
             player1pegs[i].SetActive(false);
+            player1pegsRed[i].SetActive(false);
+            player2pegs[i].SetActive(false);
             player2pegs[i].SetActive(false);
         }
     }
