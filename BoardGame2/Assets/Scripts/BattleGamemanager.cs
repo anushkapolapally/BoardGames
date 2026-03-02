@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TreeEditor;
+using Unity.Multiplayer.Center.Common;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -39,6 +41,11 @@ public class BattleGamemanager : MonoBehaviour
     public List<GameObject> player1pegsRed = new List<GameObject>();
     public List<GameObject> player2pegs = new List<GameObject>();
     public List<GameObject> player2pegsRed = new List<GameObject>();
+
+    public List<GameObject> player1shipPegs = new List<GameObject>();
+    public List<GameObject> player1shipRedPegs = new List<GameObject>();
+    public List<GameObject> player2shipPegs = new List<GameObject>();
+    public List<GameObject> player2shipRedPegs = new List<GameObject>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -60,7 +67,9 @@ public class BattleGamemanager : MonoBehaviour
             player1pegs[i].SetActive(false);
             player1pegsRed[i].SetActive(false);
             player2pegs[i].SetActive(false);
-            player2pegs[i].SetActive(false);
+            player2pegsRed[i].SetActive(false);
+
+            player1shipPegs[i].SetActive(false);
         }
     }
 
@@ -169,27 +178,41 @@ public class BattleGamemanager : MonoBehaviour
             else
             {
                 initalInstructions.text = typedText + " is the spot you have choose to hit";
-                int row = -1;
-                int col = -1;
-                translateText(typedText, row, col);
-                Debug.Log("Row: " + row);
-                Debug.Log("Col: " + col);
-                if (player1board[col, row] == 0)
+
+                int[] coordinates = translateText(typedText);
+                Debug.Log("Row: " + coordinates[0]);
+                Debug.Log("Col: " + coordinates[1]);
+                if (player2board[coordinates[1], coordinates[0]] == 0)
                 {
                     initalInstructions.text = typedText + " is the spot you have choose to hit. It has a ship";
+                    player1pegsRed[coordinates[1] * 10 + coordinates[0]].SetActive(true);
+
+                    
                 }
-                else if (player1board[col, row] == -1)
+                else if (player2board[coordinates[1], coordinates[0]] == -1)
                 {
                     initalInstructions.text = typedText + " is the spot you have choose to hit. It does not has a ship";
+                    player1pegs[coordinates[1] * 10 + coordinates[0]].SetActive(true);
                 }
+
+                //FIGURE OUT WHY IT ISNT PAUSING PROPERLY
+                StartCoroutine(Timer(20.0f));
+                turn = 1;
             }
             
         }
     }
 
-    private void translateText(string text, int row, int column)
+    IEnumerator Timer(float seconds)
     {
-        
+        Debug.Log("Inside of timer");
+        yield return new WaitForSeconds(seconds);
+    }
+
+    private int[] translateText(string text)
+    {
+        int row = -1;
+        int column = -1;
         //getting letter
         if (typedText[0] == 'A' || typedText[0] == 'a')
         {
@@ -273,6 +296,8 @@ public class BattleGamemanager : MonoBehaviour
             column = 9;
 
         }
+        int[] answer = { row, column };
+        return answer;
     }
 
     private void placingPiecesText(GameObject ship)
