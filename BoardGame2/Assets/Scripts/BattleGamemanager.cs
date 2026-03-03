@@ -46,6 +46,9 @@ public class BattleGamemanager : MonoBehaviour
     public List<GameObject> player1shipRedPegs = new List<GameObject>();
     public List<GameObject> player2shipPegs = new List<GameObject>();
     public List<GameObject> player2shipRedPegs = new List<GameObject>();
+
+
+    private bool waitingForTurnDelay = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -70,6 +73,9 @@ public class BattleGamemanager : MonoBehaviour
             player2pegsRed[i].SetActive(false);
 
             player1shipPegs[i].SetActive(false);
+            player1shipRedPegs[i].SetActive(false);
+            player2shipPegs[i].SetActive(false);
+            player2shipRedPegs[i].SetActive(false);
         }
     }
 
@@ -96,7 +102,7 @@ public class BattleGamemanager : MonoBehaviour
     {
         if (turn == 0)
         {
-            if (placedNum == 9)
+            if (placedNum == 5)
             {
                 turn = 1;
                 placedNum = 0;
@@ -121,7 +127,7 @@ public class BattleGamemanager : MonoBehaviour
         else if (turn == 1)
         {
             //player 2 places pieces
-            if (placedNum == 9)
+            if (placedNum == 5)
             {
                 turn = 0;
                 startedGame = true;
@@ -147,9 +153,10 @@ public class BattleGamemanager : MonoBehaviour
 
     private void Turn()
     {
-        Debug.Log("Game started. Turn = "+ turn);
+        if (waitingForTurnDelay) return;
+        Debug.Log("Game started. Turn = " + turn);
 
-        if(turn == 0)
+        if (turn == 0)
         {
             
             Debug.Log("Enter placesPiecesText");
@@ -186,29 +193,85 @@ public class BattleGamemanager : MonoBehaviour
                 {
                     initalInstructions.text = typedText + " is the spot you have choose to hit. It has a ship";
                     player1pegsRed[coordinates[1] * 10 + coordinates[0]].SetActive(true);
-
+                    player2shipRedPegs[coordinates[1] * 10 + coordinates[0]].SetActive(true);
                     
                 }
                 else if (player2board[coordinates[1], coordinates[0]] == -1)
                 {
                     initalInstructions.text = typedText + " is the spot you have choose to hit. It does not has a ship";
                     player1pegs[coordinates[1] * 10 + coordinates[0]].SetActive(true);
+                    player2shipPegs[coordinates[1] * 10 + coordinates[0]].SetActive(true);
                 }
 
                 //FIGURE OUT WHY IT ISNT PAUSING PROPERLY
-                StartCoroutine(Timer(20.0f));
-                turn = 1;
+                StartCoroutine(EndTurnAfterDelay(5.0f, 1));
+                typedText = "";
             }
             
         }
+        else if (turn == 1)
+        {
+            initalInstructions.text = "Type the coordinate of the position you would like to hit on the opponents board: " + typedText;
+
+            Debug.Log("Enter placesPiecesText");
+            if (typedText.Length < 2)
+            {
+
+                foreach (char c in Input.inputString)
+                {
+                    if (c == '\b') // Backspace
+                    {
+                        if (typedText.Length > 0)
+                            typedText = typedText.Substring(0, typedText.Length - 1);
+                    }
+                    else if (c == '\n' || c == '\r') // Enter
+                    {
+                        Debug.Log("Final Input: " + typedText);
+                        typedText = ""; // Clear after enter (optional)
+                    }
+                    else
+                    {
+                        typedText += c;
+                    }
+                }
+                initalInstructions.text = "Type the coordinate of the position you would like to hit on the opponents board: " + typedText;
+            }
+            else
+            {
+                initalInstructions.text = typedText + " is the spot you have choose to hit";
+
+                int[] coordinates = translateText(typedText);
+                Debug.Log("Row: " + coordinates[0]);
+                Debug.Log("Col: " + coordinates[1]);
+                if (player1board[coordinates[1], coordinates[0]] == 0)
+                {
+                    initalInstructions.text = typedText + " is the spot you have choose to hit. It has a ship";
+                    player2pegsRed[coordinates[1] * 10 + coordinates[0]].SetActive(true);
+                    player1shipRedPegs[coordinates[1] * 10 + coordinates[0]].SetActive(true);
+
+                }
+                else if (player1board[coordinates[1], coordinates[0]] == -1)
+                {
+                    initalInstructions.text = typedText + " is the spot you have choose to hit. It does not has a ship";
+                    player2pegs[coordinates[1] * 10 + coordinates[0]].SetActive(true);
+                    player1shipPegs[coordinates[1] * 10 + coordinates[0]].SetActive(true);
+                }
+
+                //FIGURE OUT WHY IT ISNT PAUSING PROPERLY
+                StartCoroutine(EndTurnAfterDelay(5.0f, 0));
+                typedText = "";
+            }
+        }
     }
 
-    IEnumerator Timer(float seconds)
+    private IEnumerator EndTurnAfterDelay(float seconds, int nextTurn)
     {
+        waitingForTurnDelay = true;
         Debug.Log("Inside of timer");
-        yield return new WaitForSeconds(seconds);
+        yield return new WaitForSeconds(seconds); // use WaitForSecondsRealtime if you ever set Time.timeScale = 0
+        turn = nextTurn;
+        waitingForTurnDelay = false;
     }
-
     private int[] translateText(string text)
     {
         int row = -1;
@@ -589,6 +652,53 @@ public class BattleGamemanager : MonoBehaviour
                     player2board[column - 1, row] = 0;
                     player2board[column - 2, row] = 0;
                     player2board[column - 3, row] = 0;
+                    ship.transform.position = new Vector3(player2rowpositions[row], 6.5f, (player2columnpositions[column - 1] + player2columnpositions[column - 2]) / 2);
+                }
+            }
+        }
+        else if(shiplength == 5)
+        {
+            if (rotate == true)
+            {
+                ship.transform.rotation = Quaternion.Euler(-90, 0, 270);
+                if (turn == 0)
+                {
+                    player1board[column, row] = 0;
+                    player1board[column, row - 1] = 0;
+                    player1board[column, row - 2] = 0;
+                    player1board[column, row - 3] = 0;
+                    player1board[column, row - 4] = 0;
+                    ship.transform.position = new Vector3((player1rowpositions[row - 1] + player1rowpositions[row - 2]) / 2, 6.5f, player1columnpositions[column]);
+                }
+                else if (turn == 1)
+                {
+                    player2board[column, row] = 0;
+                    player2board[column, row - 1] = 0;
+                    player2board[column, row - 2] = 0;
+                    player2board[column, row - 3] = 0;
+                    player2board[column, row - 4] = 0;
+                    ship.transform.position = new Vector3((player2rowpositions[row - 1] + player2rowpositions[row - 2]) / 2, 6.5f, player2columnpositions[column]);
+                }
+            }
+            else if (rotate == false)
+            {
+                ship.transform.rotation = Quaternion.Euler(-90, 0, 180);
+                if (turn == 0)
+                {
+                    player1board[column, row] = 0;
+                    player1board[column - 1, row] = 0;
+                    player1board[column - 2, row] = 0;
+                    player1board[column - 3, row] = 0;
+                    player1board[column - 4, row] = 0;
+                    ship.transform.position = new Vector3(player1rowpositions[row], 6.5f, (player1columnpositions[column - 1] + player1columnpositions[column - 2]) / 2);
+                }
+                else if (turn == 1)
+                {
+                    player2board[column, row] = 0;
+                    player2board[column - 1, row] = 0;
+                    player2board[column - 2, row] = 0;
+                    player2board[column - 3, row] = 0;
+                    player2board[column - 4, row] = 0;
                     ship.transform.position = new Vector3(player2rowpositions[row], 6.5f, (player2columnpositions[column - 1] + player2columnpositions[column - 2]) / 2);
                 }
             }
