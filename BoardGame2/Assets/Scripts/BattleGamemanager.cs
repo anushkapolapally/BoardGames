@@ -189,11 +189,14 @@ public class BattleGamemanager : MonoBehaviour
                 int[] coordinates = translateText(typedText);
                 Debug.Log("Row: " + coordinates[0]);
                 Debug.Log("Col: " + coordinates[1]);
-                if (player2board[coordinates[1], coordinates[0]] == 0)
+                if (player2board[coordinates[1], coordinates[0]] != -1)
                 {
                     initalInstructions.text = typedText + " is the spot you have choose to hit. It has a ship";
                     player1pegsRed[coordinates[1] * 10 + coordinates[0]].SetActive(true);
                     player2shipRedPegs[coordinates[1] * 10 + coordinates[0]].SetActive(true);
+
+                    checkShipSunk(coordinates);
+                    player2board[coordinates[1], coordinates[0]] = 0;
                     
                 }
                 else if (player2board[coordinates[1], coordinates[0]] == -1)
@@ -243,7 +246,7 @@ public class BattleGamemanager : MonoBehaviour
                 int[] coordinates = translateText(typedText);
                 Debug.Log("Row: " + coordinates[0]);
                 Debug.Log("Col: " + coordinates[1]);
-                if (player1board[coordinates[1], coordinates[0]] == 0)
+                if (player1board[coordinates[1], coordinates[0]] != -1)
                 {
                     initalInstructions.text = typedText + " is the spot you have choose to hit. It has a ship";
                     player2pegsRed[coordinates[1] * 10 + coordinates[0]].SetActive(true);
@@ -264,6 +267,52 @@ public class BattleGamemanager : MonoBehaviour
         }
     }
 
+    private void checkShipSunk(int[] coordinates)
+    {
+        Debug.Log("Inside checkShipSunk");
+        bool sunk = false;
+        if (turn == 0)
+        {
+            int length = player2board[coordinates[1], coordinates[0]];
+
+            if (length == 2)
+            {
+                {
+                    //Left check
+                    if (coordinates[0] - 1 > -1 && player2board[coordinates[1], coordinates[0] - 1] == 0)
+                    {
+                        Debug.Log("Shot down");
+                    } //Right check
+                    else if (coordinates[0] + 1 < 10 && player2board[coordinates[1], coordinates[0] + 1] == 0)
+                    {
+                        Debug.Log("Shot down");
+                    } // Down check
+                    else if (coordinates[1] - 1 > -1 && player2board[coordinates[1] - 1, coordinates[0]] == 0)
+                    {
+                        Debug.Log("Shot down");
+                    } //Up check
+                    else if (coordinates[1] + 1 < 10 && player2board[coordinates[1] + 1, coordinates[0]] == 0)
+                    {
+                        Debug.Log("Shot down");
+                    }
+                    else
+                    {
+                        Debug.Log("Not shot down");
+                    }
+
+
+                }
+
+
+            }
+
+        }
+
+
+        
+
+        
+    }
     private IEnumerator EndTurnAfterDelay(float seconds, int nextTurn)
     {
         waitingForTurnDelay = true;
@@ -508,16 +557,16 @@ public class BattleGamemanager : MonoBehaviour
                 ship.transform.rotation = Quaternion.Euler(-90, 0, 450);
                 if (turn == 0)
                 {
-                    player1board[column, row] = 0;
-                    player1board[column, row-1] = 0;
+                    player1board[column, row] = 2;
+                    player1board[column, row-1] = 2;
 
 
                     ship.transform.position = new Vector3((player1rowpositions[row] + player1rowpositions[row - 1]) / 2, 6.5f, player1columnpositions[column]);
                 }
                 else if (turn == 1)
                 {
-                    player2board[column, row] = 0;
-                    player2board[column, row - 1] = 0;
+                    player2board[column, row] = 2;
+                    player2board[column, row - 1] = 2;
 
 
                     Debug.Log("Printing player 2 board");
@@ -539,8 +588,8 @@ public class BattleGamemanager : MonoBehaviour
                 //fix the rotation here
                 if (turn == 0)
                 {
-                    player1board[column, row] = 0;
-                    player1board[column - 1, row] = 0;
+                    player1board[column, row] = 2;
+                    player1board[column - 1, row] = 2;
                     /*Debug.Log("Printing player 1 board");
 
                    
@@ -559,8 +608,8 @@ public class BattleGamemanager : MonoBehaviour
                     
 
 
-                    player2board[column, row] = 0;
-                    player2board[column - 1, row] = 0;
+                    player2board[column, row] = 2;
+                    player2board[column - 1, row] = 2;
 
 
                     Debug.Log("Testing if it reaches here");
@@ -575,17 +624,17 @@ public class BattleGamemanager : MonoBehaviour
                 ship.transform.rotation = Quaternion.Euler(-90, 0,270);
                 if (turn == 0)
                 {
-                    player1board[column, row] = 0;
-                    player1board[column, row - 1] = 0;
-                    player1board[column, row - 2] = 0;
+                    player1board[column, row] = 3;
+                    player1board[column, row - 1] = 3;
+                    player1board[column, row - 2] = 3;
 
                     ship.transform.position = new Vector3(player1rowpositions[row - 1], 6.5f, player1columnpositions[column]);
                 }
                 else if (turn == 1)
                 {
-                    player2board[column, row] = 0;
-                    player2board[column, row - 1] = 0;
-                    player2board[column, row - 2] = 0;
+                    player2board[column, row] = 3;
+                    player2board[column, row - 1] = 3;
+                    player2board[column, row - 2] = 3;
 
                     ship.transform.position = new Vector3(player2rowpositions[row - 1], 6.5f, player2columnpositions[column]);
                 }
@@ -596,18 +645,18 @@ public class BattleGamemanager : MonoBehaviour
                 ship.transform.rotation = Quaternion.Euler(-90, 0, 180);
                 if (turn == 0)
                 {
-                    player1board[column, row] = 0;
-                    player1board[column - 1, row] = 0;
-                    player1board[column - 2, row] = 0;
+                    player1board[column, row] = 3;
+                    player1board[column - 1, row] = 3;
+                    player1board[column - 2, row] = 3;
 
                     Debug.Log("entered correct if");
                     ship.transform.position = new Vector3(player1rowpositions[row], 6.5f, player1columnpositions[column - 1]);
                 }
                 else if (turn == 1)
                 {
-                    player2board[column, row] = 0;
-                    player2board[column - 1, row] = 0;
-                    player2board[column - 2, row] = 0;
+                    player2board[column, row] = 3;
+                    player2board[column - 1, row] = 3;
+                    player2board[column - 2, row] = 3;
 
                     ship.transform.position = new Vector3(player2rowpositions[row], 6.5f, player2columnpositions[column - 1]);
                 }
@@ -620,18 +669,18 @@ public class BattleGamemanager : MonoBehaviour
                 ship.transform.rotation = Quaternion.Euler(-90, 0, 270);
                 if (turn == 0)
                 {
-                    player1board[column, row] = 0;
-                    player1board[column, row - 1] = 0;
-                    player1board[column, row - 2] = 0;
-                    player1board[column, row - 3] = 0;
+                    player1board[column, row] = 4;
+                    player1board[column, row - 1] = 4;
+                    player1board[column, row - 2] = 4;
+                    player1board[column, row - 3] = 4;
                     ship.transform.position = new Vector3((player1rowpositions[row - 1] + player1rowpositions[row - 2]) / 2, 6.5f, player1columnpositions[column]);
                 }
                 else if(turn == 1)
                 {
-                    player2board[column, row] = 0;
-                    player2board[column, row - 1] = 0;
-                    player2board[column, row - 2] = 0;
-                    player2board[column, row - 3] = 0;
+                    player2board[column, row] = 4;
+                    player2board[column, row - 1] = 4;
+                    player2board[column, row - 2] = 4;
+                    player2board[column, row - 3] = 4;
                     ship.transform.position = new Vector3((player2rowpositions[row - 1] + player2rowpositions[row - 2]) / 2, 6.5f, player2columnpositions[column]);
                 }
             }
@@ -640,18 +689,18 @@ public class BattleGamemanager : MonoBehaviour
                 ship.transform.rotation = Quaternion.Euler(-90, 0, 180);
                 if (turn == 0)
                 {
-                    player1board[column, row] = 0;
-                    player1board[column - 1, row] = 0;
-                    player1board[column - 2, row] = 0;
-                    player1board[column - 3, row] = 0;
+                    player1board[column, row] = 4;
+                    player1board[column - 1, row] = 4;
+                    player1board[column - 2, row] = 4;
+                    player1board[column - 3, row] = 4;
                     ship.transform.position = new Vector3(player1rowpositions[row], 6.5f, (player1columnpositions[column - 1] + player1columnpositions[column - 2]) / 2);
                 }
                 else if(turn == 1)
                 {
-                    player2board[column, row] = 0;
-                    player2board[column - 1, row] = 0;
-                    player2board[column - 2, row] = 0;
-                    player2board[column - 3, row] = 0;
+                    player2board[column, row] = 4;
+                    player2board[column - 1, row] = 4;
+                    player2board[column - 2, row] = 4;
+                    player2board[column - 3, row] = 4;
                     ship.transform.position = new Vector3(player2rowpositions[row], 6.5f, (player2columnpositions[column - 1] + player2columnpositions[column - 2]) / 2);
                 }
             }
@@ -663,21 +712,21 @@ public class BattleGamemanager : MonoBehaviour
                 ship.transform.rotation = Quaternion.Euler(-90, 0, 270);
                 if (turn == 0)
                 {
-                    player1board[column, row] = 0;
-                    player1board[column, row - 1] = 0;
-                    player1board[column, row - 2] = 0;
-                    player1board[column, row - 3] = 0;
-                    player1board[column, row - 4] = 0;
+                    player1board[column, row] = 5;
+                    player1board[column, row - 1] = 5;
+                    player1board[column, row - 2] = 5;
+                    player1board[column, row - 3] = 5;
+                    player1board[column, row - 4] = 5;
                     ship.transform.position = new Vector3((player1rowpositions[row - 1] + player1rowpositions[row - 2]) / 2, 6.5f, player1columnpositions[column]);
                     
                 }
                 else if (turn == 1)
                 {
-                    player2board[column, row] = 0;
-                    player2board[column, row - 1] = 0;
-                    player2board[column, row - 2] = 0;
-                    player2board[column, row - 3] = 0;
-                    player2board[column, row - 4] = 0;
+                    player2board[column, row] = 5;
+                    player2board[column, row - 1] = 5;
+                    player2board[column, row - 2] = 5;
+                    player2board[column, row - 3] = 5;
+                    player2board[column, row - 4] = 5;
                     ship.transform.position = new Vector3((player2rowpositions[row - 3] + player2rowpositions[row - 2]) / 2, 6.5f, player2columnpositions[column]);
                 }
             }
@@ -686,20 +735,20 @@ public class BattleGamemanager : MonoBehaviour
                 ship.transform.rotation = Quaternion.Euler(-90, 0, 180);
                 if (turn == 0)
                 {
-                    player1board[column, row] = 0;
-                    player1board[column - 1, row] = 0;
-                    player1board[column - 2, row] = 0;
-                    player1board[column - 3, row] = 0;
-                    player1board[column - 4, row] = 0;
+                    player1board[column, row] = 5;
+                    player1board[column - 1, row] = 5;
+                    player1board[column - 2, row] = 5;
+                    player1board[column - 3, row] = 5;
+                    player1board[column - 4, row] = 5;
                     ship.transform.position = new Vector3(player1rowpositions[row], 6.5f, (player1columnpositions[column - 1] + player1columnpositions[column - 2]) / 2);
                 }
                 else if (turn == 1)
                 {
-                    player2board[column, row] = 0;
-                    player2board[column - 1, row] = 0;
-                    player2board[column - 2, row] = 0;
-                    player2board[column - 3, row] = 0;
-                    player2board[column - 4, row] = 0;
+                    player2board[column, row] = 5;
+                    player2board[column - 1, row] = 5;
+                    player2board[column - 2, row] = 5;
+                    player2board[column - 3, row] = 5;
+                    player2board[column - 4, row] = 5;
                     ship.transform.position = new Vector3(player2rowpositions[row], 6.5f, (player2columnpositions[column - 3] + player2columnpositions[column - 2]) / 2);
                 }
             }
