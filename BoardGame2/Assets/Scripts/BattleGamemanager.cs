@@ -669,6 +669,7 @@ public class BattleGamemanager : MonoBehaviour
                     player1board[column, row - 3] = 0;
                     player1board[column, row - 4] = 0;
                     ship.transform.position = new Vector3((player1rowpositions[row - 1] + player1rowpositions[row - 2]) / 2, 6.5f, player1columnpositions[column]);
+                    
                 }
                 else if (turn == 1)
                 {
@@ -677,7 +678,7 @@ public class BattleGamemanager : MonoBehaviour
                     player2board[column, row - 2] = 0;
                     player2board[column, row - 3] = 0;
                     player2board[column, row - 4] = 0;
-                    ship.transform.position = new Vector3((player2rowpositions[row - 1] + player2rowpositions[row - 2]) / 2, 6.5f, player2columnpositions[column]);
+                    ship.transform.position = new Vector3((player2rowpositions[row - 3] + player2rowpositions[row - 2]) / 2, 6.5f, player2columnpositions[column]);
                 }
             }
             else if (rotate == false)
@@ -699,7 +700,7 @@ public class BattleGamemanager : MonoBehaviour
                     player2board[column - 2, row] = 0;
                     player2board[column - 3, row] = 0;
                     player2board[column - 4, row] = 0;
-                    ship.transform.position = new Vector3(player2rowpositions[row], 6.5f, (player2columnpositions[column - 1] + player2columnpositions[column - 2]) / 2);
+                    ship.transform.position = new Vector3(player2rowpositions[row], 6.5f, (player2columnpositions[column - 3] + player2columnpositions[column - 2]) / 2);
                 }
             }
         }
