@@ -249,8 +249,12 @@ public class BattleGamemanager : MonoBehaviour
                 if (player1board[coordinates[1], coordinates[0]] != -1)
                 {
                     initalInstructions.text = typedText + " is the spot you have choose to hit. It has a ship";
+                    
                     player2pegsRed[coordinates[1] * 10 + coordinates[0]].SetActive(true);
                     player1shipRedPegs[coordinates[1] * 10 + coordinates[0]].SetActive(true);
+
+                    checkShipSunk(coordinates);
+                    player1board[coordinates[1], coordinates[0]] = 0;
 
                 }
                 else if (player1board[coordinates[1], coordinates[0]] == -1)
@@ -271,6 +275,7 @@ public class BattleGamemanager : MonoBehaviour
     {
         Debug.Log("Inside checkShipSunk");
         bool sunk = false;
+        int sunkLen = 0;
         if (turn == 0)
         {
             int length = player2board[coordinates[1], coordinates[0]];
@@ -282,18 +287,26 @@ public class BattleGamemanager : MonoBehaviour
                     if (coordinates[0] - 1 > -1 && player2board[coordinates[1], coordinates[0] - 1] == 0)
                     {
                         Debug.Log("Shot down");
+                        sunk = true;
+                        sunkLen = 2;
                     } //Right check
                     else if (coordinates[0] + 1 < 10 && player2board[coordinates[1], coordinates[0] + 1] == 0)
                     {
                         Debug.Log("Shot down");
+                        sunk = true;
+                        sunkLen = 2;
                     } // Down check
                     else if (coordinates[1] - 1 > -1 && player2board[coordinates[1] - 1, coordinates[0]] == 0)
                     {
                         Debug.Log("Shot down");
+                        sunk = true;
+                        sunkLen = 2;
                     } //Up check
                     else if (coordinates[1] + 1 < 10 && player2board[coordinates[1] + 1, coordinates[0]] == 0)
                     {
                         Debug.Log("Shot down");
+                        sunk = true;
+                        sunkLen = 2;
                     }
                     else
                     {
@@ -305,7 +318,413 @@ public class BattleGamemanager : MonoBehaviour
 
 
             }
+            else if (length == 3)
+            {
+                //Left check
+                if (coordinates[0] - 2 > -1 && player2board[coordinates[1], coordinates[0] - 1] == 0 && player2board[coordinates[1], coordinates[0] - 2] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 3;
+                } //Right check
+                else if (coordinates[0] + 2 < 10 && player2board[coordinates[1], coordinates[0] + 1] == 0 && player2board[coordinates[1], coordinates[0] + 2] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 3;
+                }
+                //Middle Horizontal check
+                else if (coordinates[0] - 1 > -1 && coordinates[0] + 1 < 10 && player2board[coordinates[1], coordinates[0] + 1] == 0 && player2board[coordinates[1], coordinates[0] - 1] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 3;
+                }
+                // Down check
+                else if (coordinates[1] - 2 > -1 && player2board[coordinates[1] - 1, coordinates[0]] == 0 && player2board[coordinates[1] - 2, coordinates[0]] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 3;
+                } //Up check
+                else if (coordinates[1] + 2 < 10 && player2board[coordinates[1] + 1, coordinates[0]] == 0 && player2board[coordinates[1] + 2, coordinates[0]] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 3;
+                } // Middle veritcal check
+                else if (coordinates[1] + 1 < 10 && coordinates[1] - 1 > -1 && player2board[coordinates[1] + 1, coordinates[0]] == 0 && player2board[coordinates[1] - 1, coordinates[0]] == 0)
+                {
+                    Debug.Log("Shot Down");
+                    sunk = true;
+                    sunkLen = 3;
+                }
+                else
+                {
+                    Debug.Log("Not shot down");
+                }
+            }
+            else if (length == 4)
+            {
+                //Left check
+                if (coordinates[0] - 3 > -1 && player2board[coordinates[1], coordinates[0] - 1] == 0 && player2board[coordinates[1], coordinates[0] - 2] == 0 && player2board[coordinates[1], coordinates[0] - 3] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 4;
+                }
+                //Middle left check
+                else if (coordinates[0] - 2 > -1 && coordinates[0] + 1 < 10 && player2board[coordinates[1], coordinates[0] + 1] == 0 && player2board[coordinates[1], coordinates[0] - 1] == 0 && player2board[coordinates[1], coordinates[0] - 2] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 4;
+                }
+                //Middle Right check
+                else if (coordinates[0] - 1 > -1 && coordinates[0] + 2 < 10 && player2board[coordinates[1], coordinates[0] + 1] == 0 && player2board[coordinates[1], coordinates[0] - 1] == 0 && player2board[coordinates[1], coordinates[0] + 2] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 4;
+                }
+                //Right check
+                else if (coordinates[0] + 3 < 10 && player2board[coordinates[1], coordinates[0] + 1] == 0 && player2board[coordinates[1], coordinates[0] + 2] == 0 && player2board[coordinates[1], coordinates[0] + 3] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 4;
+                }
+                // Down check
+                else if (coordinates[1] - 3 > -1 && player2board[coordinates[1] - 1, coordinates[0]] == 0 && player2board[coordinates[1] - 2, coordinates[0]] == 0 && player2board[coordinates[1] - 3, coordinates[0]] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 4;
+                }// Up 
+                else if (coordinates[1] + 3 < 10 && player2board[coordinates[1] + 1, coordinates[0]] == 0 && player2board[coordinates[1] + 2, coordinates[0]] == 0 && player2board[coordinates[1] + 3, coordinates[0]] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 4;
+                }
+                // Middle up check
+                else if (coordinates[1] + 2 < 10 && coordinates[1] - 1 > -1 && player2board[coordinates[1] + 1, coordinates[0]] == 0 && player2board[coordinates[1] - 1, coordinates[0]] == 0 && player2board[coordinates[1] + 2, coordinates[0]] == 0)
+                {
+                    Debug.Log("Shot Down");
+                    sunk = true;
+                    sunkLen = 4;
+                }//middle down check
+                else if (coordinates[1] + 1 < 10 && coordinates[1] - 2 > -1 && player2board[coordinates[1] + 1, coordinates[0]] == 0 && player2board[coordinates[1] - 1, coordinates[0]] == 0 && player2board[coordinates[1] - 2, coordinates[0]] == 0)
+                {
+                    Debug.Log("Shot Down");
+                    sunk = true;
+                    sunkLen = 4;
+                }
+                else
+                {
+                    Debug.Log("No shot");
+                }
+            }
+            else if (length == 5)
+            {
+                //Left check
+                if (coordinates[0] - 4 > -1 && player2board[coordinates[1], coordinates[0] - 1] == 0 && player2board[coordinates[1], coordinates[0] - 2] == 0 && player2board[coordinates[1], coordinates[0] - 3] == 0 && player2board[coordinates[1], coordinates[0] - 4] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 5;
+                }
+                //Middle left left check
+                else if (coordinates[0] - 3 > -1 && coordinates[0] + 1 < 10 && player2board[coordinates[1], coordinates[0] + 1] == 0 && player2board[coordinates[1], coordinates[0] - 1] == 0 && player2board[coordinates[1], coordinates[0] - 2] == 0 && player2board[coordinates[1], coordinates[0] - 3] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 5;
+                }
+                //Middle check
+                else if (coordinates[0] - 2 > -1 && coordinates[0] + 2 < 10 && player2board[coordinates[1], coordinates[0] + 1] == 0 && player2board[coordinates[1], coordinates[0] + 2] == 0 && player2board[coordinates[1], coordinates[0] - 1] == 0 && player2board[coordinates[1], coordinates[0] - 2] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 5;
+                }
+                //Middle right check
+                else if (coordinates[0] - 2 > -1 && coordinates[0] + 2 < 10 && player2board[coordinates[1], coordinates[0] + 1] == 0 && player2board[coordinates[1], coordinates[0] + 2] == 0 && player2board[coordinates[1], coordinates[0] - 1] == 0 && player2board[coordinates[1], coordinates[0] - 2] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 5;
+                }                //Right check
+                else if (coordinates[0] + 4 < 10 && player2board[coordinates[1], coordinates[0] + 1] == 0 && player2board[coordinates[1], coordinates[0] + 2] == 0 && player2board[coordinates[1], coordinates[0] + 3] == 0 && player2board[coordinates[1], coordinates[0] + 4] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 5;
+                }
+                // Down check
+                else if (coordinates[1] - 4 > -1 && player2board[coordinates[1] - 1, coordinates[0]] == 0 && player2board[coordinates[1] - 2, coordinates[0]] == 0 && player2board[coordinates[1] - 3, coordinates[0]] == 0 && player2board[coordinates[1] - 4, coordinates[0]] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 5;
+                } // down middle check
+                else if (coordinates[1] + 1 < 10 && coordinates[1] - 3 > -1 && player2board[coordinates[1] + 1, coordinates[0]] == 0 && player2board[coordinates[1] - 1, coordinates[0]] == 0 && player2board[coordinates[1] - 2, coordinates[0]] == 0 && player2board[coordinates[1] - 3, coordinates[0]] == 0)
+                {
+                    Debug.Log("Shot Down");
+                    sunk = true;
+                    sunkLen = 5;
+                } // Middle check
+                else if (coordinates[1] + 2 < 10 && coordinates[1] - 2 > -1 && player2board[coordinates[1] + 1, coordinates[0]] == 0 && player2board[coordinates[1] + 2, coordinates[0]] == 0 && player2board[coordinates[1] - 1, coordinates[0]] == 0 && player2board[coordinates[1] - 2, coordinates[0]] == 0)
+                {
+                    Debug.Log("Shot Down");
+                    sunk = true;
+                    sunkLen = 5;
+                } // up middle check
+                else if (coordinates[1] + 3 < 10 && coordinates[1] - 1 > -1 && player2board[coordinates[1] + 1, coordinates[0]] == 0 && player2board[coordinates[1] - 1, coordinates[0]] == 0 && player2board[coordinates[1] + 2, coordinates[0]] == 0 && player2board[coordinates[1] + 3, coordinates[0]] == 0)
+                {
+                    Debug.Log("Shot Down");
+                    sunk = true;
+                    sunkLen = 5;
+                }
+                else if (coordinates[1] + 4 < 10 && player2board[coordinates[1] + 1, coordinates[0]] == 0 && player2board[coordinates[1] + 2, coordinates[0]] == 0 && player2board[coordinates[1] + 3, coordinates[0]] == 0 && player2board[coordinates[1] + 4, coordinates[0]] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 5;
+                }
+                else
+                {
+                    Debug.Log("No shot");
+                    sunk = false;
+                }
 
+
+            }
+        }
+        else if (turn == 1)
+        {
+            int length = player1board[coordinates[1], coordinates[0]];
+
+            if (length == 2)
+            {
+                {
+                    //Left check
+                    if (coordinates[0] - 1 > -1 && player1board[coordinates[1], coordinates[0] - 1] == 0)
+                    {
+                        Debug.Log("Shot down");
+                        sunk = true;
+                        sunkLen = 2;
+                    } //Right check
+                    else if (coordinates[0] + 1 < 10 && player1board[coordinates[1], coordinates[0] + 1] == 0)
+                    {
+                        Debug.Log("Shot down");
+                        sunk = true;
+                        sunkLen = 2;
+                    } // Down check
+                    else if (coordinates[1] - 1 > -1 && player1board[coordinates[1] - 1, coordinates[0]] == 0)
+                    {
+                        Debug.Log("Shot down");
+                        sunk = true;
+                        sunkLen = 2;
+                    } //Up check
+                    else if (coordinates[1] + 1 < 10 && player1board[coordinates[1] + 1, coordinates[0]] == 0)
+                    {
+                        Debug.Log("Shot down");
+                        sunk = true;
+                        sunkLen = 2;
+                    }
+                    else
+                    {
+                        Debug.Log("Not shot down");
+                    }
+
+
+                }
+
+
+            }
+            else if (length == 3)
+            {
+                //Left check
+                if (coordinates[0] - 2 > -1 && player1board[coordinates[1], coordinates[0] - 1] == 0 && player1board[coordinates[1], coordinates[0] - 2] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 3;
+                } //Right check
+                else if (coordinates[0] + 2 < 10 && player1board[coordinates[1], coordinates[0] + 1] == 0 && player1board[coordinates[1], coordinates[0] + 2] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 3;
+                }
+                //Middle Horizontal check
+                else if (coordinates[0] - 1 > -1 && coordinates[0] + 1 < 10 && player1board[coordinates[1], coordinates[0] + 1] == 0 && player1board[coordinates[1], coordinates[0] - 1] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 3;
+                }
+                // Down check
+                else if (coordinates[1] - 2 > -1 && player1board[coordinates[1] - 1, coordinates[0]] == 0 && player1board[coordinates[1] - 2, coordinates[0]] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 3;
+                } //Up check
+                else if (coordinates[1] + 2 < 10 && player1board[coordinates[1] + 1, coordinates[0]] == 0 && player1board[coordinates[1] + 2, coordinates[0]] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 3;
+                } // Middle veritcal check
+                else if (coordinates[1] + 1 < 10 && coordinates[1] - 1 > -1 && player1board[coordinates[1] + 1, coordinates[0]] == 0 && player1board[coordinates[1] - 1, coordinates[0]] == 0)
+                {
+                    Debug.Log("Shot Down");
+                    sunk = true;
+                    sunkLen = 3;
+                }
+                else
+                {
+                    Debug.Log("Not shot down");
+                }
+            }
+            else if (length == 4)
+            {
+                //Left check
+                if (coordinates[0] - 3 > -1 && player1board[coordinates[1], coordinates[0] - 1] == 0 && player1board[coordinates[1], coordinates[0] - 2] == 0 && player1board[coordinates[1], coordinates[0] - 3] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 4;
+                }
+                //Middle left check
+                else if (coordinates[0] - 2 > -1 && coordinates[0] + 1 < 10 && player1board[coordinates[1], coordinates[0] + 1] == 0 && player1board[coordinates[1], coordinates[0] - 1] == 0 && player1board[coordinates[1], coordinates[0] - 2] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 4;
+                }
+                //Middle Right check
+                else if (coordinates[0] - 1 > -1 && coordinates[0] + 2 < 10 && player1board[coordinates[1], coordinates[0] + 1] == 0 && player1board[coordinates[1], coordinates[0] - 1] == 0 && player1board[coordinates[1], coordinates[0] + 2] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 4;
+                }
+                //Right check
+                else if (coordinates[0] + 3 < 10 && player1board[coordinates[1], coordinates[0] + 1] == 0 && player1board[coordinates[1], coordinates[0] + 2] == 0 && player1board[coordinates[1], coordinates[0] + 3] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 4;
+                }
+                // Down check
+                else if (coordinates[1] - 3 > -1 && player1board[coordinates[1] - 1, coordinates[0]] == 0 && player1board[coordinates[1] - 2, coordinates[0]] == 0 && player1board[coordinates[1] - 3, coordinates[0]] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 4;
+                }// Up 
+                else if (coordinates[1] + 3 < 10 && player1board[coordinates[1] + 1, coordinates[0]] == 0 && player1board[coordinates[1] + 2, coordinates[0]] == 0 && player1board[coordinates[1] + 3, coordinates[0]] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 4;
+                }
+                // Middle up check
+                else if (coordinates[1] + 2 < 10 && coordinates[1] - 1 > -1 && player1board[coordinates[1] + 1, coordinates[0]] == 0 && player1board[coordinates[1] - 1, coordinates[0]] == 0 && player1board[coordinates[1] + 2, coordinates[0]] == 0)
+                {
+                    Debug.Log("Shot Down");
+                    sunk = true;
+                    sunkLen = 4;
+                }//middle down check
+                else if (coordinates[1] + 1 < 10 && coordinates[1] - 2 > -1 && player1board[coordinates[1] + 1, coordinates[0]] == 0 && player1board[coordinates[1] - 1, coordinates[0]] == 0 && player1board[coordinates[1] - 2, coordinates[0]] == 0)
+                {
+                    Debug.Log("Shot Down");
+                    sunk = true;
+                    sunkLen = 4;
+                }
+                else
+                {
+                    Debug.Log("No shot");
+                }
+            }
+            else if (length == 5)
+            {
+                //Left check
+                if (coordinates[0] - 4 > -1 && player1board[coordinates[1], coordinates[0] - 1] == 0 && player1board[coordinates[1], coordinates[0] - 2] == 0 && player1board[coordinates[1], coordinates[0] - 3] == 0 && player1board[coordinates[1], coordinates[0] - 4] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 5;
+                }
+                //Middle left left check
+                else if (coordinates[0] - 3 > -1 && coordinates[0] + 1 < 10 && player1board[coordinates[1], coordinates[0] + 1] == 0 && player1board[coordinates[1], coordinates[0] - 1] == 0 && player1board[coordinates[1], coordinates[0] - 2] == 0 && player1board[coordinates[1], coordinates[0] - 3] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 5;
+                }
+                //Middle check
+                else if (coordinates[0] - 2 > -1 && coordinates[0] + 2 < 10 && player1board[coordinates[1], coordinates[0] + 1] == 0 && player1board[coordinates[1], coordinates[0] + 2] == 0 && player1board[coordinates[1], coordinates[0] - 1] == 0 && player1board[coordinates[1], coordinates[0] - 2] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 5;
+                }
+                //Middle right check
+                else if (coordinates[0] - 2 > -1 && coordinates[0] + 2 < 10 && player1board[coordinates[1], coordinates[0] + 1] == 0 && player1board[coordinates[1], coordinates[0] + 2] == 0 && player1board[coordinates[1], coordinates[0] - 1] == 0 && player1board[coordinates[1], coordinates[0] - 2] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 5;
+                }                //Right check
+                else if (coordinates[0] + 4 < 10 && player1board[coordinates[1], coordinates[0] + 1] == 0 && player1board[coordinates[1], coordinates[0] + 2] == 0 && player1board[coordinates[1], coordinates[0] + 3] == 0 && player1board[coordinates[1], coordinates[0] + 4] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 5;
+                }
+                // Down check
+                else if (coordinates[1] - 4 > -1 && player1board[coordinates[1] - 1, coordinates[0]] == 0 && player1board[coordinates[1] - 2, coordinates[0]] == 0 && player1board[coordinates[1] - 3, coordinates[0]] == 0 && player1board[coordinates[1] - 4, coordinates[0]] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 5;
+                } // down middle check
+                else if (coordinates[1] + 1 < 10 && coordinates[1] - 3 > -1 && player1board[coordinates[1] + 1, coordinates[0]] == 0 && player1board[coordinates[1] - 1, coordinates[0]] == 0 && player1board[coordinates[1] - 2, coordinates[0]] == 0 && player1board[coordinates[1] - 3, coordinates[0]] == 0)
+                {
+                    Debug.Log("Shot Down");
+                    sunk = true;
+                    sunkLen = 5;
+                } // Middle check
+                else if (coordinates[1] + 2 < 10 && coordinates[1] - 2 > -1 && player1board[coordinates[1] + 1, coordinates[0]] == 0 && player1board[coordinates[1] + 2, coordinates[0]] == 0 && player1board[coordinates[1] - 1, coordinates[0]] == 0 && player1board[coordinates[1] - 2, coordinates[0]] == 0)
+                {
+                    Debug.Log("Shot Down");
+                    sunk = true;
+                    sunkLen = 5;
+                } // up middle check
+                else if (coordinates[1] + 3 < 10 && coordinates[1] - 1 > -1 && player1board[coordinates[1] + 1, coordinates[0]] == 0 && player1board[coordinates[1] - 1, coordinates[0]] == 0 && player1board[coordinates[1] + 2, coordinates[0]] == 0 && player1board[coordinates[1] + 3, coordinates[0]] == 0)
+                {
+                    Debug.Log("Shot Down");
+                    sunk = true;
+                    sunkLen = 5;
+                }
+                else if (coordinates[1] + 4 < 10 && player1board[coordinates[1] + 1, coordinates[0]] == 0 && player1board[coordinates[1] + 2, coordinates[0]] == 0 && player1board[coordinates[1] + 3, coordinates[0]] == 0 && player1board[coordinates[1] + 4, coordinates[0]] == 0)
+                {
+                    Debug.Log("Shot down");
+                    sunk = true;
+                    sunkLen = 5;
+                }
+                else
+                {
+                    Debug.Log("No shot");
+                    sunk = false;
+                }
+
+
+            }
         }
 
 
