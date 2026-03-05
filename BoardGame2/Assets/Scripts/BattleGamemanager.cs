@@ -49,6 +49,16 @@ public class BattleGamemanager : MonoBehaviour
 
 
     private bool waitingForTurnDelay = false;
+
+
+    private string player1sunkText = "";
+    public int player1numSunk = 0;
+    [SerializeField] Text player1sunkDisplay;
+
+    private string player2sunkText = "";
+    public int player2numSunk = 0;
+    [SerializeField] Text player2sunkDisplay;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -77,6 +87,9 @@ public class BattleGamemanager : MonoBehaviour
             player2shipPegs[i].SetActive(false);
             player2shipRedPegs[i].SetActive(false);
         }
+
+        player1sunkText = "Sunk player 1 ships: ";
+        player2sunkText = "Sunk player 2 ships: ";
     }
 
 
@@ -95,6 +108,9 @@ public class BattleGamemanager : MonoBehaviour
             initalInstructions.text = "";
             Turn();
         }
+
+        player1sunkDisplay.text = player1sunkText;
+        player2sunkDisplay.text = player2sunkText;
     }
 
 
@@ -287,26 +303,34 @@ public class BattleGamemanager : MonoBehaviour
                     if (coordinates[0] - 1 > -1 && player2board[coordinates[1], coordinates[0] - 1] == 0)
                     {
                         Debug.Log("Shot down");
+                        player1numSunk++;
                         sunk = true;
                         sunkLen = 2;
+                        displayShunkShip(2);
                     } //Right check
                     else if (coordinates[0] + 1 < 10 && player2board[coordinates[1], coordinates[0] + 1] == 0)
                     {
                         Debug.Log("Shot down");
+                        player1numSunk++;
                         sunk = true;
                         sunkLen = 2;
+                        displayShunkShip(2);
                     } // Down check
                     else if (coordinates[1] - 1 > -1 && player2board[coordinates[1] - 1, coordinates[0]] == 0)
                     {
                         Debug.Log("Shot down");
+                        player1numSunk++;
                         sunk = true;
                         sunkLen = 2;
+                        displayShunkShip(2);
                     } //Up check
                     else if (coordinates[1] + 1 < 10 && player2board[coordinates[1] + 1, coordinates[0]] == 0)
                     {
                         Debug.Log("Shot down");
+                        player1numSunk++;
                         sunk = true;
                         sunkLen = 2;
+                        displayShunkShip(2);
                     }
                     else
                     {
@@ -324,40 +348,52 @@ public class BattleGamemanager : MonoBehaviour
                 if (coordinates[0] - 2 > -1 && player2board[coordinates[1], coordinates[0] - 1] == 0 && player2board[coordinates[1], coordinates[0] - 2] == 0)
                 {
                     Debug.Log("Shot down");
+                    player1numSunk++;
                     sunk = true;
                     sunkLen = 3;
+                    displayShunkShip(3);
                 } //Right check
                 else if (coordinates[0] + 2 < 10 && player2board[coordinates[1], coordinates[0] + 1] == 0 && player2board[coordinates[1], coordinates[0] + 2] == 0)
                 {
                     Debug.Log("Shot down");
+                    player1numSunk++;
                     sunk = true;
                     sunkLen = 3;
+                    displayShunkShip(3);
                 }
                 //Middle Horizontal check
                 else if (coordinates[0] - 1 > -1 && coordinates[0] + 1 < 10 && player2board[coordinates[1], coordinates[0] + 1] == 0 && player2board[coordinates[1], coordinates[0] - 1] == 0)
                 {
                     Debug.Log("Shot down");
+                    player1numSunk++;
                     sunk = true;
                     sunkLen = 3;
+                    displayShunkShip(3);
                 }
                 // Down check
                 else if (coordinates[1] - 2 > -1 && player2board[coordinates[1] - 1, coordinates[0]] == 0 && player2board[coordinates[1] - 2, coordinates[0]] == 0)
                 {
                     Debug.Log("Shot down");
+                    player1numSunk++;
                     sunk = true;
                     sunkLen = 3;
+                    displayShunkShip(3);
                 } //Up check
                 else if (coordinates[1] + 2 < 10 && player2board[coordinates[1] + 1, coordinates[0]] == 0 && player2board[coordinates[1] + 2, coordinates[0]] == 0)
                 {
                     Debug.Log("Shot down");
+                    player1numSunk++;
                     sunk = true;
                     sunkLen = 3;
+                    displayShunkShip(3);
                 } // Middle veritcal check
                 else if (coordinates[1] + 1 < 10 && coordinates[1] - 1 > -1 && player2board[coordinates[1] + 1, coordinates[0]] == 0 && player2board[coordinates[1] - 1, coordinates[0]] == 0)
                 {
                     Debug.Log("Shot Down");
+                    player1numSunk++;
                     sunk = true;
                     sunkLen = 3;
+                    displayShunkShip(3);
                 }
                 else
                 {
@@ -370,55 +406,71 @@ public class BattleGamemanager : MonoBehaviour
                 if (coordinates[0] - 3 > -1 && player2board[coordinates[1], coordinates[0] - 1] == 0 && player2board[coordinates[1], coordinates[0] - 2] == 0 && player2board[coordinates[1], coordinates[0] - 3] == 0)
                 {
                     Debug.Log("Shot down");
+                    player1numSunk++;
                     sunk = true;
                     sunkLen = 4;
+                    displayShunkShip(4);
                 }
                 //Middle left check
                 else if (coordinates[0] - 2 > -1 && coordinates[0] + 1 < 10 && player2board[coordinates[1], coordinates[0] + 1] == 0 && player2board[coordinates[1], coordinates[0] - 1] == 0 && player2board[coordinates[1], coordinates[0] - 2] == 0)
                 {
                     Debug.Log("Shot down");
+                    player1numSunk++;
                     sunk = true;
                     sunkLen = 4;
+                    displayShunkShip(4);
                 }
                 //Middle Right check
                 else if (coordinates[0] - 1 > -1 && coordinates[0] + 2 < 10 && player2board[coordinates[1], coordinates[0] + 1] == 0 && player2board[coordinates[1], coordinates[0] - 1] == 0 && player2board[coordinates[1], coordinates[0] + 2] == 0)
                 {
                     Debug.Log("Shot down");
+                    player1numSunk++;
                     sunk = true;
                     sunkLen = 4;
+                    displayShunkShip(4);
                 }
                 //Right check
                 else if (coordinates[0] + 3 < 10 && player2board[coordinates[1], coordinates[0] + 1] == 0 && player2board[coordinates[1], coordinates[0] + 2] == 0 && player2board[coordinates[1], coordinates[0] + 3] == 0)
                 {
                     Debug.Log("Shot down");
+                    player1numSunk++;
                     sunk = true;
                     sunkLen = 4;
+                    displayShunkShip(4);
                 }
                 // Down check
                 else if (coordinates[1] - 3 > -1 && player2board[coordinates[1] - 1, coordinates[0]] == 0 && player2board[coordinates[1] - 2, coordinates[0]] == 0 && player2board[coordinates[1] - 3, coordinates[0]] == 0)
                 {
                     Debug.Log("Shot down");
+                    player1numSunk++;
                     sunk = true;
                     sunkLen = 4;
+                    displayShunkShip(4);
                 }// Up 
                 else if (coordinates[1] + 3 < 10 && player2board[coordinates[1] + 1, coordinates[0]] == 0 && player2board[coordinates[1] + 2, coordinates[0]] == 0 && player2board[coordinates[1] + 3, coordinates[0]] == 0)
                 {
                     Debug.Log("Shot down");
+                    player1numSunk++;
                     sunk = true;
                     sunkLen = 4;
+                    displayShunkShip(4);
                 }
                 // Middle up check
                 else if (coordinates[1] + 2 < 10 && coordinates[1] - 1 > -1 && player2board[coordinates[1] + 1, coordinates[0]] == 0 && player2board[coordinates[1] - 1, coordinates[0]] == 0 && player2board[coordinates[1] + 2, coordinates[0]] == 0)
                 {
                     Debug.Log("Shot Down");
+                    player1numSunk++;
                     sunk = true;
                     sunkLen = 4;
+                    displayShunkShip(4);
                 }//middle down check
                 else if (coordinates[1] + 1 < 10 && coordinates[1] - 2 > -1 && player2board[coordinates[1] + 1, coordinates[0]] == 0 && player2board[coordinates[1] - 1, coordinates[0]] == 0 && player2board[coordinates[1] - 2, coordinates[0]] == 0)
                 {
                     Debug.Log("Shot Down");
+                    player1numSunk++;
                     sunk = true;
                     sunkLen = 4;
+                    displayShunkShip(4);
                 }
                 else
                 {
@@ -431,66 +483,86 @@ public class BattleGamemanager : MonoBehaviour
                 if (coordinates[0] - 4 > -1 && player2board[coordinates[1], coordinates[0] - 1] == 0 && player2board[coordinates[1], coordinates[0] - 2] == 0 && player2board[coordinates[1], coordinates[0] - 3] == 0 && player2board[coordinates[1], coordinates[0] - 4] == 0)
                 {
                     Debug.Log("Shot down");
+                    player1numSunk++;
                     sunk = true;
                     sunkLen = 5;
+                    displayShunkShip(5);
                 }
                 //Middle left left check
                 else if (coordinates[0] - 3 > -1 && coordinates[0] + 1 < 10 && player2board[coordinates[1], coordinates[0] + 1] == 0 && player2board[coordinates[1], coordinates[0] - 1] == 0 && player2board[coordinates[1], coordinates[0] - 2] == 0 && player2board[coordinates[1], coordinates[0] - 3] == 0)
                 {
                     Debug.Log("Shot down");
+                    player1numSunk++;
                     sunk = true;
                     sunkLen = 5;
+                    displayShunkShip(5);
                 }
                 //Middle check
                 else if (coordinates[0] - 2 > -1 && coordinates[0] + 2 < 10 && player2board[coordinates[1], coordinates[0] + 1] == 0 && player2board[coordinates[1], coordinates[0] + 2] == 0 && player2board[coordinates[1], coordinates[0] - 1] == 0 && player2board[coordinates[1], coordinates[0] - 2] == 0)
                 {
                     Debug.Log("Shot down");
+                    player1numSunk++;
                     sunk = true;
                     sunkLen = 5;
+                    displayShunkShip(5);
                 }
                 //Middle right check
                 else if (coordinates[0] - 2 > -1 && coordinates[0] + 2 < 10 && player2board[coordinates[1], coordinates[0] + 1] == 0 && player2board[coordinates[1], coordinates[0] + 2] == 0 && player2board[coordinates[1], coordinates[0] - 1] == 0 && player2board[coordinates[1], coordinates[0] - 2] == 0)
                 {
                     Debug.Log("Shot down");
+                    player1numSunk++;
                     sunk = true;
                     sunkLen = 5;
+                    displayShunkShip(5);
                 }                //Right check
                 else if (coordinates[0] + 4 < 10 && player2board[coordinates[1], coordinates[0] + 1] == 0 && player2board[coordinates[1], coordinates[0] + 2] == 0 && player2board[coordinates[1], coordinates[0] + 3] == 0 && player2board[coordinates[1], coordinates[0] + 4] == 0)
                 {
                     Debug.Log("Shot down");
+                    player1numSunk++;
                     sunk = true;
                     sunkLen = 5;
+                    displayShunkShip(5);
                 }
                 // Down check
                 else if (coordinates[1] - 4 > -1 && player2board[coordinates[1] - 1, coordinates[0]] == 0 && player2board[coordinates[1] - 2, coordinates[0]] == 0 && player2board[coordinates[1] - 3, coordinates[0]] == 0 && player2board[coordinates[1] - 4, coordinates[0]] == 0)
                 {
                     Debug.Log("Shot down");
+                    player1numSunk++;
                     sunk = true;
                     sunkLen = 5;
+                    displayShunkShip(5);
                 } // down middle check
                 else if (coordinates[1] + 1 < 10 && coordinates[1] - 3 > -1 && player2board[coordinates[1] + 1, coordinates[0]] == 0 && player2board[coordinates[1] - 1, coordinates[0]] == 0 && player2board[coordinates[1] - 2, coordinates[0]] == 0 && player2board[coordinates[1] - 3, coordinates[0]] == 0)
                 {
                     Debug.Log("Shot Down");
+                    player1numSunk++;
                     sunk = true;
                     sunkLen = 5;
+                    displayShunkShip(5);
                 } // Middle check
                 else if (coordinates[1] + 2 < 10 && coordinates[1] - 2 > -1 && player2board[coordinates[1] + 1, coordinates[0]] == 0 && player2board[coordinates[1] + 2, coordinates[0]] == 0 && player2board[coordinates[1] - 1, coordinates[0]] == 0 && player2board[coordinates[1] - 2, coordinates[0]] == 0)
                 {
                     Debug.Log("Shot Down");
+                    player1numSunk++;
                     sunk = true;
                     sunkLen = 5;
+                    displayShunkShip(5);
                 } // up middle check
                 else if (coordinates[1] + 3 < 10 && coordinates[1] - 1 > -1 && player2board[coordinates[1] + 1, coordinates[0]] == 0 && player2board[coordinates[1] - 1, coordinates[0]] == 0 && player2board[coordinates[1] + 2, coordinates[0]] == 0 && player2board[coordinates[1] + 3, coordinates[0]] == 0)
                 {
                     Debug.Log("Shot Down");
+                    player1numSunk++;
                     sunk = true;
                     sunkLen = 5;
+                    displayShunkShip(5);
                 }
                 else if (coordinates[1] + 4 < 10 && player2board[coordinates[1] + 1, coordinates[0]] == 0 && player2board[coordinates[1] + 2, coordinates[0]] == 0 && player2board[coordinates[1] + 3, coordinates[0]] == 0 && player2board[coordinates[1] + 4, coordinates[0]] == 0)
                 {
                     Debug.Log("Shot down");
+                    player1numSunk++;
                     sunk = true;
                     sunkLen = 5;
+                    displayShunkShip(5);
                 }
                 else
                 {
@@ -512,26 +584,34 @@ public class BattleGamemanager : MonoBehaviour
                     if (coordinates[0] - 1 > -1 && player1board[coordinates[1], coordinates[0] - 1] == 0)
                     {
                         Debug.Log("Shot down");
+                        player2numSunk++;
                         sunk = true;
                         sunkLen = 2;
+                        displayShunkShip(2);
                     } //Right check
                     else if (coordinates[0] + 1 < 10 && player1board[coordinates[1], coordinates[0] + 1] == 0)
                     {
                         Debug.Log("Shot down");
+                        player2numSunk++;
                         sunk = true;
                         sunkLen = 2;
+                        displayShunkShip(2);
                     } // Down check
                     else if (coordinates[1] - 1 > -1 && player1board[coordinates[1] - 1, coordinates[0]] == 0)
                     {
                         Debug.Log("Shot down");
+                        player2numSunk++;
                         sunk = true;
                         sunkLen = 2;
+                        displayShunkShip(2);
                     } //Up check
                     else if (coordinates[1] + 1 < 10 && player1board[coordinates[1] + 1, coordinates[0]] == 0)
                     {
                         Debug.Log("Shot down");
+                        player2numSunk++;
                         sunk = true;
                         sunkLen = 2;
+                        displayShunkShip(2);
                     }
                     else
                     {
@@ -549,40 +629,52 @@ public class BattleGamemanager : MonoBehaviour
                 if (coordinates[0] - 2 > -1 && player1board[coordinates[1], coordinates[0] - 1] == 0 && player1board[coordinates[1], coordinates[0] - 2] == 0)
                 {
                     Debug.Log("Shot down");
+                    player2numSunk++;
                     sunk = true;
                     sunkLen = 3;
+                    displayShunkShip(3);
                 } //Right check
                 else if (coordinates[0] + 2 < 10 && player1board[coordinates[1], coordinates[0] + 1] == 0 && player1board[coordinates[1], coordinates[0] + 2] == 0)
                 {
                     Debug.Log("Shot down");
+                    player2numSunk++;
                     sunk = true;
                     sunkLen = 3;
+                    displayShunkShip(3);
                 }
                 //Middle Horizontal check
                 else if (coordinates[0] - 1 > -1 && coordinates[0] + 1 < 10 && player1board[coordinates[1], coordinates[0] + 1] == 0 && player1board[coordinates[1], coordinates[0] - 1] == 0)
                 {
                     Debug.Log("Shot down");
+                    player2numSunk++;
                     sunk = true;
                     sunkLen = 3;
+                    displayShunkShip(3);
                 }
                 // Down check
                 else if (coordinates[1] - 2 > -1 && player1board[coordinates[1] - 1, coordinates[0]] == 0 && player1board[coordinates[1] - 2, coordinates[0]] == 0)
                 {
                     Debug.Log("Shot down");
+                    player2numSunk++;
                     sunk = true;
                     sunkLen = 3;
+                    displayShunkShip(3);
                 } //Up check
                 else if (coordinates[1] + 2 < 10 && player1board[coordinates[1] + 1, coordinates[0]] == 0 && player1board[coordinates[1] + 2, coordinates[0]] == 0)
                 {
                     Debug.Log("Shot down");
+                    player2numSunk++;
                     sunk = true;
                     sunkLen = 3;
+                    displayShunkShip(3);
                 } // Middle veritcal check
                 else if (coordinates[1] + 1 < 10 && coordinates[1] - 1 > -1 && player1board[coordinates[1] + 1, coordinates[0]] == 0 && player1board[coordinates[1] - 1, coordinates[0]] == 0)
                 {
                     Debug.Log("Shot Down");
+                    player2numSunk++;
                     sunk = true;
                     sunkLen = 3;
+                    displayShunkShip(3);
                 }
                 else
                 {
@@ -595,55 +687,71 @@ public class BattleGamemanager : MonoBehaviour
                 if (coordinates[0] - 3 > -1 && player1board[coordinates[1], coordinates[0] - 1] == 0 && player1board[coordinates[1], coordinates[0] - 2] == 0 && player1board[coordinates[1], coordinates[0] - 3] == 0)
                 {
                     Debug.Log("Shot down");
+                    player2numSunk++;
                     sunk = true;
                     sunkLen = 4;
+                    displayShunkShip(4);
                 }
                 //Middle left check
                 else if (coordinates[0] - 2 > -1 && coordinates[0] + 1 < 10 && player1board[coordinates[1], coordinates[0] + 1] == 0 && player1board[coordinates[1], coordinates[0] - 1] == 0 && player1board[coordinates[1], coordinates[0] - 2] == 0)
                 {
                     Debug.Log("Shot down");
+                    player2numSunk++;
                     sunk = true;
                     sunkLen = 4;
+                    displayShunkShip(4);
                 }
                 //Middle Right check
                 else if (coordinates[0] - 1 > -1 && coordinates[0] + 2 < 10 && player1board[coordinates[1], coordinates[0] + 1] == 0 && player1board[coordinates[1], coordinates[0] - 1] == 0 && player1board[coordinates[1], coordinates[0] + 2] == 0)
                 {
                     Debug.Log("Shot down");
+                    player2numSunk++;
                     sunk = true;
                     sunkLen = 4;
+                    displayShunkShip(4);
                 }
                 //Right check
                 else if (coordinates[0] + 3 < 10 && player1board[coordinates[1], coordinates[0] + 1] == 0 && player1board[coordinates[1], coordinates[0] + 2] == 0 && player1board[coordinates[1], coordinates[0] + 3] == 0)
                 {
                     Debug.Log("Shot down");
+                    player2numSunk++;
                     sunk = true;
                     sunkLen = 4;
+                    displayShunkShip(4);
                 }
                 // Down check
                 else if (coordinates[1] - 3 > -1 && player1board[coordinates[1] - 1, coordinates[0]] == 0 && player1board[coordinates[1] - 2, coordinates[0]] == 0 && player1board[coordinates[1] - 3, coordinates[0]] == 0)
                 {
                     Debug.Log("Shot down");
+                    player2numSunk++;
                     sunk = true;
                     sunkLen = 4;
+                    displayShunkShip(4);
                 }// Up 
                 else if (coordinates[1] + 3 < 10 && player1board[coordinates[1] + 1, coordinates[0]] == 0 && player1board[coordinates[1] + 2, coordinates[0]] == 0 && player1board[coordinates[1] + 3, coordinates[0]] == 0)
                 {
                     Debug.Log("Shot down");
+                    player2numSunk++;
                     sunk = true;
                     sunkLen = 4;
+                    displayShunkShip(4);
                 }
                 // Middle up check
                 else if (coordinates[1] + 2 < 10 && coordinates[1] - 1 > -1 && player1board[coordinates[1] + 1, coordinates[0]] == 0 && player1board[coordinates[1] - 1, coordinates[0]] == 0 && player1board[coordinates[1] + 2, coordinates[0]] == 0)
                 {
                     Debug.Log("Shot Down");
+                    player2numSunk++;
                     sunk = true;
                     sunkLen = 4;
+                    displayShunkShip(4);
                 }//middle down check
                 else if (coordinates[1] + 1 < 10 && coordinates[1] - 2 > -1 && player1board[coordinates[1] + 1, coordinates[0]] == 0 && player1board[coordinates[1] - 1, coordinates[0]] == 0 && player1board[coordinates[1] - 2, coordinates[0]] == 0)
                 {
                     Debug.Log("Shot Down");
+                    player2numSunk++;
                     sunk = true;
                     sunkLen = 4;
+                    displayShunkShip(4);
                 }
                 else
                 {
@@ -656,66 +764,86 @@ public class BattleGamemanager : MonoBehaviour
                 if (coordinates[0] - 4 > -1 && player1board[coordinates[1], coordinates[0] - 1] == 0 && player1board[coordinates[1], coordinates[0] - 2] == 0 && player1board[coordinates[1], coordinates[0] - 3] == 0 && player1board[coordinates[1], coordinates[0] - 4] == 0)
                 {
                     Debug.Log("Shot down");
+                    player2numSunk++;
                     sunk = true;
                     sunkLen = 5;
+                    displayShunkShip(5);
                 }
                 //Middle left left check
                 else if (coordinates[0] - 3 > -1 && coordinates[0] + 1 < 10 && player1board[coordinates[1], coordinates[0] + 1] == 0 && player1board[coordinates[1], coordinates[0] - 1] == 0 && player1board[coordinates[1], coordinates[0] - 2] == 0 && player1board[coordinates[1], coordinates[0] - 3] == 0)
                 {
                     Debug.Log("Shot down");
+                    player2numSunk++;
                     sunk = true;
                     sunkLen = 5;
+                    displayShunkShip(5);
                 }
                 //Middle check
                 else if (coordinates[0] - 2 > -1 && coordinates[0] + 2 < 10 && player1board[coordinates[1], coordinates[0] + 1] == 0 && player1board[coordinates[1], coordinates[0] + 2] == 0 && player1board[coordinates[1], coordinates[0] - 1] == 0 && player1board[coordinates[1], coordinates[0] - 2] == 0)
                 {
                     Debug.Log("Shot down");
+                    player2numSunk++;
                     sunk = true;
                     sunkLen = 5;
+                    displayShunkShip(5);
                 }
                 //Middle right check
                 else if (coordinates[0] - 2 > -1 && coordinates[0] + 2 < 10 && player1board[coordinates[1], coordinates[0] + 1] == 0 && player1board[coordinates[1], coordinates[0] + 2] == 0 && player1board[coordinates[1], coordinates[0] - 1] == 0 && player1board[coordinates[1], coordinates[0] - 2] == 0)
                 {
                     Debug.Log("Shot down");
+                    player2numSunk++;
                     sunk = true;
                     sunkLen = 5;
+                    displayShunkShip(5);
                 }                //Right check
                 else if (coordinates[0] + 4 < 10 && player1board[coordinates[1], coordinates[0] + 1] == 0 && player1board[coordinates[1], coordinates[0] + 2] == 0 && player1board[coordinates[1], coordinates[0] + 3] == 0 && player1board[coordinates[1], coordinates[0] + 4] == 0)
                 {
                     Debug.Log("Shot down");
+                    player2numSunk++;
                     sunk = true;
                     sunkLen = 5;
+                    displayShunkShip(5);
                 }
                 // Down check
                 else if (coordinates[1] - 4 > -1 && player1board[coordinates[1] - 1, coordinates[0]] == 0 && player1board[coordinates[1] - 2, coordinates[0]] == 0 && player1board[coordinates[1] - 3, coordinates[0]] == 0 && player1board[coordinates[1] - 4, coordinates[0]] == 0)
                 {
                     Debug.Log("Shot down");
+                    player2numSunk++;
                     sunk = true;
                     sunkLen = 5;
+                    displayShunkShip(5);
                 } // down middle check
                 else if (coordinates[1] + 1 < 10 && coordinates[1] - 3 > -1 && player1board[coordinates[1] + 1, coordinates[0]] == 0 && player1board[coordinates[1] - 1, coordinates[0]] == 0 && player1board[coordinates[1] - 2, coordinates[0]] == 0 && player1board[coordinates[1] - 3, coordinates[0]] == 0)
                 {
                     Debug.Log("Shot Down");
+                    player2numSunk++;
                     sunk = true;
                     sunkLen = 5;
+                    displayShunkShip(5);
                 } // Middle check
                 else if (coordinates[1] + 2 < 10 && coordinates[1] - 2 > -1 && player1board[coordinates[1] + 1, coordinates[0]] == 0 && player1board[coordinates[1] + 2, coordinates[0]] == 0 && player1board[coordinates[1] - 1, coordinates[0]] == 0 && player1board[coordinates[1] - 2, coordinates[0]] == 0)
                 {
                     Debug.Log("Shot Down");
+                    player2numSunk++;
                     sunk = true;
                     sunkLen = 5;
+                    displayShunkShip(5);
                 } // up middle check
                 else if (coordinates[1] + 3 < 10 && coordinates[1] - 1 > -1 && player1board[coordinates[1] + 1, coordinates[0]] == 0 && player1board[coordinates[1] - 1, coordinates[0]] == 0 && player1board[coordinates[1] + 2, coordinates[0]] == 0 && player1board[coordinates[1] + 3, coordinates[0]] == 0)
                 {
                     Debug.Log("Shot Down");
+                    player2numSunk++;
                     sunk = true;
                     sunkLen = 5;
+                    displayShunkShip(5);
                 }
                 else if (coordinates[1] + 4 < 10 && player1board[coordinates[1] + 1, coordinates[0]] == 0 && player1board[coordinates[1] + 2, coordinates[0]] == 0 && player1board[coordinates[1] + 3, coordinates[0]] == 0 && player1board[coordinates[1] + 4, coordinates[0]] == 0)
                 {
                     Debug.Log("Shot down");
+                    player2numSunk++;
                     sunk = true;
                     sunkLen = 5;
+                    displayShunkShip(5);
                 }
                 else
                 {
@@ -731,6 +859,105 @@ public class BattleGamemanager : MonoBehaviour
         
 
         
+    }
+
+    private void displayShunkShip(int length)
+    {
+
+            if (turn == 1)
+            {
+                if(length == 2)
+                {
+                if (player1numSunk < 5)
+                {
+                    player1sunkText += "Length 2, ";
+                }
+                else if (player1numSunk == 5)
+                {
+                    player1sunkText += "Length 2";
+                }
+            }
+                if (length == 3)
+                {
+                    if (player1numSunk < 5)
+                    {
+                        player1sunkText += "Submarine, ";
+                    }
+                    else if(player1numSunk == 5)
+                    {
+                        player1sunkText += "Submarine";
+                    }
+                }
+                if (length == 4)
+                {
+                    if (player1numSunk < 5)
+                    {
+                        player1sunkText += "Length 4, ";
+                    }
+                    else if (player1numSunk == 5)
+                    {
+                        player1sunkText += "Length 4";
+                    }
+                }
+                if (length == 5)
+                {
+                    if (player1numSunk < 5)
+                    {
+                        player1sunkText += "Length 5, ";
+                    }
+                    else if (player1numSunk == 5)
+                    {
+                        player1sunkText += "Length 5";
+                    }
+                }
+            }
+        if (turn == 0)
+        {
+            if (length == 2)
+            {
+                if (player2numSunk < 5)
+                {
+                    player2sunkText += "Length 2, ";
+                }
+                else if (player2numSunk == 5)
+                {
+                    player2sunkText += "Length 2";
+                }
+            }
+            if (length == 3)
+            {
+                if (player2numSunk < 5)
+                {
+                    player2sunkText += "Submarine, ";
+                }
+                else if (player2numSunk == 5)
+                {
+                    player2sunkText += "Submarine";
+                }
+            }
+            if (length == 4)
+            {
+                if (player2numSunk < 5)
+                {
+                    player2sunkText += "Length 4, ";
+                }
+                else if (player2numSunk == 5)
+                {
+                    player2sunkText += "Length 4";
+                }
+            }
+            if (length == 5)
+            {
+                if (player2numSunk < 5)
+                {
+                    player2sunkText += "Length 5, ";
+                }
+                else if (player2numSunk == 5)
+                {
+                    player2sunkText += "Length 5";
+                }
+            }
+        }
     }
     private IEnumerator EndTurnAfterDelay(float seconds, int nextTurn)
     {
