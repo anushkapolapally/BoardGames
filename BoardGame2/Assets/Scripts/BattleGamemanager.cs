@@ -6,6 +6,7 @@ using Unity.Multiplayer.Center.Common;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -59,10 +60,14 @@ public class BattleGamemanager : MonoBehaviour
     public int player2numSunk = 0;
     [SerializeField] Text player2sunkDisplay;
 
+    public bool gameWon = false;
+    [SerializeField] Text winText;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         initalInstructions.text = "";
+        winText.text = "";
 
         //Button up = upButton.GetComponent<Button>();
         //up.onClick.AddListener(changeUp());
@@ -111,6 +116,18 @@ public class BattleGamemanager : MonoBehaviour
 
         player1sunkDisplay.text = player1sunkText;
         player2sunkDisplay.text = player2sunkText;
+
+        if (gameWon == false)
+        {
+            endGame();
+        }
+        else if (gameWon == true)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(1);
+            }
+        }
     }
 
 
@@ -223,6 +240,9 @@ public class BattleGamemanager : MonoBehaviour
                 }
 
                 //FIGURE OUT WHY IT ISNT PAUSING PROPERLY
+
+
+                
                 StartCoroutine(EndTurnAfterDelay(5.0f, 1));
                 typedText = "";
             }
@@ -859,6 +879,23 @@ public class BattleGamemanager : MonoBehaviour
         
 
         
+    }
+
+    private void endGame()
+    {
+        if(player1numSunk == 5)
+        {
+            gameWon = true;
+            Debug.Log("Player 1 won");
+            winText.text = "Player 1 Won";
+            
+        }
+        else if(player2numSunk == 5)
+        {
+            gameWon = true;
+            Debug.Log("Player 2 won");
+            winText.text = "Player 2 Won";
+        }
     }
 
     private void displayShunkShip(int length)
