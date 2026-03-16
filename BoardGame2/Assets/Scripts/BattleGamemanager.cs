@@ -63,6 +63,8 @@ public class BattleGamemanager : MonoBehaviour
     public bool gameWon = false;
     [SerializeField] Text winText;
 
+    [SerializeField] Text turnText;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -108,7 +110,7 @@ public class BattleGamemanager : MonoBehaviour
         }
         cameraPosition(turn);
 
-        if(startedGame == true)
+        if(startedGame == true && gameWon==false)
         {
             initalInstructions.text = "";
             Turn();
@@ -127,6 +129,16 @@ public class BattleGamemanager : MonoBehaviour
             {
                 SceneManager.LoadScene(1);
             }
+        }
+
+
+        if(turn == 0)
+        {
+            turnText.text = "Turn: Player 1";
+        }
+        else if(turn == 1)
+        {
+            turnText.text = "Turn: Player 2";
         }
     }
 
@@ -887,14 +899,14 @@ public class BattleGamemanager : MonoBehaviour
         {
             gameWon = true;
             Debug.Log("Player 1 won");
-            winText.text = "Player 1 Won";
+            winText.text = "Player 1 Won. Press R to reset the game.";
             
         }
         else if(player2numSunk == 5)
         {
             gameWon = true;
             Debug.Log("Player 2 won");
-            winText.text = "Player 2 Won";
+            winText.text = "Player 2 Won. Press R to reset the game.";
         }
     }
 
@@ -1452,7 +1464,7 @@ public class BattleGamemanager : MonoBehaviour
         else if(turn == 1)
         {
             Vector3 originalRotation = new Vector3(37, -180, 0);
-            targetCamera.transform.position = new Vector3(3, 22, 25);
+            targetCamera.transform.position = new Vector3(3, 19, 21);
             targetCamera.transform.eulerAngles = originalRotation;
         }
     }
