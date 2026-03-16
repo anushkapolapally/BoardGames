@@ -870,11 +870,11 @@ public class BattleGamemanager : MonoBehaviour
                 {
                 if (player1numSunk < 5)
                 {
-                    player1sunkText += "Length 2, ";
+                    player1sunkText += "Destroyer, ";
                 }
                 else if (player1numSunk == 5)
                 {
-                    player1sunkText += "Length 2";
+                    player1sunkText += "Destroyer ";
                 }
             }
                 if (length == 3)
@@ -892,22 +892,22 @@ public class BattleGamemanager : MonoBehaviour
                 {
                     if (player1numSunk < 5)
                     {
-                        player1sunkText += "Length 4, ";
+                        player1sunkText += "Battleship, ";
                     }
                     else if (player1numSunk == 5)
                     {
-                        player1sunkText += "Length 4";
+                        player1sunkText += "Battleship";
                     }
                 }
                 if (length == 5)
                 {
                     if (player1numSunk < 5)
                     {
-                        player1sunkText += "Length 5, ";
+                        player1sunkText += "Carrier, ";
                     }
                     else if (player1numSunk == 5)
                     {
-                        player1sunkText += "Length 5";
+                        player1sunkText += "Carrier ";
                     }
                 }
             }
@@ -917,11 +917,11 @@ public class BattleGamemanager : MonoBehaviour
             {
                 if (player2numSunk < 5)
                 {
-                    player2sunkText += "Length 2, ";
+                    player2sunkText += "Destroyer, ";
                 }
                 else if (player2numSunk == 5)
                 {
-                    player2sunkText += "Length 2";
+                    player2sunkText += "Destroyer ";
                 }
             }
             if (length == 3)
@@ -932,29 +932,29 @@ public class BattleGamemanager : MonoBehaviour
                 }
                 else if (player2numSunk == 5)
                 {
-                    player2sunkText += "Submarine";
+                    player2sunkText += "Submarine ";
                 }
             }
             if (length == 4)
             {
                 if (player2numSunk < 5)
                 {
-                    player2sunkText += "Length 4, ";
+                    player2sunkText += "Battleship, ";
                 }
                 else if (player2numSunk == 5)
                 {
-                    player2sunkText += "Length 4";
+                    player2sunkText += "Battleship ";
                 }
             }
             if (length == 5)
             {
                 if (player2numSunk < 5)
                 {
-                    player2sunkText += "Length 5, ";
+                    player2sunkText += "Carrier, ";
                 }
                 else if (player2numSunk == 5)
                 {
-                    player2sunkText += "Length 5";
+                    player2sunkText += "Carrier ";
                 }
             }
         }
