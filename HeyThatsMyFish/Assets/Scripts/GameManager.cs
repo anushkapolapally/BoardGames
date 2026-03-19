@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,9 +16,20 @@ public class GameManager : MonoBehaviour
 
     public int players;
     public bool gameStarted;
+    public bool gameSetUp = false;
 
     //rows go from bottom to top
     public int[,] board = new int[8, 8];
+
+
+    public List<GameObject> value1Gameobjects = new List<GameObject>();
+    public List<GameObject> value2Gameobjects = new List<GameObject>();
+    public List<GameObject> value3Gameobjects = new List<GameObject>();
+    public List<GameObject> boardGameObjects = new List<GameObject>();
+
+    System.Random random = new System.Random();
+
+   
 
     /*
      * Notes
@@ -42,18 +54,25 @@ public class GameManager : MonoBehaviour
     {
         if (gameStarted)
         {
-            playerPanel.SetActive(false);
-
-            intializingBoard();
-
-            for (int i = 0; i < board.Length; i++)
+            if (gameSetUp == false)
             {
-                for(int j=0; j < board.GetLength(1); j++)
+                playerPanel.SetActive(false);
+
+                intializingBoard();
+
+                assigningPieceValues();
+                //printing debug for board
+                for (int i = 0; i < board.Length; i++)
                 {
-                    
-                    Debug.Log("i= " + i + ", j= " + j + " is " + board[i, j]);
+                    for (int j = 0; j < board.GetLength(1); j++)
+                    {
+
+                        Debug.Log("i= " + i + ", j= " + j + " is " + board[i, j]);
+                    }
                 }
             }
+
+
         }
     }
     private void intializingBoard()
@@ -83,16 +102,93 @@ public class GameManager : MonoBehaviour
     private void assigningPieceValues()
     {
         
-        //2 value pieces
+        //1 value pieces
         for(int i = 0; i< 30; i++)
         {
             bool placed = false;
-            int randRow;
-            
-        }
-        //3 value pieces
+            while (placed == false)
+            {
+                int randomRow = random.Next(0, 8);
+                int randomCol;
+                if (randomRow % 2 == 0)
+                {
+                    randomCol = random.Next(0, 8);
+                }
+                else
+                {
+                    randomCol = random.Next(1, 8);
+                }
 
-        //4 value pieces
+                if (board[randomRow, randomCol] == 0)
+                {
+                    board[randomRow, randomCol] = 1;
+                    placed = true;
+                    Debug.Log("Value one piece placed");
+                }
+
+            }  
+        }
+        //2 value pieces
+
+        for (int i = 0; i < 20; i++)
+        {
+            bool placed = false;
+            while (placed == false)
+            {
+                int randomRow = random.Next(0, 8);
+                int randomCol;
+                if (randomRow % 2 == 0)
+                {
+                    randomCol = random.Next(0, 8);
+                }
+                else
+                {
+                    randomCol = random.Next(1, 8);
+                }
+
+                if (board[randomRow, randomCol] == 0)
+                {
+                    board[randomRow, randomCol] = 2;
+                    placed = true;
+                    Debug.Log("Value two piece placed");
+                }
+
+            }
+        }
+
+        //3 value pieces
+        for (int i = 0; i < 10; i++)
+        {
+            bool placed = false;
+            while (placed == false)
+            {
+                int randomRow = random.Next(0, 8);
+                int randomCol;
+                if (randomRow % 2 == 0)
+                {
+                    randomCol = random.Next(0, 8);
+                }
+                else
+                {
+                    randomCol = random.Next(1, 8);
+                }
+
+                if (board[randomRow, randomCol] == 0)
+                {
+                    board[randomRow, randomCol] = 3;
+                    placed = true;
+                    Debug.Log("Value two piece placed");
+                }
+
+            }
+        }
+        creatingGameObjectBoard();
+        gameSetUp = true;
+        Debug.Log("Piece Value Setup done");
+    }
+    private void creatingGameObjectBoard()
+    {
+
     }
     private void twoButtonPressed()
     {
