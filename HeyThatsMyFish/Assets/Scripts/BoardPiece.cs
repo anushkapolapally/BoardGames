@@ -16,4 +16,6 @@ public class BoardPiece : MonoBehaviour
     {
         
     }
+
+    
 }

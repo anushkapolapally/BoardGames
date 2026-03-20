@@ -183,11 +183,89 @@ public class GameManager : MonoBehaviour
             }
         }
         creatingGameObjectBoard();
+        placingGamePieces();
         gameSetUp = true;
         Debug.Log("Piece Value Setup done");
     }
     private void creatingGameObjectBoard()
     {
+
+
+        for (int i = 0; i < 8; i++)
+        {
+            for (int j = 0; j < 8; j++) {
+                if (board[i, j] == 1)
+                {
+                    for(int k=0; k < 30; k++)
+                    {
+                        if (value1Gameobjects[k].GetComponent<BoardPiece>().placedOnMainBoard == false)
+                        {
+                            boardGameObjects[i*8+j] = value1Gameobjects[k];
+                            value1Gameobjects[k].GetComponent<BoardPiece>().placedOnMainBoard = true;
+                            break;
+                        }
+                    }
+                }
+                else if (board[i, j] == 2)
+                {
+                    for (int k = 0; k < 20; k++)
+                    {
+                        if (value2Gameobjects[k].GetComponent<BoardPiece>().placedOnMainBoard == false)
+                        {
+                            boardGameObjects[i * 8 + j] = value2Gameobjects[k];
+                            value2Gameobjects[k].GetComponent<BoardPiece>().placedOnMainBoard = true;
+                            break;
+                        }
+                    }
+                }
+                else if (board[i, j] == 3)
+                {
+                    for (int k = 0; k < 10; k++)
+                    {
+                        if (value3Gameobjects[k].GetComponent<BoardPiece>().placedOnMainBoard == false)
+                        {
+                            boardGameObjects[i * 8 + j] = value3Gameobjects[k];
+                            value3Gameobjects[k].GetComponent<BoardPiece>().placedOnMainBoard = true;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    private void placingGamePieces()
+    {
+        Debug.Log("Inside of placing Game Pieces");
+        float firstXpos = -6;
+        float firstYpos = -5;
+        //x distance between pieces on the same row is sqrt(3)
+        // x values shifted -sqrt(3)/2 for odd value rows
+        // y values shifted +3/2 between rows
+
+        for(int i = 0; i< 64; i++)
+        {
+            int row = i / 8;
+            int col = i % 8;
+
+            if (row % 2 == 0)
+            {
+                boardGameObjects[i].transform.position = new Vector3(firstXpos + 2 * col, (float)(firstYpos + 1.72 * row), 0);
+            }
+            else if(row % 2 == 1)
+            {
+                //put exception for empty spaces
+                if(col == 0)
+                {
+                    continue;
+                }
+                else
+                {
+                    boardGameObjects[i].transform.position = new Vector3(firstXpos - 1 + 2 * col, (float)(firstYpos + 1.72 * row), 0);
+                }
+            }
+        }
 
     }
     private void twoButtonPressed()
