@@ -5,6 +5,9 @@ public class BoardPiece : MonoBehaviour
 
     public int value;
     public bool placedOnMainBoard = false;
+
+    public bool pressed = false;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,5 +20,14 @@ public class BoardPiece : MonoBehaviour
         
     }
 
-    
+    private void OnMouseDown()
+    {
+        pressed = true;
+    }
+    private void OnMouseUp()
+    {
+        pressed = false;
+    }
+
+
 }

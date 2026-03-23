@@ -15,10 +15,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] Button Fourplayerbutton;
 
     public int players;
+    public int turn = -1;
     public bool gameStarted;
     public bool gameSetUp = false;
 
     //rows go from bottom to top
+
+    //-1 = empty space, 1 = 1 value pieces, 2= 2 value pieces, 3= 3 value pieces
+    // if a player on that space, +3 to space value. 4 = player on 1 piece value, 5 = player on 2 piece value, 6 = player on 3 piece value
     public int[,] board = new int[8, 8];
 
 
@@ -26,6 +30,8 @@ public class GameManager : MonoBehaviour
     public List<GameObject> value2Gameobjects = new List<GameObject>();
     public List<GameObject> value3Gameobjects = new List<GameObject>();
     public List<GameObject> boardGameObjects = new List<GameObject>();
+
+    public List<GameObject> playerPiecesGameObjects = new List<GameObject>();
 
     System.Random random = new System.Random();
 
@@ -71,8 +77,61 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
+            else if(gameSetUp == true)
+            {
+                Turn();
+
+            }
+        }
+    }
+
+    private void Turn()
+    {
+        //choosing inital positions for pieces
+        if (turn == -1)
+        {
+            Debug.Log("Inside of placing pieces");
+            for (int i = 0; i < players; i++)
+            {
+                bool placedPiece = false;
+                while (placedPiece == false)
+                {
+                    for (int j = 0; j < 64; j++)
+                    {
+                        int row = i / 8;
+                        int col = i % 8;
+
+                        if (row % 2 == 0)
+                        {
+                            if (boardGameObjects[j].GetComponent<BoardPiece>().pressed == true)
+                            {
+                                placedPiece = true;
+                                Debug.Log("placedPiece");
+                            }
+                        }
+                        else if (row % 2 == 1)
+                        {
+                            //put exception for empty spaces
+                            if (col == 0)
+                            {
+                                continue;
+                            }
+                            else
+                            {
+                                if (boardGameObjects[j].GetComponent<BoardPiece>().pressed == true)
+                                {
+                                    placedPiece = true;
+                                    Debug.Log("placedPiece");
+
+                                }
+                            }
+                        }
+                    }
 
 
+                }
+            }
+            //normal turns
         }
     }
     private void intializingBoard()
