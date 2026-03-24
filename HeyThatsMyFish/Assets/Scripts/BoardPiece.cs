@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BoardPiece : MonoBehaviour
@@ -19,14 +20,10 @@ public class BoardPiece : MonoBehaviour
     {
         
     }
-
-    private void OnMouseDown()
+    void OnMouseDown()
     {
         pressed = true;
-    }
-    private void OnMouseUp()
-    {
-        pressed = false;
+        Debug.Log("piece pressed");
     }
 
 

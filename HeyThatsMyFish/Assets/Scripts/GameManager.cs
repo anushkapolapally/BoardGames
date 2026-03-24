@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
     {
         //choosing inital positions for pieces
         if (turn == -1)
-        {
+        {/*
             Debug.Log("Inside of placing pieces");
             for (int i = 0; i < players; i++)
             {
@@ -103,11 +103,7 @@ public class GameManager : MonoBehaviour
 
                         if (row % 2 == 0)
                         {
-                            if (boardGameObjects[j].GetComponent<BoardPiece>().pressed == true)
-                            {
-                                placedPiece = true;
-                                Debug.Log("placedPiece");
-                            }
+
                         }
                         else if (row % 2 == 1)
                         {
@@ -118,12 +114,7 @@ public class GameManager : MonoBehaviour
                             }
                             else
                             {
-                                if (boardGameObjects[j].GetComponent<BoardPiece>().pressed == true)
-                                {
-                                    placedPiece = true;
-                                    Debug.Log("placedPiece");
 
-                                }
                             }
                         }
                     }
@@ -131,7 +122,7 @@ public class GameManager : MonoBehaviour
 
                 }
             }
-            //normal turns
+            //normal turns */
         }
     }
     private void intializingBoard()
@@ -182,6 +173,8 @@ public class GameManager : MonoBehaviour
                 {
                     board[randomRow, randomCol] = 1;
                     placed = true;
+                    //assigning coresponding piece in boardGameObjectBoard
+
                     Debug.Log("Value one piece placed");
                 }
 
