@@ -167,6 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &49565495
 SpriteRenderer:
@@ -368,6 +369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &71673589
 SpriteRenderer:
@@ -569,6 +571,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 3
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &83260297
 SpriteRenderer:
@@ -764,6 +767,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 2
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &127117904
 SpriteRenderer:
@@ -1044,6 +1048,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 2
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &173361144
 SpriteRenderer:
@@ -1335,6 +1340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 3
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!60 &249793276
 PolygonCollider2D:
@@ -1475,6 +1481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &270067544
 SpriteRenderer:
@@ -1676,6 +1683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 2
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &277759598
 SpriteRenderer:
@@ -1998,6 +2006,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 2
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &309080821
 SpriteRenderer:
@@ -2399,6 +2408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 3
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &397076737
 SpriteRenderer:
@@ -2649,6 +2659,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!60 &398187509
 PolygonCollider2D:
@@ -2850,6 +2861,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 2
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!60 &442071963
 PolygonCollider2D:
@@ -3150,6 +3162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 2
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &526615766
 SpriteRenderer:
@@ -3351,6 +3364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 2
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &535161214
 SpriteRenderer:
@@ -3673,6 +3687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 2
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &568007987
 SpriteRenderer:
@@ -3874,6 +3889,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 3
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &583020969
 SpriteRenderer:
@@ -4069,6 +4085,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 2
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &618585642
 SpriteRenderer:
@@ -4354,6 +4371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 2
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &622885321
 SpriteRenderer:
@@ -4555,6 +4573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 2
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &652620976
 SpriteRenderer:
@@ -4756,6 +4775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 3
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &655900610
 SpriteRenderer:
@@ -4951,6 +4971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &670948302
 SpriteRenderer:
@@ -5152,6 +5173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 2
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &674809276
 SpriteRenderer:
@@ -5353,6 +5375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &677965738
 SpriteRenderer:
@@ -5554,6 +5577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 2
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &693369589
 SpriteRenderer:
@@ -5755,6 +5779,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &695474121
 SpriteRenderer:
@@ -5956,6 +5981,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &731943441
 SpriteRenderer:
@@ -6236,6 +6262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &830993621
 SpriteRenderer:
@@ -6437,6 +6464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &859676244
 SpriteRenderer:
@@ -6638,6 +6666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 2
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &915343101
 SpriteRenderer:
@@ -6839,6 +6868,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 2
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &953740750
 SpriteRenderer:
@@ -7040,6 +7070,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &1009991146
 SpriteRenderer:
@@ -7241,6 +7272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &1013433891
 SpriteRenderer:
@@ -7442,6 +7474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &1030265168
 SpriteRenderer:
@@ -7643,6 +7676,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &1085193014
 SpriteRenderer:
@@ -8206,6 +8240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &1231900362
 SpriteRenderer:
@@ -8407,6 +8442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 3
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &1285585992
 SpriteRenderer:
@@ -8602,6 +8638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 3
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &1307755638
 SpriteRenderer:
@@ -8797,6 +8834,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &1394414559
 SpriteRenderer:
@@ -8998,6 +9036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 2
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &1433299236
 SpriteRenderer:
@@ -9199,6 +9238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &1436756301
 SpriteRenderer:
@@ -9400,6 +9440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &1440034954
 SpriteRenderer:
@@ -9601,6 +9642,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 2
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &1444605097
 SpriteRenderer:
@@ -9802,6 +9844,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 2
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &1445196391
 SpriteRenderer:
@@ -10169,6 +10212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &1543143310
 SpriteRenderer:
@@ -10492,6 +10536,7 @@ MonoBehaviour:
   - {fileID: 1764293761}
   - {fileID: 1591677574}
   - {fileID: 1195518851}
+  pieceClicked: 0
 --- !u!4 &1565675161
 Transform:
   m_ObjectHideFlags: 0
@@ -10642,6 +10687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &1605840280
 SpriteRenderer:
@@ -10843,6 +10889,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &1676516744
 SpriteRenderer:
@@ -11044,6 +11091,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &1682506109
 SpriteRenderer:
@@ -11245,6 +11293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &1691185936
 SpriteRenderer:
@@ -11446,6 +11495,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 2
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &1715304429
 SpriteRenderer:
@@ -11647,6 +11697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &1718781193
 SpriteRenderer:
@@ -12006,6 +12057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 3
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &1739667439
 SpriteRenderer:
@@ -12441,6 +12493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &1963869491
 SpriteRenderer:
@@ -12642,6 +12695,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &1983742196
 SpriteRenderer:
@@ -12843,6 +12897,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &1994707040
 SpriteRenderer:
@@ -13044,6 +13099,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &2035134552
 SpriteRenderer:
@@ -13245,6 +13301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 2
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &2036783362
 SpriteRenderer:
@@ -13548,6 +13605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 3
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &2047112225
 SpriteRenderer:
@@ -13743,6 +13801,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 3
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &2067598942
 SpriteRenderer:
@@ -13938,6 +13997,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &2075071488
 SpriteRenderer:
@@ -14139,6 +14199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   placedOnMainBoard: 0
+  gameManager: {fileID: 1565675160}
   pressed: 0
 --- !u!212 &2138944380
 SpriteRenderer:
