@@ -16,4 +16,8 @@ public class Example : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         Debug.Log(name + "No longer being clicked");
     }
+    private void OnMouseDown()
+    {
+        Debug.Log("clicked");
+    }
 }

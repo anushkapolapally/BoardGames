@@ -1,12 +1,14 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class BoardPiece : MonoBehaviour
+public class BoardPiece : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
 
     public int value;
     public bool placedOnMainBoard = false;
 
+    public GameManager gameManager;
     public bool pressed = false;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -20,10 +22,19 @@ public class BoardPiece : MonoBehaviour
     {
         
     }
-    void OnMouseDown()
+    public void OnPointerDown(PointerEventData pointerEventData)
     {
         pressed = true;
-        Debug.Log("piece pressed");
+        gameManager.pieceClicked = true;
+        Debug.Log(name + "Game Object Click in Progress");
+    }
+
+    //Detect if clicks are no longer registering
+    public void OnPointerUp(PointerEventData pointerEventData)
+    {
+        pressed = false;
+        gameManager.pieceClicked = false;
+        Debug.Log(name + "No longer being clicked");
     }
 
 
