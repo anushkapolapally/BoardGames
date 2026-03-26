@@ -37,7 +37,9 @@ public class GameManager : MonoBehaviour
 
     public bool pieceClicked;
 
-    private int placingInitalPiecesTurn = 0;
+    public int placingInitalPiecesTurn = 0;
+
+
 
    
 
@@ -96,66 +98,19 @@ public class GameManager : MonoBehaviour
         {
             if (pieceClicked)
             {
-                Debug.Log("piecePlaced: ");
-                placingInitalPiecesTurn++;
                 Debug.Log("placingInitalPiecesTurn: " + placingInitalPiecesTurn);
+                Debug.Log("piecePlaced");
+                
+                placingInitalPiecesTurn++;
+                
+                //pieceClicked = false;
             }
-
             if(placingInitalPiecesTurn == players)
             {
                 turn = 0;
                 Debug.Log("Change turn: ");
 
             }
-            /*Debug.Log("Inside of placing pieces");
-            for (int i = 0; i < players; i++)
-            {
-                bool placedPiece = false;
-                while (placedPiece == false)
-                {
-                    for (int j = 0; j < 64; j++)
-                    {
-                        int row = j / 8;
-                        int col = j % 8;
-
-                        
-                        if (row % 2 == 0)
-                        {
-                            Debug.Log("j = " + j);
-                            if (boardGameObjects[j].GetComponent<BoardPiece>().pressed == true)
-                            {
-                                //REMOVE AFTER DEBUG
-                                boardGameObjects[j].SetActive(false);
-                                placedPiece = true; break;
-                                
-                            }
-                        }
-                        else if (row % 2 == 1)
-                        {
-                            //put exception for empty spaces
-                            if (col == 0)
-                            {
-                                continue;
-                            }
-                            else
-                            {
-                                if (boardGameObjects[j].GetComponent<BoardPiece>().pressed == true)
-                                {
-                                    //REMOVE AFTER DEBUG
-                                    boardGameObjects[j].SetActive(false);
-                                    placedPiece = true; break;
-                                    
-                                }
-                            }
-                        }
-                    }
-
-
-                }
-            }
-            turn = 0;
-            Debug.Log("Finished wih placing pieces");
-            //normal turns */
         }
     }
     private void intializingBoard()

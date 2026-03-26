@@ -1,8 +1,10 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class BoardPiece : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class BoardPiece : MonoBehaviour
+    //, IPointerDownHandler, IPointerUpHandler
 {
 
     public int value;
@@ -20,12 +22,39 @@ public class BoardPiece : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            pressed = true;
+            gameManager.pieceClicked = true;
+       
+            //StartCoroutine(WaitAndDoSomething());
+
+            //gameObject.SetActive(false);
+            Debug.Log(name + "Game Object Click in Progress");
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            pressed = false;
+            gameManager.pieceClicked = false;
+            Debug.Log(name + "No longer being clicked");
+        }
     }
-    public void OnPointerDown(PointerEventData pointerEventData)
+
+  
+IEnumerator WaitAndDoSomething()
+{
+    Debug.Log("Before wait: " + Time.time);
+
+    yield return new WaitForSeconds(5f); //Test diff times
+
+
+    Debug.Log("After wait: " + Time.time);
+}
+/*    public void OnPointerDown(PointerEventData pointerEventData)
     {
         pressed = true;
         gameManager.pieceClicked = true;
+        gameObject.SetActive(false);
         Debug.Log(name + "Game Object Click in Progress");
     }
 
@@ -36,6 +65,6 @@ public class BoardPiece : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         gameManager.pieceClicked = false;
         Debug.Log(name + "No longer being clicked");
     }
-
+*/
 
 }
