@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
                 
                 placingInitalPiecesTurn++;
                 
-                //pieceClicked = false;
+                pieceClicked = false;
             }
             if(placingInitalPiecesTurn == players)
             {
