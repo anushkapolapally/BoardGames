@@ -8004,7 +8004,7 @@ Transform:
   m_GameObject: {fileID: 1177531321}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.79, y: -2.55, z: -3}
+  m_LocalPosition: {x: 12.54, y: -5.36, z: -3}
   m_LocalScale: {x: 4.6992, y: 5.5563, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10568,6 +10568,8 @@ MonoBehaviour:
   - {fileID: 1591677574}
   - {fileID: 1195518851}
   pieceClicked: 0
+  placingInitalPiecesTurn: 0
+  pressedPiece: {fileID: 0}
 --- !u!4 &1565675161
 Transform:
   m_ObjectHideFlags: 0

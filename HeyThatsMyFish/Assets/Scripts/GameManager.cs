@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
 
     public int placingInitalPiecesTurn = 0;
 
+    public GameObject pressedPiece;
+
 
 
    
@@ -96,16 +98,22 @@ public class GameManager : MonoBehaviour
         //choosing inital positions for pieces
         if (turn == -1)
         {
+            //playerPiecesGameObjects[placingInitalPiecesTurn / 2].transform.position = new Vector3(12, -5, -3);
+            playerPiecesGameObjects[placingInitalPiecesTurn / 2].transform.position = pressedPiece.transform.position;
             if (pieceClicked)
             {
+
                 Debug.Log("placingInitalPiecesTurn: " + placingInitalPiecesTurn);
-                Debug.Log("piecePlaced");
+       
                 
+
                 placingInitalPiecesTurn++;
                 
+
+
                 pieceClicked = false;
             }
-            if(placingInitalPiecesTurn == players)
+            if(placingInitalPiecesTurn == players*2)
             {
                 turn = 0;
                 Debug.Log("Change turn: ");
@@ -113,6 +121,8 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+
     private void intializingBoard()
     {
         for (int i = 0; i < board.GetLength(0); i++)
@@ -162,8 +172,6 @@ public class GameManager : MonoBehaviour
                     board[randomRow, randomCol] = 1;
                     placed = true;
                     //assigning coresponding piece in boardGameObjectBoard
-
-                    Debug.Log("Value one piece placed");
                 }
 
             }  
@@ -190,7 +198,7 @@ public class GameManager : MonoBehaviour
                 {
                     board[randomRow, randomCol] = 2;
                     placed = true;
-                    Debug.Log("Value two piece placed");
+                 
                 }
 
             }
@@ -217,7 +225,6 @@ public class GameManager : MonoBehaviour
                 {
                     board[randomRow, randomCol] = 3;
                     placed = true;
-                    Debug.Log("Value two piece placed");
                 }
 
             }
@@ -225,7 +232,6 @@ public class GameManager : MonoBehaviour
         creatingGameObjectBoard();
         placingGamePieces();
         gameSetUp = true;
-        Debug.Log("Piece Value Setup done");
     }
     private void creatingGameObjectBoard()
     {
@@ -277,7 +283,6 @@ public class GameManager : MonoBehaviour
 
     private void placingGamePieces()
     {
-        Debug.Log("Inside of placing Game Pieces");
         float firstXpos = -6;
         float firstYpos = -5;
         //x distance between pieces on the same row is sqrt(3)
@@ -310,7 +315,6 @@ public class GameManager : MonoBehaviour
     }
     private void twoButtonPressed()
     {
-        Debug.Log("in two pressed");
         players = 2;
         gameStarted = true;
     }

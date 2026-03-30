@@ -16,7 +16,7 @@ public class BoardPiece : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Debug.Log("testing how many times this script is called");
     }
 
     // Update is called once per frame
@@ -24,13 +24,21 @@ public class BoardPiece : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+
+            Debug.Log("Click registered once!");
+
+            gameManager.pressedPiece = gameObject;
             pressed = true;
             gameManager.pieceClicked = true;
-       
+            
+
+
+
+
             //StartCoroutine(WaitAndDoSomething());
 
             //gameObject.SetActive(false);
-            Debug.Log(name + "Game Object Click in Progress");
+       
         }
         else if (Input.GetMouseButtonUp(0))
         {
@@ -40,8 +48,9 @@ public class BoardPiece : MonoBehaviour
         }
     }
 
-  
-IEnumerator WaitAndDoSomething()
+
+
+    IEnumerator WaitAndDoSomething()
 {
     Debug.Log("Before wait: " + Time.time);
 
