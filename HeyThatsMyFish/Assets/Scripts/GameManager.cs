@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public bool gameStarted;
     public bool gameSetUp = false;
 
-    // -1 = invalid / gap
+    // -1 = invalid or gap
     // 1,2,3 = empty playable tile with that fish value
     // 4,5,6 = playable tile with penguin on it
     public int[,] board = new int[8, 8];
@@ -39,10 +39,18 @@ public class GameManager : MonoBehaviour
     public int[] scores = new int[4];
 
     /*
-   Notes
      * Even index row piece (a, b) connects to odd index row piece at same column or plus one (a+1, b), (a+1, b+1) (a-1, b) (a-1, b+1)
      * Odd index row piece (a, b) connects to even index row piece at same column or minus one (a+1, b) (a+1, b-1) (a-1, b) (a-1, b-1)
      */
+
+    public Text instructions;
+
+    public Text turnText;
+
+    public Text player1ScoreText;
+    public Text player2ScoreText;
+    public Text player3ScoreText;
+    public Text player4ScoreText;
 
     void Start()
     {
@@ -67,6 +75,59 @@ public class GameManager : MonoBehaviour
         else
         {
             Turn();
+        }
+
+        if(turn == -1)
+        {
+            instructions.text = "In the order you'd like to play, take turns selecting starting positions for each of your penguins. Remember the color of your penguin!";
+        }
+        else
+        {
+            instructions.text = "Click where you would like to move. You can only move in a straight line, cannot go through penuins, and cannot go through open spaces.";
+        }
+
+        if (turn != -1)
+        {
+            updateScoresText();
+            if (turn % players == 0)
+            {
+                turnText.text = "Turn: Player 1";
+            }
+            else if (turn % players == 1)
+            {
+                turnText.text = "Turn: Player 2";
+            }
+            else if (turn % players == 2)
+            {
+                turnText.text = "Turn: Player 3";
+            }
+            else if (turn % players == 3)
+            {
+                turnText.text = "Turn: Player 4";
+            }
+        }
+    }
+
+    private void updateScoresText()
+    {
+        for (int i = 0; i < players; i++)
+        {
+            if (i == 0)
+            {
+                player1ScoreText.text = "Player 1: " + scores[0];
+            }
+            else if (i == 1)
+            {
+                player2ScoreText.text = "Player 2: " + scores[1];
+            }
+            else if (i == 2)
+            {
+                player3ScoreText.text = "Player 3: " + scores[2];
+            }
+            else if (i == 3)
+            {
+                player4ScoreText.text = "Player 4: " + scores[3];
+            }
         }
     }
 
@@ -115,6 +176,10 @@ public class GameManager : MonoBehaviour
 
             playerPiecesGameObjects[currentPlayer].transform.position =
                 new Vector3(clickedDestinationPiece.transform.position.x, clickedDestinationPiece.transform.position.y, -1f);
+
+            board[from.x, from.y] = -1;
+            boardGameObjects[from.x * 8 + from.y].SetActive(false);
+
 
             playerPositions[currentPlayer] = new Vector2Int(toRow, toCol);
 
