@@ -1,30 +1,24 @@
 using System;
 using System.Collections.Generic;
-using System.Data;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-
 public class GameManager : MonoBehaviour
 {
-
-    [SerializeField] GameObject playerPanel;
-    [SerializeField] Button Twoplayerbutton;
-    [SerializeField] Button Threeplayerbutton;
-    [SerializeField] Button Fourplayerbutton;
+    [SerializeField] private GameObject playerPanel;
+    [SerializeField] private Button Twoplayerbutton;
+    [SerializeField] private Button Threeplayerbutton;
+    [SerializeField] private Button Fourplayerbutton;
 
     public int players;
-    public int turn = -1;
+    public int turn = -1; // -1 = initial placement, 0 = player 1 first move
     public bool gameStarted;
     public bool gameSetUp = false;
 
-    //rows go from bottom to top
-
-    //-1 = empty space, 1 = 1 value pieces, 2= 2 value pieces, 3= 3 value pieces
-    // if a player on that space, +3 to space value. 4 = player on 1 piece value, 5 = player on 2 piece value, 6 = player on 3 piece value
+    // -1 = invalid / gap
+    // 1,2,3 = empty playable tile with that fish value
+    // 4,5,6 = playable tile with penguin on it
     public int[,] board = new int[8, 8];
-
 
     public List<GameObject> value1Gameobjects = new List<GameObject>();
     public List<GameObject> value2Gameobjects = new List<GameObject>();
@@ -33,95 +27,151 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> playerPiecesGameObjects = new List<GameObject>();
 
-    System.Random random = new System.Random();
-
-    public bool pieceClicked;
+    private System.Random random = new System.Random();
 
     public int placingInitalPiecesTurn = 0;
 
-    public GameObject pressedPiece;
+    private bool destinationClicked = false;
+    private GameObject clickedDestinationPiece = null;
 
+    public Vector2Int[] playerPositions = new Vector2Int[4];
 
-
-   
+    public int[] scores = new int[4];
 
     /*
-     * Notes
+   Notes
      * Even index row piece (a, b) connects to odd index row piece at same column or plus one (a+1, b), (a+1, b+1) (a-1, b) (a-1, b+1)
      * Odd index row piece (a, b) connects to even index row piece at same column or minus one (a+1, b) (a+1, b-1) (a-1, b) (a-1, b-1)
      */
+
     void Start()
     {
-        
-        Button button = Twoplayerbutton.GetComponent<Button>();
-        button.onClick.AddListener(twoButtonPressed);
-
-        Button turn = Threeplayerbutton.GetComponent<Button>();
-        turn.onClick.AddListener(threeButtonPressed);
-
-        Button draw = Fourplayerbutton.GetComponent<Button>();
-        draw.onClick.AddListener(fourButtonPressed);
+        Twoplayerbutton.onClick.AddListener(twoButtonPressed);
+        Threeplayerbutton.onClick.AddListener(threeButtonPressed);
+        Fourplayerbutton.onClick.AddListener(fourButtonPressed);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (gameStarted)
+        if (!gameStarted) return;
+
+        if (!gameSetUp)
         {
-            if (gameSetUp == false)
-            {
-                playerPanel.SetActive(false);
+            playerPanel.SetActive(false);
 
-                intializingBoard();
+            intializingBoard();
+            assigningPieceValues();
 
-                assigningPieceValues();
-                //printing debug for board
-                for (int i = 0; i < board.Length; i++)
-                {
-                    for (int j = 0; j < board.GetLength(1); j++)
-                    {
-
-                        Debug.Log("i= " + i + ", j= " + j + " is " + board[i, j]);
-                    }
-                }
-            }
-            else if(gameSetUp == true)
-            {
-                Turn();
-
-            }
+            gameSetUp = true;
+        }
+        else
+        {
+            Turn();
         }
     }
 
     private void Turn()
     {
-        //choosing inital positions for pieces
-        if (turn == -1)
+        if (!destinationClicked || clickedDestinationPiece == null) return;
+
+        int currentPlayer = turn % players;
+
+        int destinationIndex = boardGameObjects.IndexOf(clickedDestinationPiece);
+        if (destinationIndex == -1)
         {
-            //playerPiecesGameObjects[placingInitalPiecesTurn / 2].transform.position = new Vector3(12, -5, -3);
-            playerPiecesGameObjects[placingInitalPiecesTurn / 2].transform.position = pressedPiece.transform.position;
-            if (pieceClicked)
-            {
-
-                Debug.Log("placingInitalPiecesTurn: " + placingInitalPiecesTurn);
-       
-                
-
-                placingInitalPiecesTurn++;
-                
-
-
-                pieceClicked = false;
-            }
-            if(placingInitalPiecesTurn == players*2)
-            {
-                turn = 0;
-                Debug.Log("Change turn: ");
-
-            }
+            destinationClicked = false;
+            clickedDestinationPiece = null;
+            return;
         }
+
+        int toRow = destinationIndex / 8;
+        int toCol = destinationIndex % 8;
+
+        Vector2Int from = playerPositions[currentPlayer];
+
+        if (!IsValidPlayableCell(toRow, toCol) || board[toRow, toCol] > 3)
+        {
+            Debug.Log("Destination is not an empty playable tile.");
+            destinationClicked = false;
+            clickedDestinationPiece = null;
+            return;
+        }
+
+        if (from.x == toRow && from.y == toCol)
+        {
+            Debug.Log("You must move to a different tile.");
+            destinationClicked = false;
+            clickedDestinationPiece = null;
+            return;
+        }
+
+        if (IsStraightLineMove(from.x, from.y, toRow, toCol) && IsPathClear(from.x, from.y, toRow, toCol))
+        {
+            scores[turn % players] += board[from.x, from.y] - 3;
+
+            board[from.x, from.y] -= 3;
+            board[toRow, toCol] += 3;
+
+
+            playerPiecesGameObjects[currentPlayer].transform.position =
+                new Vector3(clickedDestinationPiece.transform.position.x, clickedDestinationPiece.transform.position.y, -1f);
+
+            playerPositions[currentPlayer] = new Vector2Int(toRow, toCol);
+
+            Debug.Log("Player " + (currentPlayer + 1) + " moved successfully.");
+
+            turn++;
+        }
+        else
+        {
+            Debug.Log("Invalid move.");
+        }
+
+        destinationClicked = false;
+        clickedDestinationPiece = null;
     }
 
+
+    public void SelectBoardPiece(GameObject clickedPiece)
+    {
+        int index = boardGameObjects.IndexOf(clickedPiece);
+        if (index == -1) return;
+
+        int row = index / 8;
+        int col = index % 8;
+
+        // Initial penguin placement
+        if (turn == -1)
+        {
+            if (placingInitalPiecesTurn >= players) return;
+            if (!IsValidPlayableCell(row, col)) return;
+            if (board[row, col] > 3) return; // already occupied
+
+            playerPiecesGameObjects[placingInitalPiecesTurn].SetActive(true);
+            playerPiecesGameObjects[placingInitalPiecesTurn].transform.position =
+                new Vector3(clickedPiece.transform.position.x, clickedPiece.transform.position.y, -1f);
+
+            board[row, col] += 3;
+            playerPositions[placingInitalPiecesTurn] = new Vector2Int(row, col);
+
+            placingInitalPiecesTurn++;
+
+            if (placingInitalPiecesTurn >= players)
+            {
+                turn = 0;
+                Debug.Log("All players placed. Player 1 turn starts.");
+            }
+
+            return;
+        }
+
+        // Player 1 first turn: click destination tile
+        if (turn >= 0)
+        {
+            destinationClicked = true;
+            clickedDestinationPiece = clickedPiece;
+        }
+    }
 
     private void intializingBoard()
     {
@@ -129,15 +179,13 @@ public class GameManager : MonoBehaviour
         {
             if (i % 2 == 0)
             {
-                //even row
-                for(int j = 0; j < board.GetLength(1); j++)
+                for (int j = 0; j < board.GetLength(1); j++)
                 {
-                    board[i,j] = 0;
+                    board[i, j] = 0;
                 }
             }
             else
             {
-                //odd row
                 board[i, 0] = -1;
                 for (int j = 1; j < board.GetLength(1); j++)
                 {
@@ -149,183 +197,274 @@ public class GameManager : MonoBehaviour
 
     private void assigningPieceValues()
     {
-        
-        //1 value pieces
-        for(int i = 0; i< 30; i++)
+        // 1-fish tiles
+        for (int i = 0; i < 30; i++)
         {
             bool placed = false;
-            while (placed == false)
+            while (!placed)
             {
                 int randomRow = random.Next(0, 8);
-                int randomCol;
-                if (randomRow % 2 == 0)
-                {
-                    randomCol = random.Next(0, 8);
-                }
-                else
-                {
-                    randomCol = random.Next(1, 8);
-                }
+                int randomCol = (randomRow % 2 == 0) ? random.Next(0, 8) : random.Next(1, 8);
 
                 if (board[randomRow, randomCol] == 0)
                 {
                     board[randomRow, randomCol] = 1;
                     placed = true;
-                    //assigning coresponding piece in boardGameObjectBoard
                 }
-
-            }  
+            }
         }
-        //2 value pieces
 
+        // 2-fish tiles
         for (int i = 0; i < 20; i++)
         {
             bool placed = false;
-            while (placed == false)
+            while (!placed)
             {
                 int randomRow = random.Next(0, 8);
-                int randomCol;
-                if (randomRow % 2 == 0)
-                {
-                    randomCol = random.Next(0, 8);
-                }
-                else
-                {
-                    randomCol = random.Next(1, 8);
-                }
+                int randomCol = (randomRow % 2 == 0) ? random.Next(0, 8) : random.Next(1, 8);
 
                 if (board[randomRow, randomCol] == 0)
                 {
                     board[randomRow, randomCol] = 2;
                     placed = true;
-                 
                 }
-
             }
         }
 
-        //3 value pieces
+        // 3-fish tiles
         for (int i = 0; i < 10; i++)
         {
             bool placed = false;
-            while (placed == false)
+            while (!placed)
             {
                 int randomRow = random.Next(0, 8);
-                int randomCol;
-                if (randomRow % 2 == 0)
-                {
-                    randomCol = random.Next(0, 8);
-                }
-                else
-                {
-                    randomCol = random.Next(1, 8);
-                }
+                int randomCol = (randomRow % 2 == 0) ? random.Next(0, 8) : random.Next(1, 8);
 
                 if (board[randomRow, randomCol] == 0)
                 {
                     board[randomRow, randomCol] = 3;
                     placed = true;
                 }
-
             }
         }
+
         creatingGameObjectBoard();
         placingGamePieces();
-        gameSetUp = true;
     }
+
     private void creatingGameObjectBoard()
     {
-
+        boardGameObjects.Clear();
+        for (int i = 0; i < 64; i++)
+        {
+            boardGameObjects.Add(null);
+        }
 
         for (int i = 0; i < 8; i++)
         {
-            for (int j = 0; j < 8; j++) {
+            for (int j = 0; j < 8; j++)
+            {
                 if (board[i, j] == 1)
                 {
-                    for(int k=0; k < 30; k++)
+                    for (int k = 0; k < value1Gameobjects.Count; k++)
                     {
-                        if (value1Gameobjects[k].GetComponent<BoardPiece>().placedOnMainBoard == false)
+                        BoardPiece bp = value1Gameobjects[k].GetComponent<BoardPiece>();
+                        if (!bp.placedOnMainBoard)
                         {
-                            boardGameObjects[i*8+j] = value1Gameobjects[k];
-                            value1Gameobjects[k].GetComponent<BoardPiece>().placedOnMainBoard = true;
+                            boardGameObjects[i * 8 + j] = value1Gameobjects[k];
+                            bp.placedOnMainBoard = true;
+                            bp.gameManager = this;
                             break;
                         }
                     }
                 }
                 else if (board[i, j] == 2)
                 {
-                    for (int k = 0; k < 20; k++)
+                    for (int k = 0; k < value2Gameobjects.Count; k++)
                     {
-                        if (value2Gameobjects[k].GetComponent<BoardPiece>().placedOnMainBoard == false)
+                        BoardPiece bp = value2Gameobjects[k].GetComponent<BoardPiece>();
+                        if (!bp.placedOnMainBoard)
                         {
                             boardGameObjects[i * 8 + j] = value2Gameobjects[k];
-                            value2Gameobjects[k].GetComponent<BoardPiece>().placedOnMainBoard = true;
+                            bp.placedOnMainBoard = true;
+                            bp.gameManager = this;
                             break;
                         }
                     }
                 }
                 else if (board[i, j] == 3)
                 {
-                    for (int k = 0; k < 10; k++)
+                    for (int k = 0; k < value3Gameobjects.Count; k++)
                     {
-                        if (value3Gameobjects[k].GetComponent<BoardPiece>().placedOnMainBoard == false)
+                        BoardPiece bp = value3Gameobjects[k].GetComponent<BoardPiece>();
+                        if (!bp.placedOnMainBoard)
                         {
                             boardGameObjects[i * 8 + j] = value3Gameobjects[k];
-                            value3Gameobjects[k].GetComponent<BoardPiece>().placedOnMainBoard = true;
+                            bp.placedOnMainBoard = true;
+                            bp.gameManager = this;
                             break;
                         }
                     }
                 }
             }
         }
-
     }
 
     private void placingGamePieces()
     {
-        float firstXpos = -6;
-        float firstYpos = -5;
-        //x distance between pieces on the same row is sqrt(3)
-        // x values shifted -sqrt(3)/2 for odd value rows
-        // y values shifted +3/2 between rows
+        float firstXpos = -6f;
+        float firstYpos = -5f;
 
-        for(int i = 0; i< 64; i++)
+        for (int i = 0; i < 64; i++)
         {
+            if (boardGameObjects[i] == null) continue;
+
             int row = i / 8;
             int col = i % 8;
 
             if (row % 2 == 0)
             {
-                boardGameObjects[i].transform.position = new Vector3(firstXpos + 2 * col, (float)(firstYpos + 1.72 * row), 0);
+                boardGameObjects[i].transform.position = new Vector3(firstXpos + 2f * col, firstYpos + 1.72f * row, 0f);
             }
-            else if(row % 2 == 1)
+            else
             {
-                //put exception for empty spaces
-                if(col == 0)
-                {
-                    continue;
-                }
-                else
-                {
-                    boardGameObjects[i].transform.position = new Vector3(firstXpos - 1 + 2 * col, (float)(firstYpos + 1.72 * row), 0);
-                }
+                if (col == 0) continue;
+
+                boardGameObjects[i].transform.position = new Vector3(firstXpos - 1f + 2f * col, firstYpos + 1.72f * row, 0f);
+            }
+        }
+    }
+
+    private bool IsValidPlayableCell(int row, int col)
+    {
+        if (row < 0 || row >= 8 || col < 0 || col >= 8) return false;
+        if (board[row, col] == -1) return false;
+        return true;
+    }
+
+    private List<Vector2Int> GetNeighbors(int row, int col)
+    {
+        List<Vector2Int> neighbors = new List<Vector2Int>();
+
+        if (row % 2 == 0)
+        {
+            neighbors.Add(new Vector2Int(row, col - 1));
+            neighbors.Add(new Vector2Int(row, col + 1));
+            neighbors.Add(new Vector2Int(row - 1, col));
+            neighbors.Add(new Vector2Int(row - 1, col + 1));
+            neighbors.Add(new Vector2Int(row + 1, col));
+            neighbors.Add(new Vector2Int(row + 1, col + 1));
+        }
+        else
+        {
+            neighbors.Add(new Vector2Int(row, col - 1));
+            neighbors.Add(new Vector2Int(row, col + 1));
+            neighbors.Add(new Vector2Int(row - 1, col - 1));
+            neighbors.Add(new Vector2Int(row - 1, col));
+            neighbors.Add(new Vector2Int(row + 1, col - 1));
+            neighbors.Add(new Vector2Int(row + 1, col));
+        }
+
+        return neighbors;
+    }
+
+    private Vector2Int GetNextInSameDirection(int row, int col, int directionIndex)
+    {
+        if (row % 2 == 0)
+        {
+            switch (directionIndex)
+            {
+                case 0: return new Vector2Int(row, col - 1);     // left
+                case 1: return new Vector2Int(row, col + 1);     // right
+                case 2: return new Vector2Int(row - 1, col);     // up-left
+                case 3: return new Vector2Int(row - 1, col + 1); // up-right
+                case 4: return new Vector2Int(row + 1, col);     // down-left
+                case 5: return new Vector2Int(row + 1, col + 1); // down-right
+            }
+        }
+        else
+        {
+            switch (directionIndex)
+            {
+                case 0: return new Vector2Int(row, col - 1);     // left
+                case 1: return new Vector2Int(row, col + 1);     // right
+                case 2: return new Vector2Int(row - 1, col - 1); // up-left
+                case 3: return new Vector2Int(row - 1, col);     // up-right
+                case 4: return new Vector2Int(row + 1, col - 1); // down-left
+                case 5: return new Vector2Int(row + 1, col);     // down-right
             }
         }
 
+        return new Vector2Int(row, col);
     }
+
+    private bool IsStraightLineMove(int fromRow, int fromCol, int toRow, int toCol)
+    {
+        for (int direction = 0; direction < 6; direction++)
+        {
+            Vector2Int current = GetNextInSameDirection(fromRow, fromCol, direction);
+
+            while (IsValidPlayableCell(current.x, current.y))
+            {
+                if (current.x == toRow && current.y == toCol)
+                {
+                    return true;
+                }
+
+                current = GetNextInSameDirection(current.x, current.y, direction);
+            }
+        }
+
+        return false;
+    }
+
+    private bool IsPathClear(int fromRow, int fromCol, int toRow, int toCol)
+    {
+        for (int direction = 0; direction < 6; direction++)
+        {
+            Vector2Int current = GetNextInSameDirection(fromRow, fromCol, direction);
+
+            while (IsValidPlayableCell(current.x, current.y))
+            {
+                if (current.x == toRow && current.y == toCol)
+                {
+                    return board[current.x, current.y] <= 3;
+                }
+
+                // Cannot pass through another penguin
+                if (board[current.x, current.y] > 3)
+                {
+                    break;
+                }
+
+                current = GetNextInSameDirection(current.x, current.y, direction);
+            }
+        }
+
+        return false;
+    }
+
     private void twoButtonPressed()
     {
         players = 2;
         gameStarted = true;
+        turn = -1;
+        placingInitalPiecesTurn = 0;
     }
+
     private void threeButtonPressed()
     {
         players = 3;
         gameStarted = true;
+        turn = -1;
+        placingInitalPiecesTurn = 0;
     }
+
     private void fourButtonPressed()
     {
         players = 4;
         gameStarted = true;
+        turn = -1;
+        placingInitalPiecesTurn = 0;
     }
 }

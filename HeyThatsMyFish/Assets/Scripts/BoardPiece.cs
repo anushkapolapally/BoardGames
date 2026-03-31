@@ -22,7 +22,7 @@ public class BoardPiece : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+       /* if (Input.GetMouseButtonDown(0))
         {
 
             Debug.Log("Click registered once!");
@@ -31,7 +31,7 @@ public class BoardPiece : MonoBehaviour
             pressed = true;
             gameManager.pieceClicked = true;
             
-
+        
 
 
 
@@ -45,7 +45,7 @@ public class BoardPiece : MonoBehaviour
             pressed = false;
             gameManager.pieceClicked = false;
             Debug.Log(name + "No longer being clicked");
-        }
+        } */
     }
 
 
@@ -59,21 +59,32 @@ public class BoardPiece : MonoBehaviour
 
     Debug.Log("After wait: " + Time.time);
 }
-/*    public void OnPointerDown(PointerEventData pointerEventData)
-    {
-        pressed = true;
-        gameManager.pieceClicked = true;
-        gameObject.SetActive(false);
-        Debug.Log(name + "Game Object Click in Progress");
-    }
+    /*    public void OnPointerDown(PointerEventData pointerEventData)
+        {
+            pressed = true;
+            gameManager.pieceClicked = true;
+            gameObject.SetActive(false);
+            Debug.Log(name + "Game Object Click in Progress");
+        }
 
-    //Detect if clicks are no longer registering
-    public void OnPointerUp(PointerEventData pointerEventData)
+        //Detect if clicks are no longer registering
+        public void OnPointerUp(PointerEventData pointerEventData)
+        {
+            pressed = false;
+            gameManager.pieceClicked = false;
+            Debug.Log(name + "No longer being clicked");
+        }
+    */
+
+    private void OnMouseDown()
     {
-        pressed = false;
-        gameManager.pieceClicked = false;
-        Debug.Log(name + "No longer being clicked");
+        if (gameManager == null) return;
+
+        // gameManager.pressedPiece = gameObject;
+        //gameManager.pieceClicked = true;
+
+        gameManager.SelectBoardPiece(gameObject);
+        Debug.Log(name + " clicked");
     }
-*/
 
 }
