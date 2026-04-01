@@ -10,6 +10,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button Threeplayerbutton;
     [SerializeField] private Button Fourplayerbutton;
 
+    [SerializeField] private Button OnePenguinsbutton;
+    [SerializeField] private Button TwoPenguinsbutton;
+    [SerializeField] private Button ThreePenguinsbutton;
+    [SerializeField] private Button FourPenguinsbutton;
+
+    public int numPenguins;
     public int players;
     public int turn = -1; // -1 = initial placement, 0 = player 1 first move
     public bool gameStarted;
@@ -57,6 +63,11 @@ public class GameManager : MonoBehaviour
         Twoplayerbutton.onClick.AddListener(twoButtonPressed);
         Threeplayerbutton.onClick.AddListener(threeButtonPressed);
         Fourplayerbutton.onClick.AddListener(fourButtonPressed);
+
+        OnePenguinsbutton.onClick.AddListener(onePenguinButtonPressed);
+        TwoPenguinsbutton.onClick.AddListener(twoPenguinButtonPressed);
+        ThreePenguinsbutton.onClick.AddListener(threePenguinButtonPressed);
+        FourPenguinsbutton.onClick.AddListener(fourPenguinButtonPressed);
     }
 
     void Update()
@@ -137,6 +148,7 @@ public class GameManager : MonoBehaviour
 
         int currentPlayer = turn % players;
 
+        
         int destinationIndex = boardGameObjects.IndexOf(clickedDestinationPiece);
         if (destinationIndex == -1)
         {
@@ -149,9 +161,18 @@ public class GameManager : MonoBehaviour
         int toCol = destinationIndex % 8;
 
         Vector2Int from = playerPositions[currentPlayer];
-
+        
         if (!IsValidPlayableCell(toRow, toCol) || board[toRow, toCol] > 3)
         {
+            if (from.x == toRow && from.y == toCol && IsStuck(from.x, from.y))
+            {
+                Debug.Log("Your stuck");
+
+                //TAKE PENGUIN OUT OF THE GAME AND NOT THE BOARDpIECE
+                boardGameObjects[from.x * 8 + from.y].SetActive(false);
+                board[from.x, from.y] = -1;
+                turn++;
+            }
             Debug.Log("Destination is not an empty playable tile.");
             destinationClicked = false;
             clickedDestinationPiece = null;
@@ -160,9 +181,19 @@ public class GameManager : MonoBehaviour
 
         if (from.x == toRow && from.y == toCol)
         {
+
+            if (IsStuck(from.x, from.y))
+            {
+                Debug.Log("Your stuck");
+                boardGameObjects[from.x * 8 + from.y].SetActive(false);
+                board[from.x, from.y] = -1;
+                turn++;
+            }
             Debug.Log("You must move to a different tile.");
             destinationClicked = false;
             clickedDestinationPiece = null;
+
+            
             return;
         }
 
@@ -509,10 +540,19 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
+    private bool IsStuck(int fromRow, int fromCol)
+    {
+        if(IsPathClear(fromRow, fromCol, fromRow + 1, fromCol) == false && IsPathClear(fromRow, fromCol, fromRow + 1, fromCol+1) == false && IsPathClear(fromRow, fromCol, fromRow - 1, fromCol) == false && IsPathClear(fromRow, fromCol, fromRow - 1, fromCol-1) == false)
+        {
+            return true;
+        }
+
+        return false;
+    }
     private void twoButtonPressed()
     {
         players = 2;
-        gameStarted = true;
+        //gameStarted = true;
         turn = -1;
         placingInitalPiecesTurn = 0;
     }
@@ -520,7 +560,7 @@ public class GameManager : MonoBehaviour
     private void threeButtonPressed()
     {
         players = 3;
-        gameStarted = true;
+        //gameStarted = true;
         turn = -1;
         placingInitalPiecesTurn = 0;
     }
@@ -528,8 +568,34 @@ public class GameManager : MonoBehaviour
     private void fourButtonPressed()
     {
         players = 4;
-        gameStarted = true;
+        //gameStarted = true;
         turn = -1;
         placingInitalPiecesTurn = 0;
+    }
+
+    private void onePenguinButtonPressed()
+    {
+        gameStarted = true;
+        numPenguins = 1;
+    }
+    private void twoPenguinButtonPressed()
+    {
+        numPenguins = 2;
+        gameStarted = true;
+
+    }
+
+    private void threePenguinButtonPressed()
+    {
+        numPenguins = 3;
+        gameStarted = true;
+
+    }
+
+    private void fourPenguinButtonPressed()
+    {
+        numPenguins = 4;
+        gameStarted = true;
+
     }
 }
