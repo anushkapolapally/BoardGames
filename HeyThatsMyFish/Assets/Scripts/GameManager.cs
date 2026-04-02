@@ -169,6 +169,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Your stuck");
 
                 //TAKE PENGUIN OUT OF THE GAME AND NOT THE BOARDpIECE
+                playerPiecesGameObjects[turn % numPenguins].SetActive(false);
                 boardGameObjects[from.x * 8 + from.y].SetActive(false);
                 board[from.x, from.y] = -1;
                 turn++;
@@ -271,6 +272,7 @@ public class GameManager : MonoBehaviour
 
     private void intializingBoard()
     {
+        playerPiecesGameObjects.Capacity = players * numPenguins;
         for (int i = 0; i < board.GetLength(0); i++)
         {
             if (i % 2 == 0)
@@ -287,6 +289,15 @@ public class GameManager : MonoBehaviour
                 {
                     board[i, j] = 0;
                 }
+            }
+        }
+        if (numPenguins > 1)
+        {
+            Debug.Log("Inside of loop");
+            for (int i = 0; i < players*numPenguins - 4; i++)
+            {
+                
+                playerPiecesGameObjects[i+4] = Instantiate(playerPiecesGameObjects[(i+4) %4]);
             }
         }
     }

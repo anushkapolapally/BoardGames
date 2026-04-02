@@ -8384,6 +8384,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1195518852}
   - component: {fileID: 1195518853}
+  - component: {fileID: 1195518854}
   m_Layer: 0
   m_Name: BluePenguin
   m_TagString: Untagged
@@ -8461,6 +8462,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1195518854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195518851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3393b09e625ef2240a546ed647d54791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instance: 0
 --- !u!1 &1198166718
 GameObject:
   m_ObjectHideFlags: 0
@@ -8471,6 +8485,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1198166719}
   - component: {fileID: 1198166720}
+  - component: {fileID: 1198166721}
   m_Layer: 0
   m_Name: RedPenguin
   m_TagString: Untagged
@@ -8548,6 +8563,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1198166721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198166718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3393b09e625ef2240a546ed647d54791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instance: 0
 --- !u!1 &1225245842
 GameObject:
   m_ObjectHideFlags: 0
@@ -11651,6 +11679,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1591677575}
   - component: {fileID: 1591677576}
+  - component: {fileID: 1591677577}
   m_Layer: 0
   m_Name: GreenPenguin
   m_TagString: Untagged
@@ -11728,6 +11757,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1591677577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591677574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3393b09e625ef2240a546ed647d54791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instance: 0
 --- !u!1 &1605840277
 GameObject:
   m_ObjectHideFlags: 0
@@ -13513,6 +13555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1764293762}
   - component: {fileID: 1764293763}
+  - component: {fileID: 1764293764}
   m_Layer: 0
   m_Name: YellowPenguin
   m_TagString: Untagged
@@ -13590,6 +13633,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1764293764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764293761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3393b09e625ef2240a546ed647d54791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instance: 0
 --- !u!1 &1890114092
 GameObject:
   m_ObjectHideFlags: 0
