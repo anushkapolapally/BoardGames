@@ -31,16 +31,21 @@ public class GameManager : MonoBehaviour
     public List<GameObject> value3Gameobjects = new List<GameObject>();
     public List<GameObject> boardGameObjects = new List<GameObject>();
 
+
+    public List<GameObject> basePlayerGameObjects = new List<GameObject>();
     public List<GameObject> playerPiecesGameObjects = new List<GameObject>();
 
     private System.Random random = new System.Random();
 
     public int placingInitalPiecesTurn = 0;
 
-    private bool destinationClicked = false;
+
+    public bool intendedPieceClicked = false;
+    private GameObject intendedPiece = null;
+    public bool destinationClicked = false;
     private GameObject clickedDestinationPiece = null;
 
-    public Vector2Int[] playerPositions = new Vector2Int[4];
+    public Vector2Int[] playerPositions = new Vector2Int[16];
 
     public int[] scores = new int[4];
 
@@ -177,6 +182,9 @@ public class GameManager : MonoBehaviour
             Debug.Log("Destination is not an empty playable tile.");
             destinationClicked = false;
             clickedDestinationPiece = null;
+            intendedPieceClicked = false;
+            intendedPiece = null;
+
             return;
         }
 
@@ -240,11 +248,11 @@ public class GameManager : MonoBehaviour
         // Initial penguin placement
         if (turn == -1)
         {
-            if (placingInitalPiecesTurn >= players) return;
+            if (placingInitalPiecesTurn >= players * numPenguins) return;
             if (!IsValidPlayableCell(row, col)) return;
             if (board[row, col] > 3) return; // already occupied
 
-            playerPiecesGameObjects[placingInitalPiecesTurn].SetActive(true);
+            playerPiecesGameObjects[placingInitalPiecesTurn ].SetActive(true);
             playerPiecesGameObjects[placingInitalPiecesTurn].transform.position =
                 new Vector3(clickedPiece.transform.position.x, clickedPiece.transform.position.y, -1f);
 
@@ -252,8 +260,9 @@ public class GameManager : MonoBehaviour
             playerPositions[placingInitalPiecesTurn] = new Vector2Int(row, col);
 
             placingInitalPiecesTurn++;
+            Debug.Log("placingInitalPiecesTurn: " + placingInitalPiecesTurn);
 
-            if (placingInitalPiecesTurn >= players)
+            if (placingInitalPiecesTurn >= players * numPenguins)
             {
                 turn = 0;
                 Debug.Log("All players placed. Player 1 turn starts.");
@@ -265,14 +274,22 @@ public class GameManager : MonoBehaviour
         // Player 1 first turn: click destination tile
         if (turn >= 0)
         {
-            destinationClicked = true;
-            clickedDestinationPiece = clickedPiece;
+            if(intendedPieceClicked == false && destinationClicked == false)
+            {
+                intendedPieceClicked = true;
+                intendedPiece = clickedPiece;
+            }
+            else if(intendedPieceClicked == true && destinationClicked == false)
+            {
+                destinationClicked = true;
+                clickedDestinationPiece = clickedPiece;
+            }
         }
     }
 
     private void intializingBoard()
     {
-        playerPiecesGameObjects.Capacity = players * numPenguins;
+        
         for (int i = 0; i < board.GetLength(0); i++)
         {
             if (i % 2 == 0)
@@ -293,12 +310,21 @@ public class GameManager : MonoBehaviour
         }
         if (numPenguins > 1)
         {
-            Debug.Log("Inside of loop");
+            /*Debug.Log("Inside of loop");
             for (int i = 0; i < players*numPenguins - 4; i++)
             {
                 
                 playerPiecesGameObjects[i+4] = Instantiate(playerPiecesGameObjects[(i+4) %4]);
+            } */
+             
+            for(int i = 0; i<players * numPenguins; i++)
+            {
+
+                playerPiecesGameObjects.Add(Instantiate(basePlayerGameObjects[i % players]));
+                
             }
+           
+
         }
     }
 

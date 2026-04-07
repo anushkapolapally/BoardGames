@@ -11636,13 +11636,26 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  playerPiecesGameObjects:
+  basePlayerGameObjects:
   - {fileID: 1198166718}
   - {fileID: 1764293761}
   - {fileID: 1591677574}
   - {fileID: 1195518851}
+  playerPiecesGameObjects: []
   placingInitalPiecesTurn: 0
   playerPositions:
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
   - {x: 0, y: 0}
   - {x: 0, y: 0}
   - {x: 0, y: 0}
