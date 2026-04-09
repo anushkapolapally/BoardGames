@@ -82,9 +82,12 @@ public class BoardPiece : MonoBehaviour
 
         // gameManager.pressedPiece = gameObject;
         //gameManager.pieceClicked = true;
-
-        gameManager.SelectBoardPiece(gameObject);
-        Debug.Log(name + " clicked");
+        if (gameManager.turn == -1 || (gameManager.turn >= 0 && gameManager.intendedPieceClicked == true))
+        {
+            Debug.Log("Inside of BoardPiece clicked");
+            gameManager.SelectBoardPiece(gameObject);
+            Debug.Log(name + " clicked");
+        }
     }
 
 }

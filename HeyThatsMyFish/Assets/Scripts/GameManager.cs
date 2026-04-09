@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,6 +46,8 @@ public class GameManager : MonoBehaviour
     public bool destinationClicked = false;
     private GameObject clickedDestinationPiece = null;
 
+    private bool stuckPenguin = false;
+
     public Vector2Int[] playerPositions = new Vector2Int[16];
 
     public int[] scores = new int[4];
@@ -53,7 +56,7 @@ public class GameManager : MonoBehaviour
      * Even index row piece (a, b) connects to odd index row piece at same column or plus one (a+1, b), (a+1, b+1) (a-1, b) (a-1, b+1)
      * Odd index row piece (a, b) connects to even index row piece at same column or minus one (a+1, b) (a+1, b-1) (a-1, b) (a-1, b-1)
      */
-
+    public bool endGame = false;
     public Text instructions;
 
     public Text turnText;
@@ -63,6 +66,7 @@ public class GameManager : MonoBehaviour
     public Text player3ScoreText;
     public Text player4ScoreText;
 
+    public Text endText;
     void Start()
     {
         Twoplayerbutton.onClick.AddListener(twoButtonPressed);
@@ -147,14 +151,76 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private bool checkingIfAllPiecesAreStuck()
+    {
+
+        for (int i = 0; i < playerPiecesGameObjects.Count; i++)
+        {
+            if (i % players == turn)
+            {
+                if (IsStuck(playerPositions[i].x, playerPositions[i].y) == false)
+                {
+                    return false;
+                }
+            }
+
+        }
+        return true;
+    }
+        
+    private bool checkingToSkipTurn()
+    {
+        
+        for (int i = 0; i < players*numPenguins; i++)
+        {
+            if (i % players == turn % players)
+            {
+                if (playerPiecesGameObjects[i].activeSelf == true)
+                {
+                    return false;
+                }
+            }
+
+        }
+        return true;
+    }
+
+    private void triggerEnd()
+    {
+        for (int i = 0; i < players * numPenguins; i++)
+        {
+            
+                if (playerPiecesGameObjects[i].activeSelf == true)
+                {
+                endGame = false;
+                }
+        }
+        endGame = true;
+        //endGameMethod();
+    }
     private void Turn()
     {
+        if (turn >= 0)
+        {
+            if (checkingToSkipTurn())
+            {
+                Debug.Log("Switching turn triggered");
+                turn++;
+            }
+
+            triggerEnd();
+        }
+
         if (!destinationClicked || clickedDestinationPiece == null) return;
 
-        int currentPlayer = turn % players;
+
+        int currentPlayer = playerPiecesGameObjects.IndexOf(intendedPiece);
+
 
         
-        int destinationIndex = boardGameObjects.IndexOf(clickedDestinationPiece);
+
+
+            int destinationIndex = boardGameObjects.IndexOf(clickedDestinationPiece);
         if (destinationIndex == -1)
         {
             destinationClicked = false;
@@ -166,6 +232,11 @@ public class GameManager : MonoBehaviour
         int toCol = destinationIndex % 8;
 
         Vector2Int from = playerPositions[currentPlayer];
+
+        /*if (stuckPenguin)
+        {
+            intendedPiece.SetActive(false);
+        }*/
         
         if (!IsValidPlayableCell(toRow, toCol) || board[toRow, toCol] > 3)
         {
@@ -174,16 +245,19 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Your stuck");
 
                 //TAKE PENGUIN OUT OF THE GAME AND NOT THE BOARDpIECE
+                intendedPiece.SetActive(false);
                 playerPiecesGameObjects[turn % numPenguins].SetActive(false);
                 boardGameObjects[from.x * 8 + from.y].SetActive(false);
                 board[from.x, from.y] = -1;
+
+                destinationClicked = false;
+                clickedDestinationPiece = null;
+                intendedPieceClicked = false;
+                intendedPiece = null;
                 turn++;
             }
             Debug.Log("Destination is not an empty playable tile.");
-            destinationClicked = false;
-            clickedDestinationPiece = null;
-            intendedPieceClicked = false;
-            intendedPiece = null;
+            
 
             return;
         }
@@ -225,6 +299,10 @@ public class GameManager : MonoBehaviour
 
             Debug.Log("Player " + (currentPlayer + 1) + " moved successfully.");
 
+            destinationClicked = false;
+            clickedDestinationPiece = null;
+            intendedPieceClicked = false;
+            intendedPiece = null;
             turn++;
         }
         else
@@ -270,19 +348,67 @@ public class GameManager : MonoBehaviour
 
             return;
         }
-
-        // Player 1 first turn: click destination tile
-        if (turn >= 0)
+        else if (turn >= 0)
         {
-            if(intendedPieceClicked == false && destinationClicked == false)
+            if(intendedPieceClicked == true && destinationClicked == false)
             {
-                intendedPieceClicked = true;
-                intendedPiece = clickedPiece;
-            }
-            else if(intendedPieceClicked == true && destinationClicked == false)
-            {
+                Debug.Log("changing destinationPieceClicked");
                 destinationClicked = true;
                 clickedDestinationPiece = clickedPiece;
+            }
+        }
+    }
+
+    private void endGameMethod()
+    {
+        int maxScore = scores.Max();
+
+        endText.text = "The winners are: ";
+
+        for (int i = 0; i < players; i++) {
+            if (scores[i] == maxScore)
+            {
+                if (i == 0)
+                {
+                    endText.text += " Player 1 ";
+                }
+                if (i == 1)
+                {
+                    endText.text += " Player 2 ";
+                }
+                if (i == 2)
+                {
+                    endText.text += " Player 3 ";
+                }
+                if (i == 3)
+                {
+                    endText.text += " Player 4 ";
+                }
+            }
+        }
+
+        
+        
+    }
+    public void SelectPengiun(GameObject penguinPiece)
+    {
+        int penguinIndex = playerPiecesGameObjects.IndexOf(penguinPiece);
+        Debug.Log("Penguinindex: " + penguinIndex);
+
+        Debug.Log("Inside select penguin");
+        //check if its the right turn, and a penguin hasnt been selected yet
+
+        if (penguinIndex % players == turn % players && intendedPieceClicked == false && destinationClicked == false)
+        {
+            Debug.Log("Inside of changing intendedPieceClicked");
+            intendedPieceClicked = true;
+            intendedPiece = penguinPiece;
+
+            if (IsStuck(playerPositions[penguinIndex].x, playerPositions[penguinIndex].y))
+            {
+                Debug.Log("Clicked is stuck");
+                stuckPenguin = true;
+
             }
         }
     }
@@ -635,4 +761,7 @@ public class GameManager : MonoBehaviour
         gameStarted = true;
 
     }
+
+
 }
+

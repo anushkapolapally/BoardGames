@@ -8385,6 +8385,7 @@ GameObject:
   - component: {fileID: 1195518852}
   - component: {fileID: 1195518853}
   - component: {fileID: 1195518854}
+  - component: {fileID: 1195518855}
   m_Layer: 0
   m_Name: BluePenguin
   m_TagString: Untagged
@@ -8474,7 +8475,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3393b09e625ef2240a546ed647d54791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: 0
+  gameManager: {fileID: 1565675160}
+  gameObject: {fileID: 1195518851}
+--- !u!61 &1195518855
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195518851}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.37, y: 3.76}
+    newSize: {x: 3.37, y: 3.76}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 3.37, y: 3.76}
+  m_EdgeRadius: 0
 --- !u!1 &1198166718
 GameObject:
   m_ObjectHideFlags: 0
@@ -8486,6 +8534,7 @@ GameObject:
   - component: {fileID: 1198166719}
   - component: {fileID: 1198166720}
   - component: {fileID: 1198166721}
+  - component: {fileID: 1198166722}
   m_Layer: 0
   m_Name: RedPenguin
   m_TagString: Untagged
@@ -8575,7 +8624,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3393b09e625ef2240a546ed647d54791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: 0
+  gameManager: {fileID: 1565675160}
+  gameObject: {fileID: 1198166718}
+--- !u!61 &1198166722
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198166718}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.98, y: 3.76}
+    newSize: {x: 2.98, y: 3.76}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 2.98, y: 3.76}
+  m_EdgeRadius: 0
 --- !u!1 &1225245842
 GameObject:
   m_ObjectHideFlags: 0
@@ -9132,6 +9228,85 @@ PolygonCollider2D:
       - {x: 1.18, y: -1.9749999}
       - {x: 1.3199999, y: -1.735}
   m_UseDelaunayMesh: 0
+--- !u!1 &1289963001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1289963002}
+  - component: {fileID: 1289963004}
+  - component: {fileID: 1289963003}
+  m_Layer: 5
+  m_Name: WinText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1289963002
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289963001}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2040880529}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 77, y: -13.059}
+  m_SizeDelta: {x: 1247.1311, y: 409.54}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1289963003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289963001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.031772893, g: 0.9622642, b: 0.1313369, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 45
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 4
+    m_MaxSize: 45
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &1289963004
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289963001}
+  m_CullTransparentMesh: 1
 --- !u!1 &1307755635
 GameObject:
   m_ObjectHideFlags: 0
@@ -11643,6 +11818,8 @@ MonoBehaviour:
   - {fileID: 1195518851}
   playerPiecesGameObjects: []
   placingInitalPiecesTurn: 0
+  intendedPieceClicked: 0
+  destinationClicked: 0
   playerPositions:
   - {x: 0, y: 0}
   - {x: 0, y: 0}
@@ -11661,12 +11838,14 @@ MonoBehaviour:
   - {x: 0, y: 0}
   - {x: 0, y: 0}
   scores: 00000000000000000000000000000000
+  endGame: 0
   instructions: {fileID: 130601723}
   turnText: {fileID: 1405652101}
   player1ScoreText: {fileID: 1225245844}
   player2ScoreText: {fileID: 1702611936}
   player3ScoreText: {fileID: 1739623423}
   player4ScoreText: {fileID: 1234421176}
+  endText: {fileID: 1289963003}
 --- !u!4 &1565675161
 Transform:
   m_ObjectHideFlags: 0
@@ -11693,6 +11872,7 @@ GameObject:
   - component: {fileID: 1591677575}
   - component: {fileID: 1591677576}
   - component: {fileID: 1591677577}
+  - component: {fileID: 1591677578}
   m_Layer: 0
   m_Name: GreenPenguin
   m_TagString: Untagged
@@ -11782,7 +11962,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3393b09e625ef2240a546ed647d54791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: 0
+  gameManager: {fileID: 1565675160}
+  gameObject: {fileID: 1591677574}
+--- !u!61 &1591677578
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591677574}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.97, y: 3.76}
+    newSize: {x: 2.97, y: 3.76}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 2.97, y: 3.76}
+  m_EdgeRadius: 0
 --- !u!1 &1605840277
 GameObject:
   m_ObjectHideFlags: 0
@@ -13569,6 +13796,7 @@ GameObject:
   - component: {fileID: 1764293762}
   - component: {fileID: 1764293763}
   - component: {fileID: 1764293764}
+  - component: {fileID: 1764293765}
   m_Layer: 0
   m_Name: YellowPenguin
   m_TagString: Untagged
@@ -13658,7 +13886,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3393b09e625ef2240a546ed647d54791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: 0
+  gameManager: {fileID: 1565675160}
+  gameObject: {fileID: 1764293761}
+--- !u!61 &1764293765
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764293761}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.96, y: 3.76}
+    newSize: {x: 2.96, y: 3.76}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 2.96, y: 3.76}
+  m_EdgeRadius: 0
 --- !u!1 &1890114092
 GameObject:
   m_ObjectHideFlags: 0
@@ -14809,6 +15084,7 @@ RectTransform:
   - {fileID: 1702611935}
   - {fileID: 1739623422}
   - {fileID: 1234421175}
+  - {fileID: 1289963002}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
