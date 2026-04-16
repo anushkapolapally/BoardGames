@@ -336,8 +336,8 @@ Transform:
   m_GameObject: {fileID: 298258973}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 687, y: 189, z: 0}
-  m_LocalScale: {x: 2542.6123, y: 1013.7273, z: 1}
+  m_LocalPosition: {x: 687, y: 300.4395, z: 0}
+  m_LocalScale: {x: 2542.6123, y: 1236.646, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -478,51 +478,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318056182}
   m_CullTransparentMesh: 1
---- !u!1 &421083006
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 421083008}
-  - component: {fileID: 421083007}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &421083007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 421083006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 666526c30ba6a68428deadb474da53e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numOfPlayers: 0
---- !u!4 &421083008
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 421083006}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -305.4559, y: -484.17932, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,7 +746,7 @@ MonoBehaviour:
   player2Button: {fileID: 1898018116}
   player3Button: {fileID: 1396693972}
   player4Button: {fileID: 1922933139}
-  gameManager: {fileID: 421083006}
+  gameManager: {fileID: 0}
   numPlayers: -1
 --- !u!1 &1246060373
 GameObject:
@@ -1565,4 +1520,3 @@ SceneRoots:
   - {fileID: 1625096225}
   - {fileID: 1246060376}
   - {fileID: 298258975}
-  - {fileID: 421083008}
