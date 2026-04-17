@@ -9,7 +9,7 @@ public class ChoosingPlayersScript : MonoBehaviour
     [SerializeField] Button player3Button;
     [SerializeField] Button player4Button;
 
-    [SerializeField] GameObject gameManager;
+   // [SerializeField] GameObject gameManager;
 
     public int numPlayers = -1;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -33,7 +33,7 @@ public class ChoosingPlayersScript : MonoBehaviour
     {
 
         numPlayers = 2;
-        gameManager.GetComponent<GameManager>().numOfPlayers = numPlayers;
+       // gameManager.GetComponent<GameManager>().numOfPlayers = numPlayers;
 
 
         SceneManager.LoadScene("GamePlay");
@@ -41,15 +41,20 @@ public class ChoosingPlayersScript : MonoBehaviour
     void button3Pressed()
     {
         numPlayers = 3;
-        gameManager.GetComponent<GameManager>().numOfPlayers = numPlayers;
+        //gameManager.GetComponent<GameManager>().numOfPlayers = numPlayers;
 
         SceneManager.LoadScene("GamePlay");
     }
     void button4Pressed()
     {
         numPlayers = 4;
-        gameManager.GetComponent<GameManager>().numOfPlayers = numPlayers;
+        //gameManager.GetComponent<GameManager>().numOfPlayers = numPlayers;
 
         SceneManager.LoadScene("GamePlay");
+    }
+
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
     }
 }

@@ -746,8 +746,69 @@ MonoBehaviour:
   player2Button: {fileID: 1898018116}
   player3Button: {fileID: 1396693972}
   player4Button: {fileID: 1922933139}
-  gameManager: {fileID: 0}
   numPlayers: -1
+--- !u!1 &1148699142
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1148699144}
+  - component: {fileID: 1148699143}
+  m_Layer: 0
+  m_Name: GameManager1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1148699143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148699142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 666526c30ba6a68428deadb474da53e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numOfPlayers: 0
+  greenCards: []
+  yellowCards: []
+  blueCards: []
+  nobleTiles: []
+  goldCoinText: {fileID: 0}
+  brownCoinText: {fileID: 0}
+  redCoinText: {fileID: 0}
+  greenCoinText: {fileID: 0}
+  blueCoinText: {fileID: 0}
+  diamondCoinText: {fileID: 0}
+  goldCoinNum: 5
+  brownCoinNum: 7
+  redCoinNum: 7
+  greenCoinNum: 7
+  blueCoinNum: 7
+  diamondCoinNum: 7
+  allCards: []
+--- !u!4 &1148699144
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148699142}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 955.4366, y: 588.5631, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1246060373
 GameObject:
   m_ObjectHideFlags: 0
@@ -1132,6 +1193,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650469610}
   m_CullTransparentMesh: 1
+--- !u!1 &1808155422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1808155423}
+  m_Layer: 0
+  m_Name: PlayerNum
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1808155423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808155422}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 955.4366, y: 588.5631, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1898018114
 GameObject:
   m_ObjectHideFlags: 0
@@ -1520,3 +1612,5 @@ SceneRoots:
   - {fileID: 1625096225}
   - {fileID: 1246060376}
   - {fileID: 298258975}
+  - {fileID: 1148699144}
+  - {fileID: 1808155423}
