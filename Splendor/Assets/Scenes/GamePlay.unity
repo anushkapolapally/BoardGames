@@ -5196,7 +5196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666526c30ba6a68428deadb474da53e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfPlayers: 0
+  numOfPlayers: 2
   greenCards:
   - {fileID: 1477964805}
   - {fileID: 1997393166}
@@ -5306,12 +5306,12 @@ MonoBehaviour:
   greenCoinText: {fileID: 2131433968}
   blueCoinText: {fileID: 1685663196}
   diamondCoinText: {fileID: 1595989341}
-  goldCoinNum: 0
-  brownCoinNum: 0
-  redCoinNum: 0
-  greenCoinNum: 0
-  blueCoinNum: 0
-  diamondCoinNum: 0
+  goldCoinNum: -1
+  brownCoinNum: -1
+  redCoinNum: -1
+  greenCoinNum: -1
+  blueCoinNum: -1
+  diamondCoinNum: -1
   allCards:
   - {fileID: 1477964805}
   - {fileID: 1997393166}

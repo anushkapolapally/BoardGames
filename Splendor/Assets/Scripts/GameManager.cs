@@ -19,12 +19,12 @@ public class GameManager : MonoBehaviour
     public Text blueCoinText;
     public Text diamondCoinText;
 
-    public int goldCoinNum = 5;
-    public int brownCoinNum = 7;
-    public int redCoinNum = 7;
-    public int greenCoinNum = 7;
-    public int blueCoinNum = 7;
-    public int diamondCoinNum = 7;
+    public int goldCoinNum;
+    public int brownCoinNum;
+    public int redCoinNum;
+    public int greenCoinNum;
+    public int blueCoinNum;
+    public int diamondCoinNum;
 
 
 
@@ -34,8 +34,15 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+
+        goldCoinNum = 5;
+        brownCoinNum = 7;
+        redCoinNum = 7;
+        greenCoinNum = 7;
+        blueCoinNum = 7;
+        diamondCoinNum = 7;
         //initalizing coins
-        if(numOfPlayers == 2)
+        if (numOfPlayers == 2)
         {
             brownCoinNum = 4;
             redCoinNum = 4;
