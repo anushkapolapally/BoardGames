@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Button player3Button;
     [SerializeField] Button player4Button;
 
+    public List<GameObject> playerIcons= new List<GameObject>();
+
 
     void Start()
     {
@@ -60,6 +62,9 @@ public class GameManager : MonoBehaviour
             greenCoinNum = 4;
             blueCoinNum = 4;
             diamondCoinNum = 4;
+
+            playerIcons[2].SetActive(false);
+            playerIcons[3].SetActive(false);
         }
         else if(numOfPlayers == 3) 
         {
@@ -68,6 +73,8 @@ public class GameManager : MonoBehaviour
             greenCoinNum = 5;
             blueCoinNum = 5;
             diamondCoinNum = 5;
+
+            playerIcons[3].SetActive(false);
         }
 
 
@@ -75,6 +82,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if(numOfPlayers == 2) {
+            playerIcons[2].SetActive(false);
+            playerIcons[3].SetActive(false);
+        }
+        if (numOfPlayers == 3){playerIcons[3].SetActive(false);}
         //coin text
         goldCoinText.text = goldCoinNum.ToString();
         brownCoinText.text = brownCoinNum.ToString();
