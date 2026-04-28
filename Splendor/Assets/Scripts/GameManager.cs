@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -46,6 +47,12 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> playerIcons= new List<GameObject>();
 
+    public List<GameObject> playerPrefabs = new List<GameObject>();
+
+
+    //item for each player = [YellowCoins, YellowBonuses, BrownCoins, BrownBonuses, RedCoins, RedBonuses, GreenCoins, GreenBonuses, BlueCoins, BlueBonuses, DiamondCoins, DiamondBonuses,  Points]
+    public List<int[]> playerCoinsData = new List<int[]>();
+
 
     void Start()
     {
@@ -54,6 +61,10 @@ public class GameManager : MonoBehaviour
         player4Button.onClick.AddListener(button4Pressed);
 
         settingInitialBoard();
+        int[] startItem = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+
+       
+
         //initalizing coins
         if (numOfPlayers == 2)
         {
@@ -65,6 +76,10 @@ public class GameManager : MonoBehaviour
 
             playerIcons[2].SetActive(false);
             playerIcons[3].SetActive(false);
+
+
+            playerCoinsData.Add(startItem);
+            playerCoinsData.Add(startItem);
         }
         else if(numOfPlayers == 3) 
         {
@@ -75,6 +90,18 @@ public class GameManager : MonoBehaviour
             diamondCoinNum = 5;
 
             playerIcons[3].SetActive(false);
+
+            playerCoinsData.Add(startItem);
+            playerCoinsData.Add(startItem);
+            playerCoinsData.Add(startItem);
+
+        }
+        else
+        {
+            playerCoinsData.Add(startItem);
+            playerCoinsData.Add(startItem);
+            playerCoinsData.Add(startItem);
+            playerCoinsData.Add(startItem);
         }
 
 
@@ -82,7 +109,9 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(numOfPlayers == 2) {
+        refreshingPrefabs();
+
+        if (numOfPlayers == 2) {
             playerIcons[2].SetActive(false);
             playerIcons[3].SetActive(false);
         }
@@ -96,12 +125,31 @@ public class GameManager : MonoBehaviour
         diamondCoinText.text = diamondCoinNum.ToString();
 
 
-
-
-
-
     }
+    private void refreshingPrefabs()
+    {
+        if (numOfPlayers == 2)
+        {
+            playerPrefabs[0].transform.Find("Canvas/YellowCoins").GetComponent<TextMeshProUGUI>().text = "T";
+            playerPrefabs[0].transform.Find("Canvas/YellowBonus").GetComponent<TextMeshProUGUI>().text = "T";
+            playerPrefabs[0].transform.Find("Canvas/BrownCoins").GetComponent<TextMeshProUGUI>().text = "T";
+            playerPrefabs[0].transform.Find("Canvas/BrownBonus").GetComponent<TextMeshProUGUI>().text = "T";
+            playerPrefabs[0].transform.Find("Canvas/RedCoins").GetComponent<TextMeshProUGUI>().text = "T";
+            playerPrefabs[0].transform.Find("Canvas/RedBonus").GetComponent<TextMeshProUGUI>().text = "T";
+            playerPrefabs[0].transform.Find("Canvas/GreenCoins").GetComponent<TextMeshProUGUI>().text = "T";
+            playerPrefabs[0].transform.Find("Canvas/GreenBonus").GetComponent<TextMeshProUGUI>().text = "T";
+            playerPrefabs[0].transform.Find("Canvas/BlueCoins").GetComponent<TextMeshProUGUI>().text = "T";
+            playerPrefabs[0].transform.Find("Canvas/BlueBonus").GetComponent<TextMeshProUGUI>().text = "T";
+            playerPrefabs[0].transform.Find("Canvas/DiamondCoins").GetComponent<TextMeshProUGUI>().text = "T";
+            playerPrefabs[0].transform.Find("Canvas/DiamondBonus").GetComponent<TextMeshProUGUI>().text = "T";
 
+
+            playerPrefabs[0].transform.Find("Canvas/TotalCoins").GetComponent<TextMeshProUGUI>().text = "T";
+            playerPrefabs[0].transform.Find("Canvas/TotalPoints").GetComponent<TextMeshProUGUI>().text = "T";
+
+
+        }
+    }
     private void settingInitialBoard()
     {
         //green cards
