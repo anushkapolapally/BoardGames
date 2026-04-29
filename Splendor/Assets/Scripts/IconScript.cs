@@ -8,6 +8,7 @@ public class IconScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public int correspondingPlayer;
 
 
+  
     public void OnPointerEnter(PointerEventData eventData)
     {
         int numOfPlayer = gameManager.GetComponent<GameManager>().numOfPlayers;
@@ -26,6 +27,7 @@ public class IconScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     }
 
+    
     public void OnPointerExit(PointerEventData eventData)
     {
         Debug.Log("HOVER END");
@@ -43,4 +45,6 @@ public class IconScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         
         // undo hover effect here
     }
+
+    
 }

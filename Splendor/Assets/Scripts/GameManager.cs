@@ -61,6 +61,10 @@ public class GameManager : MonoBehaviour
     public bool p4IconHover = false;
 
 
+    // yellow, brown, red, green, blue, diamond
+    public int[] clickedData = { 0, 0, 0, 0, 0, 0 };
+
+
     void Start()
     {
         player2Button.onClick.AddListener(button2Pressed);
@@ -69,8 +73,10 @@ public class GameManager : MonoBehaviour
 
         settingInitialBoard();
         int[] startItem = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        
 
-       
+
+
 
         //initalizing coins
         if (numOfPlayers == 2)
@@ -87,6 +93,8 @@ public class GameManager : MonoBehaviour
 
             playerCoinsData.Add(startItem);
             playerCoinsData.Add(startItem);
+
+          
         }
         else if(numOfPlayers == 3) 
         {
@@ -132,6 +140,17 @@ public class GameManager : MonoBehaviour
         blueCoinText.text = blueCoinNum.ToString();
         diamondCoinText.text = diamondCoinNum.ToString();
 
+
+    }
+
+    private void Turn()
+    {
+
+        //player 1 
+        if (turn % numOfPlayers == 0) {
+            
+        }
+        //player 2
 
     }
     private void refreshingPrefabs()
@@ -320,6 +339,16 @@ public class GameManager : MonoBehaviour
         if (numOfPlayers != 0)
         {
             playerPrefabs[turn % numOfPlayers].transform.position = new Vector3(-2f, -4.24f, -3);
+        }
+
+        if(turn-1 % numOfPlayers == 0)
+        {
+           playerPrefabs[0].transform.position = new Vector3(-16.775f, 2.9325f, -12f);
+
+
+            
+
+           
         }
     }
     private void settingInitialBoard()
