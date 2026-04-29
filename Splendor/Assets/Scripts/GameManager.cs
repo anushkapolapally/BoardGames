@@ -53,6 +53,13 @@ public class GameManager : MonoBehaviour
     //item for each player = [YellowCoins, YellowBonuses, BrownCoins, BrownBonuses, RedCoins, RedBonuses, GreenCoins, GreenBonuses, BlueCoins, BlueBonuses, DiamondCoins, DiamondBonuses,  Points]
     public List<int[]> playerCoinsData = new List<int[]>();
 
+    public int turn = 0;
+
+
+    public bool p2IconHover = false;
+    public bool p3IconHover = false;
+    public bool p4IconHover = false;
+
 
     void Start()
     {
@@ -110,6 +117,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         refreshingPrefabs();
+        setPrefabPositions();
 
         if (numOfPlayers == 2) {
             playerIcons[2].SetActive(false);
@@ -130,24 +138,188 @@ public class GameManager : MonoBehaviour
     {
         if (numOfPlayers == 2)
         {
-            playerPrefabs[0].transform.Find("Canvas/YellowCoins").GetComponent<TextMeshProUGUI>().text = "T";
-            playerPrefabs[0].transform.Find("Canvas/YellowBonus").GetComponent<TextMeshProUGUI>().text = "T";
-            playerPrefabs[0].transform.Find("Canvas/BrownCoins").GetComponent<TextMeshProUGUI>().text = "T";
-            playerPrefabs[0].transform.Find("Canvas/BrownBonus").GetComponent<TextMeshProUGUI>().text = "T";
-            playerPrefabs[0].transform.Find("Canvas/RedCoins").GetComponent<TextMeshProUGUI>().text = "T";
-            playerPrefabs[0].transform.Find("Canvas/RedBonus").GetComponent<TextMeshProUGUI>().text = "T";
-            playerPrefabs[0].transform.Find("Canvas/GreenCoins").GetComponent<TextMeshProUGUI>().text = "T";
-            playerPrefabs[0].transform.Find("Canvas/GreenBonus").GetComponent<TextMeshProUGUI>().text = "T";
-            playerPrefabs[0].transform.Find("Canvas/BlueCoins").GetComponent<TextMeshProUGUI>().text = "T";
-            playerPrefabs[0].transform.Find("Canvas/BlueBonus").GetComponent<TextMeshProUGUI>().text = "T";
-            playerPrefabs[0].transform.Find("Canvas/DiamondCoins").GetComponent<TextMeshProUGUI>().text = "T";
-            playerPrefabs[0].transform.Find("Canvas/DiamondBonus").GetComponent<TextMeshProUGUI>().text = "T";
+            //player 1 update
+            
+            playerPrefabs[0].transform.Find("Canvas/YellowCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][0].ToString();
+            playerPrefabs[0].transform.Find("Canvas/YellowBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][1].ToString();
+            playerPrefabs[0].transform.Find("Canvas/BrownCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][2].ToString();
+            playerPrefabs[0].transform.Find("Canvas/BrownBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][3].ToString();
+            playerPrefabs[0].transform.Find("Canvas/RedCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][4].ToString(); ;
+            playerPrefabs[0].transform.Find("Canvas/RedBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][5].ToString();
+            playerPrefabs[0].transform.Find("Canvas/GreenCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][6].ToString();
+            playerPrefabs[0].transform.Find("Canvas/GreenBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][7].ToString();
+            playerPrefabs[0].transform.Find("Canvas/BlueCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][8].ToString();
+            playerPrefabs[0].transform.Find("Canvas/BlueBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][9].ToString();
+            playerPrefabs[0].transform.Find("Canvas/DiamondCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][10].ToString();
+            playerPrefabs[0].transform.Find("Canvas/DiamondBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][11].ToString();
 
 
-            playerPrefabs[0].transform.Find("Canvas/TotalCoins").GetComponent<TextMeshProUGUI>().text = "T";
-            playerPrefabs[0].transform.Find("Canvas/TotalPoints").GetComponent<TextMeshProUGUI>().text = "T";
+            playerPrefabs[0].transform.Find("Canvas/TotalCoins").GetComponent<TextMeshProUGUI>().text = (playerCoinsData[0][0] - playerCoinsData[0][1] + playerCoinsData[0][2] - playerCoinsData[0][3] + playerCoinsData[0][4] - playerCoinsData[0][5] + playerCoinsData[0][6] - playerCoinsData[0][7] + playerCoinsData[0][8] - playerCoinsData[0][9] + playerCoinsData[0][10] - playerCoinsData[0][11]).ToString();
+            playerPrefabs[0].transform.Find("Canvas/TotalPoints").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][12].ToString();
+
+            //player 2 update 
+
+            playerPrefabs[1].transform.Find("Canvas/YellowCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][0].ToString();
+            playerPrefabs[1].transform.Find("Canvas/YellowBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][1].ToString();
+            playerPrefabs[1].transform.Find("Canvas/BrownCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][2].ToString();
+            playerPrefabs[1].transform.Find("Canvas/BrownBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][3].ToString();
+            playerPrefabs[1].transform.Find("Canvas/RedCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][4].ToString(); ;
+            playerPrefabs[1].transform.Find("Canvas/RedBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][5].ToString();
+            playerPrefabs[1].transform.Find("Canvas/GreenCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][6].ToString();
+            playerPrefabs[1].transform.Find("Canvas/GreenBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][7].ToString();
+            playerPrefabs[1].transform.Find("Canvas/BlueCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][8].ToString();
+            playerPrefabs[1].transform.Find("Canvas/BlueBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][9].ToString();
+            playerPrefabs[1].transform.Find("Canvas/DiamondCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][10].ToString();
+            playerPrefabs[1].transform.Find("Canvas/DiamondBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][11].ToString();
 
 
+            playerPrefabs[1].transform.Find("Canvas/TotalCoins").GetComponent<TextMeshProUGUI>().text = (playerCoinsData[1][0] - playerCoinsData[1][1] + playerCoinsData[1][2] - playerCoinsData[1][3] + playerCoinsData[1][4] - playerCoinsData[1][5] + playerCoinsData[1][6] - playerCoinsData[1][7] + playerCoinsData[1][8] - playerCoinsData[1][9] + playerCoinsData[1][10] - playerCoinsData[1][11]).ToString();
+            playerPrefabs[1].transform.Find("Canvas/TotalPoints").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][12].ToString();
+        }
+        else if(numOfPlayers == 3)
+        {
+            //player 1 update
+
+            playerPrefabs[0].transform.Find("Canvas/YellowCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][0].ToString();
+            playerPrefabs[0].transform.Find("Canvas/YellowBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][1].ToString();
+            playerPrefabs[0].transform.Find("Canvas/BrownCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][2].ToString();
+            playerPrefabs[0].transform.Find("Canvas/BrownBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][3].ToString();
+            playerPrefabs[0].transform.Find("Canvas/RedCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][4].ToString(); ;
+            playerPrefabs[0].transform.Find("Canvas/RedBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][5].ToString();
+            playerPrefabs[0].transform.Find("Canvas/GreenCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][6].ToString();
+            playerPrefabs[0].transform.Find("Canvas/GreenBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][7].ToString();
+            playerPrefabs[0].transform.Find("Canvas/BlueCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][8].ToString();
+            playerPrefabs[0].transform.Find("Canvas/BlueBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][9].ToString();
+            playerPrefabs[0].transform.Find("Canvas/DiamondCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][10].ToString();
+            playerPrefabs[0].transform.Find("Canvas/DiamondBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][11].ToString();
+
+
+            playerPrefabs[0].transform.Find("Canvas/TotalCoins").GetComponent<TextMeshProUGUI>().text = (playerCoinsData[0][0] - playerCoinsData[0][1] + playerCoinsData[0][2] - playerCoinsData[0][3] + playerCoinsData[0][4] - playerCoinsData[0][5] + playerCoinsData[0][6] - playerCoinsData[0][7] + playerCoinsData[0][8] - playerCoinsData[0][9] + playerCoinsData[0][10] - playerCoinsData[0][11]).ToString();
+            playerPrefabs[0].transform.Find("Canvas/TotalPoints").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][12].ToString();
+
+            //player 2 update 
+
+            playerPrefabs[1].transform.Find("Canvas/YellowCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][0].ToString();
+            playerPrefabs[1].transform.Find("Canvas/YellowBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][1].ToString();
+            playerPrefabs[1].transform.Find("Canvas/BrownCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][2].ToString();
+            playerPrefabs[1].transform.Find("Canvas/BrownBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][3].ToString();
+            playerPrefabs[1].transform.Find("Canvas/RedCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][4].ToString(); ;
+            playerPrefabs[1].transform.Find("Canvas/RedBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][5].ToString();
+            playerPrefabs[1].transform.Find("Canvas/GreenCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][6].ToString();
+            playerPrefabs[1].transform.Find("Canvas/GreenBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][7].ToString();
+            playerPrefabs[1].transform.Find("Canvas/BlueCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][8].ToString();
+            playerPrefabs[1].transform.Find("Canvas/BlueBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][9].ToString();
+            playerPrefabs[1].transform.Find("Canvas/DiamondCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][10].ToString();
+            playerPrefabs[1].transform.Find("Canvas/DiamondBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][11].ToString();
+
+
+            playerPrefabs[1].transform.Find("Canvas/TotalCoins").GetComponent<TextMeshProUGUI>().text = (playerCoinsData[1][0] - playerCoinsData[1][1] + playerCoinsData[1][2] - playerCoinsData[1][3] + playerCoinsData[1][4] - playerCoinsData[1][5] + playerCoinsData[1][6] - playerCoinsData[1][7] + playerCoinsData[1][8] - playerCoinsData[1][9] + playerCoinsData[1][10] - playerCoinsData[1][11]).ToString();
+            playerPrefabs[1].transform.Find("Canvas/TotalPoints").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][12].ToString();
+
+            //player 3 update
+
+            playerPrefabs[2].transform.Find("Canvas/YellowCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][0].ToString();
+            playerPrefabs[2].transform.Find("Canvas/YellowBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][1].ToString();
+            playerPrefabs[2].transform.Find("Canvas/BrownCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][2].ToString();
+            playerPrefabs[2].transform.Find("Canvas/BrownBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][3].ToString();
+            playerPrefabs[2].transform.Find("Canvas/RedCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][4].ToString(); ;
+            playerPrefabs[2].transform.Find("Canvas/RedBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][5].ToString();
+            playerPrefabs[2].transform.Find("Canvas/GreenCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][6].ToString();
+            playerPrefabs[2].transform.Find("Canvas/GreenBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][7].ToString();
+            playerPrefabs[2].transform.Find("Canvas/BlueCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][8].ToString();
+            playerPrefabs[2].transform.Find("Canvas/BlueBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][9].ToString();
+            playerPrefabs[2].transform.Find("Canvas/DiamondCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][10].ToString();
+            playerPrefabs[2].transform.Find("Canvas/DiamondBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][11].ToString();
+
+
+            playerPrefabs[2].transform.Find("Canvas/TotalCoins").GetComponent<TextMeshProUGUI>().text = (playerCoinsData[2][0] - playerCoinsData[2][1] + playerCoinsData[2][2] - playerCoinsData[2][3] + playerCoinsData[2][4] - playerCoinsData[2][5] + playerCoinsData[2][6] - playerCoinsData[2][7] + playerCoinsData[2][8] - playerCoinsData[2][9] + playerCoinsData[2][10] - playerCoinsData[2][11]).ToString();
+            playerPrefabs[2].transform.Find("Canvas/TotalPoints").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][12].ToString();
+        }
+        else if (numOfPlayers == 4)
+        {
+            //player 1 update
+
+            playerPrefabs[0].transform.Find("Canvas/YellowCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][0].ToString();
+            playerPrefabs[0].transform.Find("Canvas/YellowBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][1].ToString();
+            playerPrefabs[0].transform.Find("Canvas/BrownCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][2].ToString();
+            playerPrefabs[0].transform.Find("Canvas/BrownBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][3].ToString();
+            playerPrefabs[0].transform.Find("Canvas/RedCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][4].ToString(); ;
+            playerPrefabs[0].transform.Find("Canvas/RedBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][5].ToString();
+            playerPrefabs[0].transform.Find("Canvas/GreenCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][6].ToString();
+            playerPrefabs[0].transform.Find("Canvas/GreenBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][7].ToString();
+            playerPrefabs[0].transform.Find("Canvas/BlueCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][8].ToString();
+            playerPrefabs[0].transform.Find("Canvas/BlueBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][9].ToString();
+            playerPrefabs[0].transform.Find("Canvas/DiamondCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][10].ToString();
+            playerPrefabs[0].transform.Find("Canvas/DiamondBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][11].ToString();
+
+
+            playerPrefabs[0].transform.Find("Canvas/TotalCoins").GetComponent<TextMeshProUGUI>().text = (playerCoinsData[0][0] - playerCoinsData[0][1] + playerCoinsData[0][2] - playerCoinsData[0][3] + playerCoinsData[0][4] - playerCoinsData[0][5] + playerCoinsData[0][6] - playerCoinsData[0][7] + playerCoinsData[0][8] - playerCoinsData[0][9] + playerCoinsData[0][10] - playerCoinsData[0][11]).ToString();
+            playerPrefabs[0].transform.Find("Canvas/TotalPoints").GetComponent<TextMeshProUGUI>().text = playerCoinsData[0][12].ToString();
+
+            //player 2 update 
+
+            playerPrefabs[1].transform.Find("Canvas/YellowCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][0].ToString();
+            playerPrefabs[1].transform.Find("Canvas/YellowBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][1].ToString();
+            playerPrefabs[1].transform.Find("Canvas/BrownCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][2].ToString();
+            playerPrefabs[1].transform.Find("Canvas/BrownBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][3].ToString();
+            playerPrefabs[1].transform.Find("Canvas/RedCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][4].ToString(); ;
+            playerPrefabs[1].transform.Find("Canvas/RedBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][5].ToString();
+            playerPrefabs[1].transform.Find("Canvas/GreenCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][6].ToString();
+            playerPrefabs[1].transform.Find("Canvas/GreenBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][7].ToString();
+            playerPrefabs[1].transform.Find("Canvas/BlueCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][8].ToString();
+            playerPrefabs[1].transform.Find("Canvas/BlueBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][9].ToString();
+            playerPrefabs[1].transform.Find("Canvas/DiamondCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][10].ToString();
+            playerPrefabs[1].transform.Find("Canvas/DiamondBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][11].ToString();
+
+
+            playerPrefabs[1].transform.Find("Canvas/TotalCoins").GetComponent<TextMeshProUGUI>().text = (playerCoinsData[1][0] - playerCoinsData[1][1] + playerCoinsData[1][2] - playerCoinsData[1][3] + playerCoinsData[1][4] - playerCoinsData[1][5] + playerCoinsData[1][6] - playerCoinsData[1][7] + playerCoinsData[1][8] - playerCoinsData[1][9] + playerCoinsData[1][10] - playerCoinsData[1][11]).ToString();
+            playerPrefabs[1].transform.Find("Canvas/TotalPoints").GetComponent<TextMeshProUGUI>().text = playerCoinsData[1][12].ToString();
+
+            //player 3 update
+
+            playerPrefabs[2].transform.Find("Canvas/YellowCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][0].ToString();
+            playerPrefabs[2].transform.Find("Canvas/YellowBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][1].ToString();
+            playerPrefabs[2].transform.Find("Canvas/BrownCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][2].ToString();
+            playerPrefabs[2].transform.Find("Canvas/BrownBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][3].ToString();
+            playerPrefabs[2].transform.Find("Canvas/RedCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][4].ToString(); ;
+            playerPrefabs[2].transform.Find("Canvas/RedBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][5].ToString();
+            playerPrefabs[2].transform.Find("Canvas/GreenCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][6].ToString();
+            playerPrefabs[2].transform.Find("Canvas/GreenBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][7].ToString();
+            playerPrefabs[2].transform.Find("Canvas/BlueCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][8].ToString();
+            playerPrefabs[2].transform.Find("Canvas/BlueBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][9].ToString();
+            playerPrefabs[2].transform.Find("Canvas/DiamondCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][10].ToString();
+            playerPrefabs[2].transform.Find("Canvas/DiamondBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][11].ToString();
+
+
+            playerPrefabs[2].transform.Find("Canvas/TotalCoins").GetComponent<TextMeshProUGUI>().text = (playerCoinsData[2][0] - playerCoinsData[2][1] + playerCoinsData[2][2] - playerCoinsData[2][3] + playerCoinsData[2][4] - playerCoinsData[2][5] + playerCoinsData[2][6] - playerCoinsData[2][7] + playerCoinsData[2][8] - playerCoinsData[2][9] + playerCoinsData[2][10] - playerCoinsData[2][11]).ToString();
+            playerPrefabs[2].transform.Find("Canvas/TotalPoints").GetComponent<TextMeshProUGUI>().text = playerCoinsData[2][12].ToString();
+
+            //player 4 update
+
+            playerPrefabs[3].transform.Find("Canvas/YellowCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[3][0].ToString();
+            playerPrefabs[3].transform.Find("Canvas/YellowBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[3][1].ToString();
+            playerPrefabs[3].transform.Find("Canvas/BrownCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[3][2].ToString();
+            playerPrefabs[3].transform.Find("Canvas/BrownBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[3][3].ToString();
+            playerPrefabs[3].transform.Find("Canvas/RedCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[3][4].ToString(); ;
+            playerPrefabs[3].transform.Find("Canvas/RedBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[3][5].ToString();
+            playerPrefabs[3].transform.Find("Canvas/GreenCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[3][6].ToString();
+            playerPrefabs[3].transform.Find("Canvas/GreenBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[3][7].ToString();
+            playerPrefabs[3].transform.Find("Canvas/BlueCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[3][8].ToString();
+            playerPrefabs[3].transform.Find("Canvas/BlueBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[3][9].ToString();
+            playerPrefabs[3].transform.Find("Canvas/DiamondCoins").GetComponent<TextMeshProUGUI>().text = playerCoinsData[3][10].ToString();
+            playerPrefabs[3].transform.Find("Canvas/DiamondBonus").GetComponent<TextMeshProUGUI>().text = playerCoinsData[3][11].ToString();
+
+
+            playerPrefabs[3].transform.Find("Canvas/TotalCoins").GetComponent<TextMeshProUGUI>().text = (playerCoinsData[3][0] - playerCoinsData[3][1] + playerCoinsData[3][2] - playerCoinsData[3][3] + playerCoinsData[3][4] - playerCoinsData[3][5] + playerCoinsData[3][6] - playerCoinsData[3][7] + playerCoinsData[3][8] - playerCoinsData[3][9] + playerCoinsData[3][10] - playerCoinsData[3][11]).ToString();
+            playerPrefabs[3].transform.Find("Canvas/TotalPoints").GetComponent<TextMeshProUGUI>().text = playerCoinsData[3][12].ToString();
+        }
+    }
+
+    private void setPrefabPositions()
+    {
+        if (numOfPlayers != 0)
+        {
+            playerPrefabs[turn % numOfPlayers].transform.position = new Vector3(-2f, -4.24f, -3);
         }
     }
     private void settingInitialBoard()
