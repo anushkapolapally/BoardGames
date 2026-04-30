@@ -1,30 +1,55 @@
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Coin : MonoBehaviour
+public class Coin : MonoBehaviour, IPointerClickHandler
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
     public string color;
-    void Start()
-    {
-        
-    }
+    public GameObject gameManager;
+    public bool validPiece;
 
-    // Update is called once per frame
-    void Update()
+    public void OnPointerClick(PointerEventData eventData)
     {
-        
-    }
+        Debug.Log("Coin pressed via EventSystem!");
 
-    private void OnMouseDown()
-    {
-        Debug.Log("Coin pressed");
-    }
+        //yellow coin click
+        if (color == "yellow")
+        {
+            gameManager.GetComponent<GameManager>().clickedData[0] += 1;
+        }
 
-    public void OnPointerClick()
-    {
-        Debug.Log("Coin pressed");
+
+
+        //brown coin click
+        if (color == "brown")
+        {
+            gameManager.GetComponent<GameManager>().clickedData[1] += 1;
+        }
+
+        //red coin click
+        if (color == "red")
+        {
+            gameManager.GetComponent<GameManager>().clickedData[2] += 1;
+        }
+
+        //green coin click
+        if (color == "green")
+        {
+            gameManager.GetComponent<GameManager>().clickedData[3] += 1;
+        }
+
+        //blue coin click
+        if (color == "blue")
+        {
+            gameManager.GetComponent<GameManager>().clickedData[4] += 1;
+        }
+
+        //diamond coin click
+        if (color == "diamond")
+        {
+            gameManager.GetComponent<GameManager>().clickedData[5] += 1;
+        }
+
+
 
     }
 }

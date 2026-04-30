@@ -145,13 +145,37 @@ public class GameManager : MonoBehaviour
 
     private void Turn()
     {
-
         //player 1 
         if (turn % numOfPlayers == 0) {
             
         }
         //player 2
 
+    }
+
+    private void checkingValidPieces()
+    {
+        //check for coin num conditions
+        if(playerCoinsData[turn%numOfPlayers][0] - playerCoinsData[turn % numOfPlayers][1] + playerCoinsData[turn % numOfPlayers][2] - playerCoinsData[turn % numOfPlayers][3] + playerCoinsData[turn % numOfPlayers][4] - playerCoinsData[turn % numOfPlayers][5] + playerCoinsData[turn % numOfPlayers][6] - playerCoinsData[turn % numOfPlayers][7] + playerCoinsData[turn % numOfPlayers][8] - playerCoinsData[turn % numOfPlayers][9] + playerCoinsData[turn % numOfPlayers][10] - playerCoinsData[turn % numOfPlayers][11] < 10)
+        {
+            //if someone already has a token, check if there are at least 3 of that token left
+            for(int i = 0; i< 6; i++)
+            {
+                if (clickedData[i] == 1)
+                {
+
+                }
+            }
+
+
+        }
+        else
+        {
+
+
+        }
+
+        //end turn
     }
     private void refreshingPrefabs()
     {
