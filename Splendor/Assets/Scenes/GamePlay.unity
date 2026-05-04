@@ -1893,7 +1893,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &212700003
 Transform:
   m_ObjectHideFlags: 0
@@ -8562,7 +8562,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &713069538
 Transform:
   m_ObjectHideFlags: 0
@@ -11984,6 +11984,13 @@ MonoBehaviour:
   p3IconHover: 0
   p4IconHover: 0
   clickedData: 000000000000000000000000000000000000000000000000
+  coinObjects:
+  - {fileID: 519159317}
+  - {fileID: 737703073}
+  - {fileID: 1189904564}
+  - {fileID: 297597833}
+  - {fileID: 1017193384}
+  - {fileID: 1452764621}
 --- !u!4 &1038173610
 Transform:
   m_ObjectHideFlags: 0
@@ -13322,7 +13329,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1178868377
 Transform:
   m_ObjectHideFlags: 0
@@ -16089,7 +16096,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1341996742
 Transform:
   m_ObjectHideFlags: 0
@@ -20071,7 +20078,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1657551280
 Transform:
   m_ObjectHideFlags: 0
@@ -21159,7 +21166,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1763716138
 Transform:
   m_ObjectHideFlags: 0

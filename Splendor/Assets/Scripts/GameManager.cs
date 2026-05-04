@@ -64,6 +64,9 @@ public class GameManager : MonoBehaviour
     // yellow, brown, red, green, blue, diamond
     public int[] clickedData = { 0, 0, 0, 0, 0, 0 };
 
+    public List<GameObject> coinObjects = new List<GameObject>();
+
+
 
     void Start()
     {
@@ -126,6 +129,8 @@ public class GameManager : MonoBehaviour
     {
         refreshingPrefabs();
         setPrefabPositions();
+        showingValidPieces();
+        Turn();
 
         if (numOfPlayers == 2) {
             playerIcons[2].SetActive(false);
@@ -147,27 +152,68 @@ public class GameManager : MonoBehaviour
     {
         //player 1 
         if (turn % numOfPlayers == 0) {
+            //check if 2 of the same coin have been pressed
+            for (int i = 0;i< 6; i++)
+            {
+                if (clickedData[i] >= 2)
+                {
+                    //reset all the things
+                    
+                    clickedData[0] = 0;
+                    clickedData[1] = 0;
+                    clickedData[2] = 0;
+                    clickedData[3] = 0;
+                    clickedData[4] = 0;
+                    clickedData[5] = 0;
+
+                    for(int j = 0; i<6; i++)
+                    {
+                        coinObjects[j].transform.GetChild(0).gameObject.SetActive(true);
+                        coinObjects[j].GetComponent<CircleCollider2D>().enabled = true;
+                    }
+
+                    turn++;
+                }
+            }
+            if (turn % numOfPlayers == 0)
+            {
+                if(clickedData.Sum()>= 3)
+                {
+                    turn++;
+                }
+            }
             
+            //OR check if a total of 3 have been pressed
         }
         //player 2
 
     }
 
-    private void checkingValidPieces()
+    private void showingValidPieces()
     {
+
+        int[] coinData = {goldCoinNum, brownCoinNum, redCoinNum, greenCoinNum, blueCoinNum, diamondCoinNum};
         //check for coin num conditions
         if(playerCoinsData[turn%numOfPlayers][0] - playerCoinsData[turn % numOfPlayers][1] + playerCoinsData[turn % numOfPlayers][2] - playerCoinsData[turn % numOfPlayers][3] + playerCoinsData[turn % numOfPlayers][4] - playerCoinsData[turn % numOfPlayers][5] + playerCoinsData[turn % numOfPlayers][6] - playerCoinsData[turn % numOfPlayers][7] + playerCoinsData[turn % numOfPlayers][8] - playerCoinsData[turn % numOfPlayers][9] + playerCoinsData[turn % numOfPlayers][10] - playerCoinsData[turn % numOfPlayers][11] < 10)
         {
             //if someone already has a token, check if there are at least 3 of that token left
             for(int i = 0; i< 6; i++)
             {
-                if (clickedData[i] == 1)
+                if (clickedData[i] >= 1)
                 {
+                    if(coinData[i] < 3)
+                    {
+                        coinObjects[i].transform.GetChild(0).gameObject.SetActive(false);
+                        coinObjects[i].GetComponent<CircleCollider2D>().enabled = false;
+                    }
+                    else
+                    {
+                        coinObjects[i].transform.GetChild(0).gameObject.SetActive(true);
+                        coinObjects[i].GetComponent<CircleCollider2D>().enabled = true;
 
+                    }
                 }
             }
-
-
         }
         else
         {
