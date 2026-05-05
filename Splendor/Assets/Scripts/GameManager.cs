@@ -66,6 +66,10 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> coinObjects = new List<GameObject>();
 
+    public bool changeTurn = false;
+
+    [SerializeField] Button button1;
+
 
 
     void Start()
@@ -73,7 +77,8 @@ public class GameManager : MonoBehaviour
         player2Button.onClick.AddListener(button2Pressed);
         player3Button.onClick.AddListener(button3Pressed);
         player4Button.onClick.AddListener(button4Pressed);
-
+        button1.onClick.AddListener(changeTurnPressed);
+      
         settingInitialBoard();
         int[] startItem = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         
@@ -132,11 +137,27 @@ public class GameManager : MonoBehaviour
         showingValidPieces();
         Turn();
 
-        if (numOfPlayers == 2) {
+        if (changeTurn)
+        {
+            button1.transform.position = new Vector3(800,1050,0);
+        }
+        else
+        {
+            button1.transform.position = new Vector3(10000, 0, 0);
+
+        }
+
+
+        if (numOfPlayers == 2)
+        {
             playerIcons[2].SetActive(false);
             playerIcons[3].SetActive(false);
         }
         if (numOfPlayers == 3){playerIcons[3].SetActive(false);}
+
+
+
+
         //coin text
         goldCoinText.text = goldCoinNum.ToString();
         brownCoinText.text = brownCoinNum.ToString();
@@ -150,6 +171,7 @@ public class GameManager : MonoBehaviour
 
     private void Turn()
     {
+        bool turnswitched = false;
         //player 1 
         if (turn % numOfPlayers == 0) {
             //check if 2 of the same coin have been pressed
@@ -157,31 +179,36 @@ public class GameManager : MonoBehaviour
             {
                 if (clickedData[i] >= 2)
                 {
+                    turnswitched = true;
                     //reset all the things
                     
-                    clickedData[0] = 0;
-                    clickedData[1] = 0;
-                    clickedData[2] = 0;
-                    clickedData[3] = 0;
-                    clickedData[4] = 0;
-                    clickedData[5] = 0;
 
                     for(int j = 0; i<6; i++)
                     {
-                        coinObjects[j].transform.GetChild(0).gameObject.SetActive(true);
-                        coinObjects[j].GetComponent<CircleCollider2D>().enabled = true;
+                        coinObjects[j].transform.GetChild(0).gameObject.SetActive(false);
+                        coinObjects[j].GetComponent<CircleCollider2D>().enabled = false;
                     }
 
-                    turn++;
+                    changeTurn = true;
                 }
             }
-            if (turn % numOfPlayers == 0)
+            if (turnswitched == false)
             {
                 if(clickedData.Sum()>= 3)
                 {
-                    turn++;
+                    turnswitched = true;
+                    //reset all the things
+
+                    for (int j = 0; j < 6; j++)
+                    {
+                        coinObjects[j].transform.GetChild(0).gameObject.SetActive(false);
+                        coinObjects[j].GetComponent<CircleCollider2D>().enabled = false;
+                    }
+                    changeTurn = true;
                 }
             }
+
+            turnswitched = false;
             
             //OR check if a total of 3 have been pressed
         }
@@ -782,6 +809,17 @@ public class GameManager : MonoBehaviour
         greenCoinNum = 7;
         blueCoinNum = 7;
         diamondCoinNum = 7;
+    }
+
+    private void changeTurnPressed(){
+        turn++;
+        changeTurn = false;
+        clickedData[0] = 0;
+        clickedData[1] = 0;
+        clickedData[2] = 0;
+        clickedData[3] = 0;
+        clickedData[4] = 0;
+        clickedData[5] = 0;
     }
     void Awake()
     {
