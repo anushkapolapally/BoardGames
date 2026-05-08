@@ -33,7 +33,7 @@ public class IconScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         Debug.Log("HOVER END");
 
         
-            gameManager.GetComponent<GameManager>().playerPrefabs[0].transform.position = new Vector3(-16.775f, 2.9325f, -12f);
+            gameManager.GetComponent<GameManager>().playerPrefabs[0].transform.position = new Vector3(-16.775f, 2.9325f, -3f);
         
        
             gameManager.GetComponent<GameManager>().playerPrefabs[1].transform.position = new Vector3(-16.7752f, 1.29f, 0f);

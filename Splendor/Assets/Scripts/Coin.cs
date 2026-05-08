@@ -18,7 +18,8 @@ public class Coin : MonoBehaviour, IPointerClickHandler
         {
             gameManager.GetComponent<GameManager>().clickedData[0] += 1;
             gameManager.GetComponent<GameManager>().goldCoinNum -= 1;
-            gameManager.GetComponent<GameManager>().playerCoinsData[turn % numOfPlayers][0] += 1;
+            gameManager.GetComponent<GameManager>().playerCoinsData[turn%numOfPlayers][0] += 1;
+           
         }
 
 

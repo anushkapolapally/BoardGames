@@ -70,6 +70,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Button button1;
 
+    public bool turnDone = false;
+
+    public bool turnswitched = false;
 
 
     void Start()
@@ -99,8 +102,8 @@ public class GameManager : MonoBehaviour
             playerIcons[3].SetActive(false);
 
 
-            playerCoinsData.Add(startItem);
-            playerCoinsData.Add(startItem);
+            playerCoinsData.Add(new int[13]);
+            playerCoinsData.Add(new int[13]);
 
           
         }
@@ -114,17 +117,17 @@ public class GameManager : MonoBehaviour
 
             playerIcons[3].SetActive(false);
 
-            playerCoinsData.Add(startItem);
-            playerCoinsData.Add(startItem);
-            playerCoinsData.Add(startItem);
+            playerCoinsData.Add(new int[13]);
+            playerCoinsData.Add(new int[13]);
+            playerCoinsData.Add(new int[13]);
 
         }
         else
         {
-            playerCoinsData.Add(startItem);
-            playerCoinsData.Add(startItem);
-            playerCoinsData.Add(startItem);
-            playerCoinsData.Add(startItem);
+            playerCoinsData.Add(new int[13]);
+            playerCoinsData.Add(new int[13]);
+            playerCoinsData.Add(new int[13]);
+            playerCoinsData.Add(new int[13]);
         }
 
 
@@ -171,22 +174,22 @@ public class GameManager : MonoBehaviour
 
     private void Turn()
     {
-        bool turnswitched = false;
         //player 1 
-        if (turn % numOfPlayers == 0) {
+        if (turn % numOfPlayers == 0)
+        {
             //check if 2 of the same coin have been pressed
-            for (int i = 0;i< 6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 if (clickedData[i] >= 2)
                 {
                     turnswitched = true;
                     //reset all the things
-                    
 
-                    for(int j = 0; i<6; i++)
+
+                    for (int j = 0; j < 6; j++)
                     {
-                        coinObjects[j].transform.GetChild(0).gameObject.SetActive(false);
-                        coinObjects[j].GetComponent<CircleCollider2D>().enabled = false;
+                       /* coinObjects[j].transform.GetChild(0).gameObject.SetActive(false);
+                        coinObjects[j].GetComponent<CircleCollider2D>().enabled = false; */
                     }
 
                     changeTurn = true;
@@ -194,7 +197,47 @@ public class GameManager : MonoBehaviour
             }
             if (turnswitched == false)
             {
-                if(clickedData.Sum()>= 3)
+                if (clickedData.Sum() >= 3)
+                {
+                    turnswitched = true;
+                    //reset all the things
+
+                    for (int j = 0; j < 6; j++)
+                    {
+                        coinObjects[j].transform.GetChild(0).gameObject.SetActive(false);
+                        coinObjects[j].GetComponent<CircleCollider2D>().enabled = false;
+                    }
+                    changeTurn = true;
+                }
+            }
+
+
+            //OR check if a total of 3 have been pressed
+        }
+        //player 2
+        else if (turn % numOfPlayers == 1)
+        {
+            //check if 2 of the same coin have been pressed
+            for (int i = 0; i < 6; i++)
+            {
+                if (clickedData[i] >= 2)
+                {
+                    turnswitched = true;
+                    //reset all the things
+
+
+                    for (int j = 0; j < 6; j++)
+                    {
+                        /* coinObjects[j].transform.GetChild(0).gameObject.SetActive(false);
+                         coinObjects[j].GetComponent<CircleCollider2D>().enabled = false; */
+                    }
+
+                    changeTurn = true;
+                }
+            }
+            if (turnswitched == false)
+            {
+                if (clickedData.Sum() >= 3)
                 {
                     turnswitched = true;
                     //reset all the things
@@ -209,46 +252,138 @@ public class GameManager : MonoBehaviour
             }
 
             turnswitched = false;
-            
-            //OR check if a total of 3 have been pressed
+
         }
-        //player 2
+        else if (turn % numOfPlayers == 2)
+        {
+            //check if 2 of the same coin have been pressed
+            for (int i = 0; i < 6; i++)
+            {
+                if (clickedData[i] >= 2)
+                {
+                    turnswitched = true;
+                    //reset all the things
+
+
+                    for (int j = 0; j < 6; j++)
+                    {
+                        /* coinObjects[j].transform.GetChild(0).gameObject.SetActive(false);
+                         coinObjects[j].GetComponent<CircleCollider2D>().enabled = false; */
+                    }
+
+                    changeTurn = true;
+                }
+            }
+            if (turnswitched == false)
+            {
+                if (clickedData.Sum() >= 3)
+                {
+                    turnswitched = true;
+                    //reset all the things
+
+                    for (int j = 0; j < 6; j++)
+                    {
+                        coinObjects[j].transform.GetChild(0).gameObject.SetActive(false);
+                        coinObjects[j].GetComponent<CircleCollider2D>().enabled = false;
+                    }
+                    changeTurn = true;
+                }
+            }
+
+            turnswitched = false;
+
+        }
+        else if (turn % numOfPlayers == 3)
+        {
+            //check if 2 of the same coin have been pressed
+            for (int i = 0; i < 6; i++)
+            {
+                if (clickedData[i] >= 2)
+                {
+                    turnswitched = true;
+                    //reset all the things
+
+
+                    for (int j = 0; j < 6; j++)
+                    {
+                        /* coinObjects[j].transform.GetChild(0).gameObject.SetActive(false);
+                         coinObjects[j].GetComponent<CircleCollider2D>().enabled = false; */
+                    }
+
+                    changeTurn = true;
+                }
+            }
+            if (turnswitched == false)
+            {
+                if (clickedData.Sum() >= 3)
+                {
+                    turnswitched = true;
+                    //reset all the things
+
+                    for (int j = 0; j < 6; j++)
+                    {
+                        coinObjects[j].transform.GetChild(0).gameObject.SetActive(false);
+                        coinObjects[j].GetComponent<CircleCollider2D>().enabled = false;
+                    }
+                    changeTurn = true;
+                }
+            }
+
+            turnswitched = false;
+
+        }
 
     }
 
     private void showingValidPieces()
     {
-
-        int[] coinData = {goldCoinNum, brownCoinNum, redCoinNum, greenCoinNum, blueCoinNum, diamondCoinNum};
-        //check for coin num conditions
-        if(playerCoinsData[turn%numOfPlayers][0] - playerCoinsData[turn % numOfPlayers][1] + playerCoinsData[turn % numOfPlayers][2] - playerCoinsData[turn % numOfPlayers][3] + playerCoinsData[turn % numOfPlayers][4] - playerCoinsData[turn % numOfPlayers][5] + playerCoinsData[turn % numOfPlayers][6] - playerCoinsData[turn % numOfPlayers][7] + playerCoinsData[turn % numOfPlayers][8] - playerCoinsData[turn % numOfPlayers][9] + playerCoinsData[turn % numOfPlayers][10] - playerCoinsData[turn % numOfPlayers][11] < 10)
+        int[] coinData =
         {
-            //if someone already has a token, check if there are at least 3 of that token left
-            for(int i = 0; i< 6; i++)
-            {
-                if (clickedData[i] >= 1)
-                {
-                    if(coinData[i] < 3)
-                    {
-                        coinObjects[i].transform.GetChild(0).gameObject.SetActive(false);
-                        coinObjects[i].GetComponent<CircleCollider2D>().enabled = false;
-                    }
-                    else
-                    {
-                        coinObjects[i].transform.GetChild(0).gameObject.SetActive(true);
-                        coinObjects[i].GetComponent<CircleCollider2D>().enabled = true;
+        goldCoinNum,
+        brownCoinNum,
+        redCoinNum,
+        greenCoinNum,
+        blueCoinNum,
+        diamondCoinNum
+    };
 
-                    }
-                }
+        // First enable everything
+        for (int i = 0; i < 6; i++)
+        {
+            coinObjects[i].transform.GetChild(0).gameObject.SetActive(true);
+            coinObjects[i].GetComponent<CircleCollider2D>().enabled = true;
+        }
+
+        // Disable empty piles
+        for (int i = 0; i < 6; i++)
+        {
+            if (coinData[i] <= 0)
+            {
+                coinObjects[i].transform.GetChild(0).gameObject.SetActive(false);
+                coinObjects[i].GetComponent<CircleCollider2D>().enabled = false;
             }
         }
-        else
+
+        // If player already took one of a color,
+        // only allow taking a second if >= 3 remain
+        for (int i = 0; i < 6; i++)
         {
-
-
+            if (clickedData[i] >= 1 && coinData[i] < 3)
+            {
+                coinObjects[i].transform.GetChild(0).gameObject.SetActive(false);
+                coinObjects[i].GetComponent<CircleCollider2D>().enabled = false;
+            }
         }
 
-        //end turn
+        // End-of-turn lock
+        if (changeTurn)
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                coinObjects[i].transform.GetChild(0).gameObject.SetActive(false);
+                coinObjects[i].GetComponent<CircleCollider2D>().enabled = false;
+            }
+        }
     }
     private void refreshingPrefabs()
     {
@@ -436,18 +571,45 @@ public class GameManager : MonoBehaviour
         if (numOfPlayers != 0)
         {
             playerPrefabs[turn % numOfPlayers].transform.position = new Vector3(-2f, -4.24f, -3);
+
         }
 
-        if(turn-1 % numOfPlayers == 0)
+       /* if ((turn - 1) % numOfPlayers == 0)
         {
-           playerPrefabs[0].transform.position = new Vector3(-16.775f, 2.9325f, -12f);
-
-
-            
-
-           
+            playerPrefabs[0].transform.position = new Vector3(-16.775f, 2.9325f, -12f);
         }
+        else if ((turn - 1) % numOfPlayers == 1)
+        {
+            playerPrefabs[1].transform.position = new Vector3(-16.7752f, 1.29f, 0f);
+        }
+        else if ((turn - 1) % numOfPlayers == 2)
+        {
+            playerPrefabs[2].transform.position = new Vector3(-16.7752f, -0.4f, 0f);
+        }
+        else if ((turn - 1) % numOfPlayers == 3)
+        {
+            playerPrefabs[3].transform.position = new Vector3(-16.7752f, -2.15f, 0f);
+        }
+
+        if ((turn - 1) % numOfPlayers == 0)
+        {
+            playerPrefabs[0].transform.position = new Vector3(-16.775f, 2.9325f, -12f);
+        }
+        else if ((turn - 1) % numOfPlayers == 1)
+        {
+            playerPrefabs[1].transform.position = new Vector3(-16.7752f, 1.29f, 0f);
+        }
+        else if ((turn - 1) % numOfPlayers == 2)
+        {
+            playerPrefabs[2].transform.position = new Vector3(-16.7752f, -0.4f, 0f);
+        }
+        else if ((turn - 1) % numOfPlayers == 3)
+        {
+            playerPrefabs[3].transform.position = new Vector3(-16.7752f, -2.15f, 0f);
+        } */
+
     }
+    
     private void settingInitialBoard()
     {
         //green cards
@@ -814,12 +976,50 @@ public class GameManager : MonoBehaviour
     private void changeTurnPressed(){
         turn++;
         changeTurn = false;
+        turnswitched = false;
         clickedData[0] = 0;
         clickedData[1] = 0;
         clickedData[2] = 0;
         clickedData[3] = 0;
         clickedData[4] = 0;
         clickedData[5] = 0;
+
+        for (int i = 0; i < 6; i++)
+        {
+            coinObjects[i].transform.GetChild(0).gameObject.SetActive(true);
+            coinObjects[i].GetComponent<CircleCollider2D>().enabled = true;
+        }
+        showingValidPieces();
+
+
+        int tempTurn = turn % numOfPlayers;
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (i != tempTurn)
+            {
+                if (i == 0)
+                {
+                    playerPrefabs[0].transform.position = new Vector3(-16.775f, 2.9325f, -3f);
+                }
+                else if (i == 1)
+                {
+                    playerPrefabs[1].transform.position = new Vector3(-16.7752f, 1.29f, 0f);
+
+                }
+                else if (i == 2)
+                {
+                    playerPrefabs[2].transform.position = new Vector3(-16.7752f, -0.4f, 0f);
+
+                }
+                else if (i == 3)
+                {
+                    playerPrefabs[3].transform.position = new Vector3(-16.7752f, -2.15f, 0f);
+
+                }
+
+            }
+        }
     }
     void Awake()
     {
